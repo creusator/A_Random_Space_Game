@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://do78wutwh6no7"]
+
+[ext_resource type="Texture2D" uid="uid://d05d0fvnas1or" path="res://Assets/skybox.png" id="1_7gtgh"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_7gtgh")
+centered = false

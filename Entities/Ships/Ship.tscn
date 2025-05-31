@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cist6ucxjbbp1"]
+
+[ext_resource type="Script" uid="uid://dinklrc2bhs7c" path="res://Entities/Ships/Ship.gd" id="1_uckl0"]
+[ext_resource type="PackedScene" uid="uid://cfa748aqf7fwt" path="res://Components/MoveComponent.tscn" id="2_3g1uc"]
+[ext_resource type="PackedScene" uid="uid://bhqxkh5gbjtat" path="res://Components/RotationComponents.tscn" id="3_q3vdd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kslam"]
+
+[node name="Ship" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_uckl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_kslam")
+
+[node name="MoveComponent" parent="." instance=ExtResource("2_3g1uc")]
+
+[node name="RotationComponent" parent="." instance=ExtResource("3_q3vdd")]

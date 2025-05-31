@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://cw4qwjotlj6x4"]
+
+[ext_resource type="Script" uid="uid://b4w42vw6fipup" path="res://Scripts/Ressources/ShipData.gd" id="1_cok76"]
+[ext_resource type="Texture2D" uid="uid://cyf2mpt1ifmr2" path="res://Assets/wship-4.png" id="2_m8ghn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_werql"]
+radius = 50.0
+height = 287.0
+
+[resource]
+script = ExtResource("1_cok76")
+ship_name = ""
+mass = 350.0
+main_thrust_power = 5000.0
+side_thrust_power = 50.0
+max_rotation_speed = 30.0
+max_move_speed = 130.0
+inertial_dampeners_efficiency = 1.0
+rotation_dampeners_efficiency = 1.0
+sprite_texture = ExtResource("2_m8ghn")
+collision_shape = SubResource("CapsuleShape2D_werql")
+metadata/_custom_type_script = "uid://b4w42vw6fipup"
