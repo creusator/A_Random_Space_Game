@@ -7,6 +7,8 @@ enum MODES { TARGET, TARGET_MOUSE_BLENDED}
 @export var mode: MODES = MODES.TARGET_MOUSE_BLENDED
 @export var smooth_speed: float
 @export var zoom_speed:float
+@export var max_zoom:float
+@export var min_zoom:float
 
 var viewport: Vector2
 var target_position = Vector2.INF
@@ -15,15 +17,11 @@ var max_distance_y: float
 var fallback_target: Node = null
 var smoothed_offset: Vector2 = Vector2.ZERO
 var zoom_target: Vector2
-var max_zoom:float
-var min_zoom:float
 
 func _ready():
 	viewport = get_viewport_rect().size
 	fallback_target = target
 	zoom_target = zoom
-	max_zoom = 2
-	min_zoom = 0.5
 	max_distance_x = viewport.x
 	max_distance_y = viewport.y
 
@@ -54,17 +52,3 @@ func Zoom() -> void:
 	zoom_target.x = clamp(zoom_target.x, min_zoom, max_zoom)
 	zoom_target.y = clamp(zoom_target.y, min_zoom, max_zoom)
 	zoom = zoom.lerp(zoom_target, zoom_speed)
-
-func change_camera_mode(new_mode: MODES) -> void:
-	mode = new_mode
-	
-func change_target(new_target: Node) -> void:
-	if new_target:
-		if target and target.tree_exiting.is_connected(_clear_target):
-			target.tree_exiting.disconnect(_clear_target)
-		target = new_target
-		new_target.tree_exiting.connect(_clear_target)
-
-func _clear_target() -> void:
-	target = fallback_target
-	change_camera_mode(MODES.TARGET_MOUSE_BLENDED)

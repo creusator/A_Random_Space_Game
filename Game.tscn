@@ -17,4 +17,6 @@ ship_data = ExtResource("3_sb48q")
 script = ExtResource("4_sb48q")
 target = NodePath("../Ship")
 smooth_speed = 1.5
-zoom_speed = 0.2
+zoom_speed = 0.1
+max_zoom = 2.0
+min_zoom = 0.5
