@@ -2,12 +2,14 @@ extends Node2D
 
 var mass: float
 var main_thrust_power: float
+var side_thrust_power: float
 var max_move_speed: float
 var inertial_dampener_efficiency: float
 
 func apply_data(data: ShipData):
 	mass = data.mass
 	main_thrust_power = data.main_thrust_power
+	side_thrust_power = data.side_thrust_power
 	max_move_speed = data.max_move_speed
 	inertial_dampener_efficiency = data.inertial_dampeners_efficiency
 
@@ -32,7 +34,7 @@ func calculate_thrust(thrust_vector: Vector2) -> Vector2:
 	if thrust_vector.length() > 0.01:
 		return thrust_vector.normalized() * main_thrust_power * thrust_vector.length()
 	return Vector2.ZERO
-	
+
 func calculate_dampening(velocity: Vector2) -> Vector2:
 	if inertial_dampener_efficiency <= 0.0 or velocity.length() < 0.1:
 		return Vector2.ZERO
