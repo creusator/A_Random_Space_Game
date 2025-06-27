@@ -11,12 +11,15 @@ config_version=5
 [application]
 
 config/name="[name-here]"
-run/main_scene="uid://bl2wfrt4wupur"
+run/main_scene="uid://tj5g2m158dey"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [display]
 
-window/size/mode=3
+window/size/viewport_width=2650
+window/size/viewport_height=1440
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor]
 

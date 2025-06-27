@@ -8,7 +8,7 @@
 [node name="Game" type="Node2D"]
 scale = Vector2(1.01469, 1.02335)
 
-[node name="ParallaxBackground2" parent="." instance=ExtResource("1_sb48q")]
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_sb48q")]
 
 [node name="Ship" parent="." instance=ExtResource("2_u44n3")]
 ship_data = ExtResource("3_sb48q")

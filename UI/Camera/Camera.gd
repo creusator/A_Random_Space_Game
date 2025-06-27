@@ -22,7 +22,7 @@ func _ready():
 	fallback_target = target
 	zoom_target = zoom
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	CameraZoom(delta)
 	CameraMove(delta)
 
