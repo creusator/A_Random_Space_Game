@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Ship
 
 @export var ship_data: ShipData
+@export var player_controlled: bool
 
 @onready var collision_shape = $CollisionShape2D
 @onready var move_component = $MoveComponent
@@ -16,13 +17,14 @@ func _ready():
 		ship_data.apply_to_ship(self)
 
 func _physics_process(delta:float) -> void:
-	get_input()
-	velocity = move_component.player_movement(velocity, thrust_vector, delta)
-	if Input.is_action_pressed('update_aim_point'):
-		rotation = rotation_component.aim_to_target(global_position, target, delta)  
-	else :
-		rotation = rotation_component.player_rotation(rotation_direction, delta)
-	move_and_slide()
+	if player_controlled == true:
+		get_input()
+		velocity = move_component.player_movement(velocity, thrust_vector, delta)
+		if Input.is_action_pressed('update_aim_point'):
+			rotation = rotation_component.aim_to_target(global_position, target, delta)  
+		else :
+			rotation = rotation_component.player_rotation(rotation_direction, delta)
+		move_and_slide()
 
 func get_input() -> void:
 	target = get_global_mouse_position()

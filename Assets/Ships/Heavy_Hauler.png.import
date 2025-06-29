@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c81n8ys6wkb17"
-path="res://.godot/imported/destroyer.png-9e1df8e099b4ff201bed3a0b99abba71.ctex"
+uid="uid://ddt1k0h7s8lst"
+path="res://.godot/imported/Heavy_Hauler.png-394fb9fccc42efc8edf9746903c897b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/destroyer.png"
-dest_files=["res://.godot/imported/destroyer.png-9e1df8e099b4ff201bed3a0b99abba71.ctex"]
+source_file="res://Assets/Ships/Heavy_Hauler.png"
+dest_files=["res://.godot/imported/Heavy_Hauler.png-394fb9fccc42efc8edf9746903c897b2.ctex"]
 
 [params]
 

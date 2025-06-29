@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn4h367v2koca"
-path="res://.godot/imported/Test-tile.png-3253081c76cd379b8b525d57703c39fe.ctex"
+uid="uid://c28eltoh6s14b"
+path="res://.godot/imported/Light-Fighter.png-2c820502fa5b6903b56e576032ca6c48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Test-tile.png"
-dest_files=["res://.godot/imported/Test-tile.png-3253081c76cd379b8b525d57703c39fe.ctex"]
+source_file="res://Assets/Ships/Light-Fighter.png"
+dest_files=["res://.godot/imported/Light-Fighter.png-2c820502fa5b6903b56e576032ca6c48.ctex"]
 
 [params]
 

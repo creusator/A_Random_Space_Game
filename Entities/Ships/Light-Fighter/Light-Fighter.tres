@@ -1,14 +1,13 @@
 [gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://c2rxh20rctwm0"]
 
-[ext_resource type="Script" uid="uid://b4w42vw6fipup" path="res://Scripts/Ressources/ShipData.gd" id="1_2dqju"]
-[ext_resource type="Texture2D" uid="uid://byaf6yahveebx" path="res://Assets/ship_red.png" id="2_s786c"]
+[ext_resource type="Script" uid="uid://b4w42vw6fipup" path="res://Scripts/Ressources/ShipData.gd" id="1_bjcxn"]
+[ext_resource type="Texture2D" uid="uid://c28eltoh6s14b" path="res://Assets/Ships/Light-Fighter.png" id="2_6ffav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0drj"]
 size = Vector2(120, 120)
 
 [resource]
-script = ExtResource("1_2dqju")
-ship_name = ""
+script = ExtResource("1_bjcxn")
 mass = 47.0
 main_thrust_power = 10000.0
 side_thrust_power = 65.0
@@ -16,6 +15,6 @@ max_rotation_speed = 180.0
 max_move_speed = 300.0
 inertial_dampeners_efficiency = 1.0
 rotation_dampeners_efficiency = 1.0
-sprite_texture = ExtResource("2_s786c")
+sprite_texture = ExtResource("2_6ffav")
 collision_shape = SubResource("RectangleShape2D_a0drj")
 metadata/_custom_type_script = "uid://b4w42vw6fipup"

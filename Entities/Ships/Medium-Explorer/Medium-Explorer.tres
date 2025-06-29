@@ -1,21 +1,20 @@
 [gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://bok6o4ie2opxa"]
 
 [ext_resource type="Script" uid="uid://b4w42vw6fipup" path="res://Scripts/Ressources/ShipData.gd" id="1_limgj"]
-[ext_resource type="Texture2D" uid="uid://c81n8ys6wkb17" path="res://Assets/destroyer.png" id="2_m6fa6"]
+[ext_resource type="Texture2D" uid="uid://bf6vftqpaqpos" path="res://Assets/Ships/Medium_Explorer.png" id="2_0q6sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtrom"]
 size = Vector2(300, 400)
 
 [resource]
 script = ExtResource("1_limgj")
-ship_name = ""
-mass = 900.0
-main_thrust_power = 50000.0
+mass = 350.0
+main_thrust_power = 15000.0
 side_thrust_power = 200.0
-max_rotation_speed = 75.0
+max_rotation_speed = 105.0
 max_move_speed = 200.0
 inertial_dampeners_efficiency = 1.0
 rotation_dampeners_efficiency = 1.0
-sprite_texture = ExtResource("2_m6fa6")
+sprite_texture = ExtResource("2_0q6sx")
 collision_shape = SubResource("RectangleShape2D_rtrom")
 metadata/_custom_type_script = "uid://b4w42vw6fipup"

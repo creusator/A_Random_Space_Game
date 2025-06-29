@@ -1,7 +1,6 @@
 extends Resource
 class_name ShipData
 
-@export var ship_name: String
 @export var mass: float
 @export var main_thrust_power: float
 @export var side_thrust_power: float

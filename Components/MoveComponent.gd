@@ -1,5 +1,7 @@
 extends Node2D
 
+const PIXEL_PER_METER = 10
+
 var mass: float
 var main_thrust_power: float
 var side_thrust_power: float
@@ -8,9 +10,9 @@ var inertial_dampener_efficiency: float
 
 func apply_data(data: ShipData):
 	mass = data.mass
-	main_thrust_power = data.main_thrust_power
-	side_thrust_power = data.side_thrust_power
-	max_move_speed = data.max_move_speed
+	main_thrust_power = (data.main_thrust_power) * PIXEL_PER_METER
+	side_thrust_power = (data.side_thrust_power) * PIXEL_PER_METER
+	max_move_speed = (data.max_move_speed) * PIXEL_PER_METER
 	inertial_dampener_efficiency = data.inertial_dampeners_efficiency
 
 func player_movement(velocity: Vector2, thrust_vector: Vector2,delta: float) -> Vector2:

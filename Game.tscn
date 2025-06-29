@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl2wfrt4wupur"]
+[gd_scene load_steps=6 format=3 uid="uid://bl2wfrt4wupur"]
 
-[ext_resource type="PackedScene" uid="uid://do78wutwh6no7" path="res://Backgrounds/Space/BackgroundSpace.tscn" id="1_sb48q"]
+[ext_resource type="PackedScene" uid="uid://dgm6lx2u4lxpy" path="res://Backgrounds/TestingEnvironement/BackgroundTesting.tscn" id="1_sb48q"]
 [ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Ship.tscn" id="2_u44n3"]
-[ext_resource type="Resource" uid="uid://c2rxh20rctwm0" path="res://Entities/Ships/TS-LightFighter/TS-LightFighter.tres" id="3_sb48q"]
+[ext_resource type="Resource" uid="uid://bok6o4ie2opxa" path="res://Entities/Ships/Medium-Explorer/Medium-Explorer.tres" id="3_sb48q"]
 [ext_resource type="Script" uid="uid://dq3r12sc157up" path="res://UI/Camera/Camera.gd" id="4_sb48q"]
+[ext_resource type="Resource" uid="uid://c2rxh20rctwm0" path="res://Entities/Ships/Light-Fighter/Light-Fighter.tres" id="5_t88pq"]
 
 [node name="Game" type="Node2D"]
 scale = Vector2(1.01469, 1.02335)
@@ -12,11 +13,16 @@ scale = Vector2(1.01469, 1.02335)
 
 [node name="Ship" parent="." instance=ExtResource("2_u44n3")]
 ship_data = ExtResource("3_sb48q")
+player_controlled = true
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_sb48q")
 target = NodePath("../Ship")
 camera_smooth_speed = 5.0
 zoom_speed = 4.0
-max_zoom = 6.0
+max_zoom = 10.0
 min_zoom = 0.8
+
+[node name="Ship2" parent="." instance=ExtResource("2_u44n3")]
+position = Vector2(1669.48, -951.776)
+ship_data = ExtResource("5_t88pq")

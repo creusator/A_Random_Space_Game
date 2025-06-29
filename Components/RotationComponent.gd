@@ -30,7 +30,7 @@ func player_rotation(rotation_direction, delta):
 	angular_velocity_rad += angular_acceleration * delta
 	angular_velocity_rad = clamp(angular_velocity_rad, -max_angular_velocity_rad, max_angular_velocity_rad)
 	
-	if abs(rotation_direction) < 0.01 and abs(angular_velocity_rad) < 0.1:
+	if abs(rotation_direction) < 0.01 and abs(angular_velocity_rad) < 0.008:
 		angular_velocity_rad = 0.0
 	rotation += angular_velocity_rad * delta
 	return rotation
