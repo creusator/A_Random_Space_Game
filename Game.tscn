@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl2wfrt4wupur"]
+[gd_scene load_steps=5 format=3 uid="uid://bl2wfrt4wupur"]
 
 [ext_resource type="PackedScene" uid="uid://dgm6lx2u4lxpy" path="res://Backgrounds/TestingEnvironement/BackgroundTesting.tscn" id="1_sb48q"]
 [ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Ship.tscn" id="2_u44n3"]
-[ext_resource type="Resource" uid="uid://bok6o4ie2opxa" path="res://Entities/Ships/Medium-Explorer/Medium-Explorer.tres" id="3_sb48q"]
+[ext_resource type="Resource" uid="uid://c2rxh20rctwm0" path="res://Entities/Ships/Light-Fighter/Light-Fighter.tres" id="3_sb48q"]
 [ext_resource type="Script" uid="uid://dq3r12sc157up" path="res://UI/Camera/Camera.gd" id="4_sb48q"]
-[ext_resource type="Resource" uid="uid://c2rxh20rctwm0" path="res://Entities/Ships/Light-Fighter/Light-Fighter.tres" id="5_t88pq"]
-[ext_resource type="Resource" uid="uid://cw4qwjotlj6x4" path="res://Entities/Ships/Heavy-Hauler/Heavy-Hauler.tres" id="6_r0x5m"]
 
 [node name="Game" type="Node2D"]
 scale = Vector2(1.01469, 1.02335)
@@ -13,7 +11,7 @@ scale = Vector2(1.01469, 1.02335)
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_sb48q")]
 
 [node name="Ship" parent="." instance=ExtResource("2_u44n3")]
-ship_data = ExtResource("5_t88pq")
+ship_data = ExtResource("3_sb48q")
 player_controlled = true
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
@@ -23,11 +21,3 @@ camera_smooth_speed = 15.0
 zoom_speed = 4.0
 max_zoom = 5.0
 min_zoom = 0.2
-
-[node name="Ship2" parent="." instance=ExtResource("2_u44n3")]
-position = Vector2(653.401, 0)
-ship_data = ExtResource("3_sb48q")
-
-[node name="Ship3" parent="." instance=ExtResource("2_u44n3")]
-position = Vector2(-640.59, 0)
-ship_data = ExtResource("6_r0x5m")

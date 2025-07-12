@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=3 format=3 uid="uid://cjwi885jo37tt"]
+
+[ext_resource type="Script" uid="uid://b4w42vw6fipup" path="res://Scripts/Ressources/ShipData.gd" id="1_c6wcr"]
+[ext_resource type="Texture2D" uid="uid://boua24uf6cr35" path="res://Assets/Ships/WIP-NorikerMKI-Exterior.png" id="2_8l5m3"]
+
+[resource]
+script = ExtResource("1_c6wcr")
+mass = 47.0
+main_thrust_power = 1800.0
+side_thrust_power = 100.0
+max_rotation_speed = 36.0
+max_move_speed = 180.0
+inertial_dampeners_efficiency = 1.0
+rotation_dampeners_efficiency = 1.0
+sprite_texture = ExtResource("2_8l5m3")
+metadata/_custom_type_script = "uid://b4w42vw6fipup"

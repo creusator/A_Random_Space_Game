@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://doq746og57hk5"]
+
+[ext_resource type="Texture2D" uid="uid://bb78h2qpisn4m" path="res://Assets/Ships/WIP-NorikerMKI-Interior1.png" id="1_2ldro"]
+[ext_resource type="Texture2D" uid="uid://c6gk7c6b71ntr" path="res://Assets/Ships/WIP-NorikerMKI-NORMAL.png" id="2_4ubmi"]
+
+[resource]
+diffuse_texture = ExtResource("1_2ldro")
+normal_texture = ExtResource("2_4ubmi")
