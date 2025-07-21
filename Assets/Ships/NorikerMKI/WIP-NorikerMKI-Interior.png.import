@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6gk7c6b71ntr"
-path="res://.godot/imported/WIP-NorikerMKI-NORMAL.png-ad932295f54018581803ae14ec2c1321.ctex"
+uid="uid://bb78h2qpisn4m"
+path="res://.godot/imported/WIP-NorikerMKI-Interior1.png-f493639df7cc784a81ebeda40da553a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ships/WIP-NorikerMKI-NORMAL.png"
-dest_files=["res://.godot/imported/WIP-NorikerMKI-NORMAL.png-ad932295f54018581803ae14ec2c1321.ctex"]
+source_file="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI-Interior1.png"
+dest_files=["res://.godot/imported/WIP-NorikerMKI-Interior1.png-f493639df7cc784a81ebeda40da553a0.ctex"]
 
 [params]
 

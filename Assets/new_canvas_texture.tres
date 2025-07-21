@@ -1,7 +1,7 @@
 [gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://5solirn3rx1l"]
 
-[ext_resource type="Texture2D" uid="uid://bb78h2qpisn4m" path="res://Assets/Ships/WIP-NorikerMKI-Interior1.png" id="1_kmpdv"]
-[ext_resource type="Texture2D" uid="uid://c6gk7c6b71ntr" path="res://Assets/Ships/WIP-NorikerMKI-NORMAL.png" id="2_i7wc8"]
+[ext_resource type="Texture2D" uid="uid://bb78h2qpisn4m" path="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI-Interior1.png" id="1_kmpdv"]
+[ext_resource type="Texture2D" uid="uid://c6gk7c6b71ntr" path="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI-NORMAL.png" id="2_i7wc8"]
 
 [resource]
 diffuse_texture = ExtResource("1_kmpdv")

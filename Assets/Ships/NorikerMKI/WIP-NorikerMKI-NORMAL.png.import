@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfss5i7deajcn"
-path="res://.godot/imported/Sprite-0004.png-600e79148173a75b3ce896fbcffcff0d.ctex"
+uid="uid://c6gk7c6b71ntr"
+path="res://.godot/imported/WIP-NorikerMKI-NORMAL.png-8894118cdd88f96f7188c9b4878f6fc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite-0004.png"
-dest_files=["res://.godot/imported/Sprite-0004.png-600e79148173a75b3ce896fbcffcff0d.ctex"]
+source_file="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI-NORMAL.png"
+dest_files=["res://.godot/imported/WIP-NorikerMKI-NORMAL.png-8894118cdd88f96f7188c9b4878f6fc2.ctex"]
 
 [params]
 

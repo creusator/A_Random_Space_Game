@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dgm6lx2u4lxpy" path="res://Backgrounds/TestingEnvironement/BackgroundTesting.tscn" id="1_sb48q"]
 [ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Ship.tscn" id="2_u44n3"]
-[ext_resource type="Resource" uid="uid://c2rxh20rctwm0" path="res://Entities/Ships/Light-Fighter/Light-Fighter.tres" id="3_sb48q"]
+[ext_resource type="Resource" uid="uid://cjwi885jo37tt" path="res://Entities/Ships/NorikerMKI/NorikerMKI.tres" id="3_sb48q"]
 [ext_resource type="Script" uid="uid://dq3r12sc157up" path="res://UI/Camera/Camera.gd" id="4_sb48q"]
 
 [node name="Game" type="Node2D"]
