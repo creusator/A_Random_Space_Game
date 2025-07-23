@@ -1,13 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://do78wutwh6no7"]
+[gd_scene load_steps=6 format=3 uid="uid://do78wutwh6no7"]
 
-[ext_resource type="Texture2D" uid="uid://d05d0fvnas1or" path="res://Assets/skybox.png" id="1_7gtgh"]
+[sub_resource type="Gradient" id="Gradient_3td3w"]
+offsets = PackedFloat32Array(0, 0.0446097, 0.847584, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.727054, 0.727054, 0.727054, 1, 0.973978, 0.973978, 0.973978, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7gtgh"]
+gradient = SubResource("Gradient_3td3w")
+
+[sub_resource type="Curve" id="Curve_hpvof"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.755932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.48826), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7tgo7"]
+curve = SubResource("Curve_hpvof")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3td3w"]
+lifetime_randomness = 0.3
+emission_shape_offset = Vector3(960, 540, 0)
+emission_shape_scale = Vector3(960, 540, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_7tgo7")
+color_ramp = SubResource("GradientTexture1D_7gtgh")
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(3840, 2160)
+[node name="Skybox" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
-scale = Vector2(2, 2)
-texture = ExtResource("1_7gtgh")
-centered = false
+[node name="BackgroundStars" type="GPUParticles2D" parent="Skybox"]
+amount = 200
+lifetime = 60.0
+preprocess = 240.0
+visibility_rect = Rect2(0, 0, 1920, 1080)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_3td3w")

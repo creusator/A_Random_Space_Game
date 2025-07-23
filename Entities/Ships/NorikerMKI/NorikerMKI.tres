@@ -1,16 +1,21 @@
-[gd_resource type="Resource" script_class="ShipData" load_steps=3 format=3 uid="uid://cjwi885jo37tt"]
+[gd_resource type="Resource" script_class="ShipData" load_steps=5 format=3 uid="uid://cjwi885jo37tt"]
 
 [ext_resource type="Script" uid="uid://b4w42vw6fipup" path="res://Scripts/Ressources/ShipData.gd" id="1_c6wcr"]
-[ext_resource type="Texture2D" uid="uid://5solirn3rx1l" path="res://Assets/new_canvas_texture.tres" id="2_8l5m3"]
+[ext_resource type="Texture2D" uid="uid://crcbjw6lac2xt" path="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI.png" id="2_8gqgw"]
+[ext_resource type="Texture2D" uid="uid://c6gk7c6b71ntr" path="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI-NORMAL.png" id="3_ho78q"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jwx62"]
+diffuse_texture = ExtResource("2_8gqgw")
+normal_texture = ExtResource("3_ho78q")
 
 [resource]
 script = ExtResource("1_c6wcr")
 mass = 47.0
 main_thrust_power = 1800.0
 side_thrust_power = 100.0
-max_rotation_speed = 36.0
+max_rotation_speed = 72.0
 max_move_speed = 180.0
 inertial_dampeners_efficiency = 1.0
 rotation_dampeners_efficiency = 1.0
-sprite_texture = ExtResource("2_8l5m3")
+sprite_texture = SubResource("CanvasTexture_jwx62")
 metadata/_custom_type_script = "uid://b4w42vw6fipup"
