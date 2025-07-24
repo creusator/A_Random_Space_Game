@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://do78wutwh6no7"]
+[gd_scene load_steps=21 format=3 uid="uid://do78wutwh6no7"]
 
 [sub_resource type="Gradient" id="Gradient_3td3w"]
 offsets = PackedFloat32Array(0, 0.0446097, 0.847584, 1)
@@ -21,11 +21,89 @@ emission_shape_scale = Vector3(960, 540, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 gravity = Vector3(0, 0, 0)
-scale_max = 5.0
+scale_min = 3.0
+scale_max = 7.0
 scale_curve = SubResource("CurveTexture_7tgo7")
 color_ramp = SubResource("GradientTexture1D_7gtgh")
 
-[node name="ParallaxBackground" type="ParallaxBackground"]
+[sub_resource type="Gradient" id="Gradient_7gtgh"]
+offsets = PackedFloat32Array(0, 0.0446097, 0.847584, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.443137, 0.423529, 0.380392, 1, 0.443137, 0.423529, 0.380392, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hpvof"]
+gradient = SubResource("Gradient_7gtgh")
+
+[sub_resource type="Curve" id="Curve_7tgo7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.755932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.48826), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2lqwn"]
+curve = SubResource("Curve_7tgo7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cr2sd"]
+lifetime_randomness = 0.3
+emission_shape_offset = Vector3(960, 540, 0)
+emission_shape_scale = Vector3(960, 540, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_2lqwn")
+color_ramp = SubResource("GradientTexture1D_hpvof")
+
+[sub_resource type="Gradient" id="Gradient_hpvof"]
+offsets = PackedFloat32Array(0, 0.0446097, 0.847584, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.443137, 0.423529, 0.380392, 1, 0.443137, 0.423529, 0.380392, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7tgo7"]
+gradient = SubResource("Gradient_hpvof")
+
+[sub_resource type="Curve" id="Curve_2lqwn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.755932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.48826), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cr2sd"]
+curve = SubResource("Curve_2lqwn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h6p4p"]
+lifetime_randomness = 0.3
+emission_shape_offset = Vector3(960, 540, 0)
+emission_shape_scale = Vector3(960, 540, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_cr2sd")
+color_ramp = SubResource("GradientTexture1D_7tgo7")
+
+[sub_resource type="Gradient" id="Gradient_7tgo7"]
+offsets = PackedFloat32Array(0, 0.0446097, 0.847584, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.560784, 0.560784, 0.560784, 0.733333, 0.560784, 0.560784, 0.560784, 0.733333, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2lqwn"]
+gradient = SubResource("Gradient_7tgo7")
+
+[sub_resource type="Curve" id="Curve_cr2sd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.755932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.48826), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h6p4p"]
+curve = SubResource("Curve_cr2sd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8vwrt"]
+lifetime_randomness = 0.3
+emission_shape_offset = Vector3(960, 540, 0)
+emission_shape_scale = Vector3(960, 540, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_h6p4p")
+color_ramp = SubResource("GradientTexture1D_2lqwn")
+
+[node name="BehindCamera" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
 
 [node name="Skybox" type="ColorRect" parent="."]
 offset_right = 1920.0
@@ -33,9 +111,49 @@ offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="BackgroundStars" type="GPUParticles2D" parent="Skybox"]
-amount = 200
+amount = 125
 lifetime = 60.0
 preprocess = 240.0
 visibility_rect = Rect2(0, 0, 1920, 1080)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_3td3w")
+
+[node name="FurthestLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Stars" type="GPUParticles2D" parent="FurthestLayer"]
+amount = 75
+lifetime = 60.0
+preprocess = 240.0
+visibility_rect = Rect2(0, 0, 1920, 1080)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_cr2sd")
+
+[node name="ClosestLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Stars" type="GPUParticles2D" parent="ClosestLayer"]
+amount = 50
+lifetime = 60.0
+preprocess = 240.0
+visibility_rect = Rect2(0, 0, 1920, 1080)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_h6p4p")
+
+[node name="InFrontOfCamera" type="ParallaxBackground" parent="."]
+layer = 100
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="InFrontOfCamera"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Stars" type="GPUParticles2D" parent="InFrontOfCamera/ParallaxLayer"]
+amount = 50
+lifetime = 60.0
+preprocess = 240.0
+visibility_rect = Rect2(0, 0, 1920, 1080)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8vwrt")

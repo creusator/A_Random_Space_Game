@@ -29,11 +29,10 @@ player_controlled = true
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_sb48q")
 target = NodePath("../Ship")
-mode = 0
 camera_smooth_speed = 15.0
 zoom_speed = 4.0
-max_zoom = 10.0
-min_zoom = 0.2
+max_zoom = 5.0
+min_zoom = 1.0
 
 [node name="ParallaxBackground" parent="Camera2D" instance=ExtResource("1_sb48q")]
 
