@@ -13,9 +13,10 @@ enum MODES { TARGET, TARGET_MOUSE_BLENDED }
 @export var mouse_influence_strength: float = 0.5
 
 var viewport: Vector2
-var target_position = Vector2.INF
+var target_position: Vector2 = Vector2.INF
 var zoom_target: Vector2 = Vector2.ONE
 var fallback_target: Node = null
+var mouse_offset: Vector2 = Vector2.ZERO
 
 func _ready():
 	viewport = get_viewport_rect().size
@@ -34,15 +35,16 @@ func CameraMove(delta: float) -> void:
 		MODES.TARGET:
 			target_position = target.global_position
 			if target_position != Vector2.INF:
-				global_position = global_position.lerp(target_position, camera_smooth_speed * delta)
+				global_position = target_position
 				
 		MODES.TARGET_MOUSE_BLENDED:
 			var target_pos = target.global_position
 			var mouse_pos = get_global_mouse_position()
 			var mouse_dist = (mouse_pos - target_pos).length()
 			var influence = clamp(mouse_dist / mouse_influence_radius, 0.0, 1.0)
-			var blended_target = target_pos.lerp(mouse_pos, influence * mouse_influence_strength)
-			global_position = global_position.lerp(blended_target, camera_smooth_speed * delta)
+			var desired_mouse_offset = (mouse_pos - target_pos) * influence * mouse_influence_strength
+			mouse_offset = mouse_offset.lerp(desired_mouse_offset, camera_smooth_speed * delta)
+			global_position = target_pos + mouse_offset
 
 func CameraZoom(delta: float) -> void:
 	if Input.is_action_just_pressed("zoom_in"):
