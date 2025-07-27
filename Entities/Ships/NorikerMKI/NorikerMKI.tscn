@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0lyfduv8cm45"]
+
+[ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Ship.tscn" id="1_skko5"]
+[ext_resource type="Texture2D" uid="uid://crcbjw6lac2xt" path="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI.png" id="2_8d0gf"]
+[ext_resource type="Resource" uid="uid://cjwi885jo37tt" path="res://Entities/Ships/NorikerMKI/NorikerMKI.tres" id="2_xgley"]
+[ext_resource type="Texture2D" uid="uid://c6gk7c6b71ntr" path="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI-NORMAL.png" id="3_xgley"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_r3qfp"]
+diffuse_texture = ExtResource("2_8d0gf")
+normal_texture = ExtResource("3_xgley")
+
+[node name="NorikerMKI" instance=ExtResource("1_skko5")]
+ship_data = ExtResource("2_xgley")
+
+[node name="Chassis" type="Sprite2D" parent="." index="2"]
+texture = SubResource("CanvasTexture_r3qfp")

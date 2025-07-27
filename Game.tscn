@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl2wfrt4wupur"]
+[gd_scene load_steps=4 format=3 uid="uid://bl2wfrt4wupur"]
 
 [ext_resource type="PackedScene" uid="uid://do78wutwh6no7" path="res://Backgrounds/Space/BackgroundSpace.tscn" id="1_sb48q"]
-[ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Ship.tscn" id="2_u44n3"]
-[ext_resource type="Resource" uid="uid://cjwi885jo37tt" path="res://Entities/Ships/NorikerMKI/NorikerMKI.tres" id="3_sb48q"]
+[ext_resource type="PackedScene" uid="uid://d0lyfduv8cm45" path="res://Entities/Ships/NorikerMKI/NorikerMKI.tscn" id="1_u44n3"]
 [ext_resource type="Script" uid="uid://dq3r12sc157up" path="res://UI/Camera/Camera.gd" id="4_sb48q"]
 
 [node name="Main" type="Node2D"]
@@ -10,16 +9,12 @@ scale = Vector2(1.01469, 1.02335)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 scale = Vector2(1.01469, 1.02335)
-color = Color(0, 0, 0, 1)
-
-[node name="Ship" parent="." instance=ExtResource("2_u44n3")]
-light_mask = 16
-ship_data = ExtResource("3_sb48q")
-player_controlled = true
+color = Color(0.099986, 0.099986, 0.099986, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_sb48q")
-target = NodePath("../Ship")
+target = NodePath("../NorikerMKI")
+mode = 0
 camera_smooth_speed = 15.0
 zoom_speed = 4.0
 max_zoom = 5.0
@@ -29,5 +24,7 @@ min_zoom = 1.0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.949658, 1, 0.943837, 1)
-energy = 1.5
-height = 0.6
+energy = 2.0
+height = 0.4
+
+[node name="NorikerMKI" parent="." instance=ExtResource("1_u44n3")]
