@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name InputComponent2D
 
 var target: Vector2

@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_c6wcr")
 mass = 47.0
-main_thrust_power = 1800.0
+main_thrust_power = 2000.0
 side_thrust_power = 100.0
-max_rotation_speed = 72.0
+max_rotation_speed = 56.0
 max_move_speed = 180.0
 inertial_dampeners_efficiency = 1.0
 rotation_dampeners_efficiency = 1.0

@@ -1,16 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0lyfduv8cm45"]
+[gd_scene load_steps=8 format=3 uid="uid://d0lyfduv8cm45"]
 
 [ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Ship.tscn" id="1_skko5"]
-[ext_resource type="Texture2D" uid="uid://crcbjw6lac2xt" path="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI.png" id="2_8d0gf"]
 [ext_resource type="Resource" uid="uid://cjwi885jo37tt" path="res://Entities/Ships/NorikerMKI/NorikerMKI.tres" id="2_xgley"]
-[ext_resource type="Texture2D" uid="uid://c6gk7c6b71ntr" path="res://Assets/Ships/NorikerMKI/WIP-NorikerMKI-NORMAL.png" id="3_xgley"]
+[ext_resource type="Script" uid="uid://6beojrehdnyn" path="res://Components/HurtboxComponent.gd" id="3_j7ebk"]
+[ext_resource type="Texture2D" uid="uid://bm4hcdx385lsx" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="3_r3qfp"]
+[ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="4_xgley"]
+[ext_resource type="Script" uid="uid://6tpqi5irmclb" path="res://Components/HealthComponent.gd" id="6_j7ebk"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_r3qfp"]
-diffuse_texture = ExtResource("2_8d0gf")
-normal_texture = ExtResource("3_xgley")
+diffuse_texture = ExtResource("3_r3qfp")
+normal_texture = ExtResource("4_xgley")
 
 [node name="NorikerMKI" instance=ExtResource("1_skko5")]
 ship_data = ExtResource("2_xgley")
 
-[node name="Chassis" type="Sprite2D" parent="." index="2"]
+[node name="Chassis (Hurtbox)" type="Area2D" parent="." index="2" node_paths=PackedStringArray("health_component")]
+collision_layer = 0
+script = ExtResource("3_j7ebk")
+health_component = NodePath("HealthComponent")
+metadata/_custom_type_script = "uid://6beojrehdnyn"
+
+[node name="Sprite" type="Sprite2D" parent="Chassis (Hurtbox)" index="0"]
 texture = SubResource("CanvasTexture_r3qfp")
+region_enabled = true
+region_rect = Rect2(2, 3, 92, 106)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Chassis (Hurtbox)" index="1"]
+polygon = PackedVector2Array(16, -53, -16, -53, -44, -21, -44, -8, -46, -5, -31, -5, -28, -2, -28, 37, -26, 37, -25, 38, -25, 48, -20, 53, 20, 53, 25, 48, 25, 38, 26, 37, 28, 37, 28, -2, 31, -5, 46, -5, 44, -8, 44, -21)
+
+[node name="HealthComponent" type="Node" parent="Chassis (Hurtbox)" index="2"]
+script = ExtResource("6_j7ebk")
+max_health = 1
+metadata/_custom_type_script = "uid://6tpqi5irmclb"
+
+[connection signal="health_depleted" from="Chassis (Hurtbox)/HealthComponent" to="." method="_on_health_component_health_depleted"]

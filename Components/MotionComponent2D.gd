@@ -1,7 +1,7 @@
 extends Node2D
 class_name MotionComponent2D
 
-@export var controller:Node2D
+@export var controller:InputComponent2D
 @export var controlled:CharacterBody2D
 
 const PIXEL_PER_METER = 10
@@ -45,10 +45,11 @@ func player_movement(velocity: Vector2, thrust_vector: Vector2,delta: float) -> 
 	var acceleration: Vector2 = force_total / mass
 	var applied_velocity: Vector2 = velocity + acceleration * delta
 	
-	if thrust_vector.length() < 0.1 and applied_velocity.length() < 10.0:
+	if thrust_vector.length() < 0.1 and applied_velocity.length() < 5.0:
 		applied_velocity = Vector2.ZERO
 	elif applied_velocity.length() > max_move_speed:
 		applied_velocity = applied_velocity.normalized() * max_move_speed
+	print(applied_velocity)
 	return applied_velocity
 
 func calculate_thrust(thrust_vector: Vector2) -> Vector2:
