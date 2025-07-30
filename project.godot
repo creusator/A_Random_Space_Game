@@ -32,6 +32,7 @@ folder_colors={
 "res://Backgrounds/": "blue",
 "res://Components/": "red",
 "res://Entities/": "yellow",
+"res://Entities/Ships/NorikerMKI/": "yellow",
 "res://Scripts/": "gray",
 "res://UI/": "green"
 }

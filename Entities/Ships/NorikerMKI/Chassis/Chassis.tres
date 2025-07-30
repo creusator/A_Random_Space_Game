@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ChassisData" load_steps=2 format=3 uid="uid://b607brya7d460"]
+
+[ext_resource type="Script" uid="uid://cf5dt5kd6evf5" path="res://Scripts/Ressources/ChassisData.gd" id="1_keqq3"]
+
+[resource]
+script = ExtResource("1_keqq3")
+mass = 20
+max_move_speed = 180
+max_rotation_speed = 200
+moment_of_inertia_factor = 0.5
+power_consumption = 1
+metadata/_custom_type_script = "uid://cf5dt5kd6evf5"
