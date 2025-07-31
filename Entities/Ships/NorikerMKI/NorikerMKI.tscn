@@ -11,21 +11,21 @@
 
 [node name="NorikerMKI" instance=ExtResource("1_skko5")]
 
-[node name="Chassis" parent="." index="0" instance=ExtResource("2_xgley")]
-data = ExtResource("3_xuh8a")
-
 [node name="LeftMainThruster" parent="Thrusters" index="0" instance=ExtResource("2_f7jef")]
-position = Vector2(-39, 20)
+position = Vector2(-39.5, 20)
 data = ExtResource("3_8d0gf")
 
 [node name="RightMainThruster" parent="Thrusters" index="1" instance=ExtResource("2_f7jef")]
-position = Vector2(39, 20)
+position = Vector2(39.5, 20)
 data = ExtResource("3_8d0gf")
 
 [node name="LeftSmallThruster" parent="Thrusters" index="2" instance=ExtResource("5_r3qfp")]
-position = Vector2(-22, 52)
+position = Vector2(-22.5, 52)
 data = ExtResource("6_d1ph0")
 
 [node name="RightSmallThruster" parent="Thrusters" index="3" instance=ExtResource("6_j7ebk")]
-position = Vector2(22, 52)
+position = Vector2(22.5, 52)
 data = ExtResource("6_d1ph0")
+
+[node name="Chassis" parent="." index="1" instance=ExtResource("2_xgley")]
+data = ExtResource("3_xuh8a")

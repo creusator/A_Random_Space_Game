@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_43idp")
-mass = 1
-main_thrust_power = 1000
-side_thrust_power = 500
+mass = 2
+main_thrust_power = 200
+side_thrust_power = 25
 fuel_consumption = 1
 power_consumption = 1
 metadata/_custom_type_script = "uid://b476co8q6r41c"

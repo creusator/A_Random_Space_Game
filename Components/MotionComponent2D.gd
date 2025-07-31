@@ -20,7 +20,7 @@ func initialize() -> void:
 	mass = controlled.mass
 	main_thrust_power = controlled.main_thrust_power
 	side_thrust_power = controlled.side_thrust_power
-	max_move_speed = controlled.max_move_speed
+	max_move_speed = controlled.max_move_speed * PIXEL_PER_METER
 	max_rotation_speed = deg_to_rad(controlled.max_rotation_speed)
 	moment_of_inertia_factor = controlled.moment_of_inertia_factor
 
@@ -36,15 +36,14 @@ func player_movement(velocity: Vector2, thrust_vector: Vector2,delta: float) -> 
 	if thrust_vector.length() < 0.1 and inertial_dampener_efficiency >= 0.0:
 		dampening_force = calculate_dampening(velocity)
 	
-	var force_total: Vector2 = thrust_force + dampening_force
+	var force_total: Vector2 = (thrust_force + dampening_force) * PIXEL_PER_METER
 	var acceleration: Vector2 = force_total / mass
 	var applied_velocity: Vector2 = velocity + acceleration * delta
 	
-	if thrust_vector.length() < 0.1 and applied_velocity.length() < 5.0:
+	if thrust_vector.length() < 0.1 and applied_velocity.length() < 3.5:
 		applied_velocity = Vector2.ZERO
 	elif applied_velocity.length() > max_move_speed:
-		applied_velocity = (applied_velocity.normalized() * max_move_speed)
-	print(applied_velocity)
+		applied_velocity = applied_velocity.normalized() * max_move_speed
 	return applied_velocity
 
 func calculate_thrust(thrust_vector: Vector2) -> Vector2:

@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_cp2i5")
-mass = 15
-main_thrust_power = 8000
-side_thrust_power = 1000
+mass = 10
+main_thrust_power = 800
+side_thrust_power = 25
 fuel_consumption = 1
 power_consumption = 1
 metadata/_custom_type_script = "uid://b476co8q6r41c"

@@ -24,3 +24,6 @@ func _ready() -> void:
 	power_consumption = chassis.power_consumption + thrusters.total_fuel_consumption
 	moment_of_inertia_factor = chassis.moment_of_inertia_factor
 	motion_component_2d.initialize()
+	print(mass)
+	print(main_thrust_power)
+	print(side_thrust_power)

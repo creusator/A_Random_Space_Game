@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_keqq3")
-mass = 20
+mass = 22
 max_move_speed = 180
-max_rotation_speed = 200
+max_rotation_speed = 56
 moment_of_inertia_factor = 0.5
 power_consumption = 1
 metadata/_custom_type_script = "uid://cf5dt5kd6evf5"
