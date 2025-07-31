@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://chrj6v37ll5cp"]
+
+[ext_resource type="PackedScene" uid="uid://c3odtk4iisfdq" path="res://Entities/Ships/Template/Wing/Wing.tscn" id="1_xxe12"]
+[ext_resource type="Texture2D" uid="uid://bm4hcdx385lsx" path="res://Entities/Ships/Template/NorikerMKI.png" id="2_d2ub3"]
+[ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_41t76"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_b1ssf"]
+diffuse_texture = ExtResource("2_d2ub3")
+normal_texture = ExtResource("3_41t76")
+
+[node name="Wing" instance=ExtResource("1_xxe12")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -0.5)
+texture = SubResource("CanvasTexture_b1ssf")
+region_enabled = true
+region_rect = Rect2(103, 31, 20, 27)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxComponent" index="0"]
+polygon = PackedVector2Array(10, -14, 9, -14, -10, 5, -10, 7, -4, 13, -3, 13, 10, 0)
+
+[node name="HealthComponent" parent="." index="2"]
+max_health = 1

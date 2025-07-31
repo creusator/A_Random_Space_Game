@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ThrusterData" load_steps=2 format=3 uid="uid://cpc088nietmnh"]
 
-[ext_resource type="Script" uid="uid://b476co8q6r41c" path="res://Scripts/Ressources/ThrusterData.gd" id="1_cp2i5"]
+[ext_resource type="Script" uid="uid://b476co8q6r41c" path="res://Scripts/Ressources/ThrusterData.gd" id="1_3w4jk"]
 
 [resource]
-script = ExtResource("1_cp2i5")
+script = ExtResource("1_3w4jk")
 mass = 10
 main_thrust_power = 800
 side_thrust_power = 25

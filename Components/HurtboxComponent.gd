@@ -8,7 +8,7 @@ signal taken_damage(damage:int)
 func _ready() -> void:
 	connect("area_entered", _on_area_entered)
 
-func _on_area_entered(hitbox:HitboxComponent) -> void:
-	if hitbox != null:
+func _on_area_entered(hitbox:Area2D) -> void:
+	if hitbox is HitboxComponent:
 		health_component.health -= hitbox.damage
 		taken_damage.emit(hitbox.damage)

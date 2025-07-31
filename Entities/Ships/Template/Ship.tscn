@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cist6ucxjbbp1"]
+[gd_scene load_steps=6 format=3 uid="uid://cist6ucxjbbp1"]
 
 [ext_resource type="Script" uid="uid://dinklrc2bhs7c" path="res://Entities/Ships/Template/Ship.gd" id="1_u2o80"]
 [ext_resource type="Script" uid="uid://d3u1eyp52dc3p" path="res://Components/MotionComponent2D.gd" id="2_4rdii"]
 [ext_resource type="Script" uid="uid://qj4bt3np6nrt" path="res://Components/InputComponent2D.gd" id="3_b31lw"]
-[ext_resource type="Script" uid="uid://cxjg4ysvq7gc1" path="res://Entities/Ships/Template/ThrusterManager.gd" id="4_4rdii"]
+[ext_resource type="Script" uid="uid://cxjg4ysvq7gc1" path="res://Entities/Ships/Template/Managers/ThrusterManager.gd" id="4_4rdii"]
+[ext_resource type="Script" uid="uid://0ktjkp75yq7x" path="res://Entities/Ships/Template/Managers/WingManager.gd" id="5_b31lw"]
 
 [node name="Ship" type="CharacterBody2D"]
 motion_mode = 1
@@ -11,6 +12,9 @@ script = ExtResource("1_u2o80")
 
 [node name="Thrusters" type="Node2D" parent="."]
 script = ExtResource("4_4rdii")
+
+[node name="Wings" type="Node2D" parent="."]
+script = ExtResource("5_b31lw")
 
 [node name="InputComponent2D" type="Node" parent="."]
 script = ExtResource("3_b31lw")

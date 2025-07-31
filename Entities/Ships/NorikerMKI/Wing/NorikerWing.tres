@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WingData" load_steps=2 format=3 uid="uid://dan58vt7af1m"]
+
+[ext_resource type="Script" uid="uid://chvxodm5aqi4e" path="res://Scripts/Ressources/WingData.gd" id="1_430uo"]
+
+[resource]
+script = ExtResource("1_430uo")
+mass = 1
+metadata/_custom_type_script = "uid://chvxodm5aqi4e"

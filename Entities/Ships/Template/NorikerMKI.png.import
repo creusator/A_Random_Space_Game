@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bm4hcdx385lsx"
-path="res://.godot/imported/NorikerMKI.png-33e55b5241371b2ace9222a2bee3ff4b.ctex"
+path="res://.godot/imported/NorikerMKI.png-a64ad7668a81d2ad85ddeda197a4f80b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ships/NorikerMKI/NorikerMKI.png"
-dest_files=["res://.godot/imported/NorikerMKI.png-33e55b5241371b2ace9222a2bee3ff4b.ctex"]
+source_file="res://Entities/Ships/Template/NorikerMKI.png"
+dest_files=["res://.godot/imported/NorikerMKI.png-a64ad7668a81d2ad85ddeda197a4f80b.ctex"]
 
 [params]
 

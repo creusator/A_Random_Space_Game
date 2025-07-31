@@ -25,7 +25,7 @@ func initialize() -> void:
 	moment_of_inertia_factor = controlled.moment_of_inertia_factor
 
 func _physics_process(delta: float) -> void:
-	controlled.velocity = player_movement(controlled.velocity, controller.get_thrust_vector().rotated(controlled.rotation), delta)
+	controlled.velocity = player_movement(controlled.velocity, controller.get_thrust_vector(), delta)
 	controlled.rotation = player_rotation(controller.get_rotation_dir(), delta)
 	controlled.move_and_slide()
 

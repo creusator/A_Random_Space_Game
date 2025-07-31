@@ -17,7 +17,6 @@ func _ready() -> void:
 		total_fuel_consumption += thruster.fuel_consumption
 		total_power_consumption += thruster.power_consumption
 		thruster.thruster_destroyed.connect(_on_thruster_destroyed)
-		
 
 func _on_thruster_destroyed(thruster:Thruster):
 	total_thruster_mass -= thruster.mass

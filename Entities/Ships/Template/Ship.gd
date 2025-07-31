@@ -13,11 +13,13 @@ var moment_of_inertia_factor:float
 @onready var chassis: Chassis = $Chassis
 @onready var thrusters: ThrusterManager = $Thrusters
 @onready var motion_component_2d: MotionComponent2D = $MotionComponent2D
+@onready var wings: WingManager = $Wings
 
 func _ready() -> void:
 	initialize_ship_data()
 	chassis.chassis_destroyed.connect(_on_chassis_destroyed)
 	thrusters.thruster_destroyed.connect(_on_thruster_destroyed)
+	wings.wing_destroyed.connect(_on_wing_destroyed)
 
 func initialize_ship_data():
 	mass = chassis.mass + thrusters.total_thruster_mass
@@ -35,4 +37,6 @@ func _on_chassis_destroyed():
 
 func _on_thruster_destroyed():
 	initialize_ship_data()
-	print(main_thrust_power)
+
+func _on_wing_destroyed():
+	initialize_ship_data()
