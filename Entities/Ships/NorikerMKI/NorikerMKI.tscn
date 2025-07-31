@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0lyfduv8cm45"]
 
 [ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Template/Ship.tscn" id="1_skko5"]
-[ext_resource type="PackedScene" uid="uid://dqe26jwb8wnwk" path="res://Entities/Ships/NorikerMKI/Thrusters/MainThruster.tscn" id="2_f7jef"]
-[ext_resource type="PackedScene" uid="uid://cdraf6f5qruc7" path="res://Entities/Ships/NorikerMKI/Chassis/Chassis.tscn" id="2_xgley"]
-[ext_resource type="Resource" uid="uid://cpc088nietmnh" path="res://Entities/Ships/NorikerMKI/Thrusters/MainThruster.tres" id="3_8d0gf"]
-[ext_resource type="Resource" uid="uid://b607brya7d460" path="res://Entities/Ships/NorikerMKI/Chassis/Chassis.tres" id="3_xuh8a"]
-[ext_resource type="PackedScene" uid="uid://qsvnxc1ct4p0" path="res://Entities/Ships/NorikerMKI/Thrusters/LeftSmallThruster.tscn" id="5_r3qfp"]
-[ext_resource type="Resource" uid="uid://vew3kpk20flj" path="res://Entities/Ships/NorikerMKI/Thrusters/SmallThruster.tres" id="6_d1ph0"]
-[ext_resource type="PackedScene" uid="uid://c1l6q4chwcsvu" path="res://Entities/Ships/NorikerMKI/Thrusters/RightSmallThruster.tscn" id="6_j7ebk"]
+[ext_resource type="PackedScene" uid="uid://dqe26jwb8wnwk" path="res://Entities/Ships/NorikerMKI/Thrusters/NorikerMainThruster.tscn" id="2_f7jef"]
+[ext_resource type="PackedScene" uid="uid://cdraf6f5qruc7" path="res://Entities/Ships/NorikerMKI/Chassis/NorikerChassis.tscn" id="2_xgley"]
+[ext_resource type="Resource" uid="uid://cpc088nietmnh" path="res://Entities/Ships/NorikerMKI/Thrusters/NorikerMainThruster.tres" id="3_8d0gf"]
+[ext_resource type="Resource" uid="uid://b607brya7d460" path="res://Entities/Ships/NorikerMKI/Chassis/NorikerChassis.tres" id="3_xuh8a"]
+[ext_resource type="PackedScene" uid="uid://qsvnxc1ct4p0" path="res://Entities/Ships/NorikerMKI/Thrusters/NorikerLeftSmallThruster.tscn" id="5_r3qfp"]
+[ext_resource type="Resource" uid="uid://vew3kpk20flj" path="res://Entities/Ships/NorikerMKI/Thrusters/NorikerSmallThruster.tres" id="6_d1ph0"]
+[ext_resource type="PackedScene" uid="uid://c1l6q4chwcsvu" path="res://Entities/Ships/NorikerMKI/Thrusters/NorikerRightSmallThruster.tscn" id="6_j7ebk"]
 
 [node name="NorikerMKI" instance=ExtResource("1_skko5")]
 

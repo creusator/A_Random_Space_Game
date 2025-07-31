@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl2wfrt4wupur"]
+[gd_scene load_steps=5 format=3 uid="uid://bl2wfrt4wupur"]
 
-[ext_resource type="PackedScene" uid="uid://do78wutwh6no7" path="res://Backgrounds/Space/BackgroundSpace.tscn" id="1_sb48q"]
 [ext_resource type="PackedScene" uid="uid://d0lyfduv8cm45" path="res://Entities/Ships/NorikerMKI/NorikerMKI.tscn" id="1_u44n3"]
+[ext_resource type="PackedScene" uid="uid://dgm6lx2u4lxpy" path="res://Backgrounds/TestingEnvironement/BackgroundTesting.tscn" id="3_t88pq"]
 [ext_resource type="Script" uid="uid://dq3r12sc157up" path="res://UI/Camera/Camera.gd" id="4_sb48q"]
-[ext_resource type="Script" uid="uid://15ewnpblvlvy" path="res://Components/HitboxComponent.gd" id="4_t88pq"]
-[ext_resource type="Texture2D" uid="uid://dn4h367v2koca" path="res://Assets/Environnement/Test-tile.png" id="5_r0x5m"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t88pq"]
-size = Vector2(99.6826, 99.6727)
+[ext_resource type="PackedScene" uid="uid://bq1j8bbq5k0n1" path="res://Entities/zDevObjects/Killbox.tscn" id="4_t88pq"]
 
 [node name="Main" type="Node2D"]
 scale = Vector2(1.01469, 1.02335)
@@ -26,22 +22,12 @@ zoom_speed = 4.0
 max_zoom = 5.0
 min_zoom = 1.0
 
-[node name="ParallaxBackground" parent="Camera2D" instance=ExtResource("1_sb48q")]
+[node name="ParallaxBackground" parent="Camera2D" instance=ExtResource("3_t88pq")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.949658, 1, 0.943837, 1)
 energy = 2.0
 height = 0.4
 
-[node name="HitboxComponent" type="Area2D" parent="."]
-script = ExtResource("4_t88pq")
-metadata/_custom_type_script = "uid://15ewnpblvlvy"
-
-[node name="Sprite2D" type="Sprite2D" parent="HitboxComponent"]
-position = Vector2(-435.601, -309.767)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_r0x5m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-435.601, -309.767)
-shape = SubResource("RectangleShape2D_t88pq")
+[node name="HitboxComponent" parent="." instance=ExtResource("4_t88pq")]
+position = Vector2(-186.264, -181.756)

@@ -23,4 +23,3 @@ shape = SubResource("RectangleShape2D_xjfyw")
 
 [node name="HealthComponent" parent="." index="2"]
 max_health = 1
-immortal = true

@@ -15,6 +15,11 @@ var moment_of_inertia_factor:float
 @onready var motion_component_2d: MotionComponent2D = $MotionComponent2D
 
 func _ready() -> void:
+	initialize_ship_data()
+	chassis.chassis_destroyed.connect(_on_chassis_destroyed)
+	thrusters.thruster_destroyed.connect(_on_thruster_destroyed)
+
+func initialize_ship_data():
 	mass = chassis.mass + thrusters.total_thruster_mass
 	main_thrust_power = thrusters.total_main_thrust
 	side_thrust_power = thrusters.total_side_thrust
@@ -24,6 +29,10 @@ func _ready() -> void:
 	power_consumption = chassis.power_consumption + thrusters.total_fuel_consumption
 	moment_of_inertia_factor = chassis.moment_of_inertia_factor
 	motion_component_2d.initialize()
-	print(mass)
+
+func _on_chassis_destroyed():
+	queue_free()
+
+func _on_thruster_destroyed():
+	initialize_ship_data()
 	print(main_thrust_power)
-	print(side_thrust_power)

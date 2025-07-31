@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq1j8bbq5k0n1"]
+
+[ext_resource type="Script" uid="uid://15ewnpblvlvy" path="res://Components/HitboxComponent.gd" id="1_bm52i"]
+[ext_resource type="Texture2D" uid="uid://buahqabooc6nt" path="res://Assets/Objects/Killbox.png" id="2_q8i31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bgfr"]
+size = Vector2(15.5564, 15.5564)
+
+[node name="HitboxComponent" type="Area2D"]
+collision_mask = 0
+script = ExtResource("1_bm52i")
+metadata/_custom_type_script = "uid://15ewnpblvlvy"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_q8i31")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.19209e-07, 2.38419e-07)
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5bgfr")
