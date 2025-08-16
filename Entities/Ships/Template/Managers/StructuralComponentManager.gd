@@ -1,9 +1,9 @@
 class_name StructuralComponentManager
 extends Node2D
 
-signal chassis_destroyed()
-signal thruster_destroyed()
-signal wing_destroyed()
+signal chassis_destroyed
+signal thruster_destroyed
+signal wing_destroyed
 
 var max_structural_move_speed:int = 0
 var max_structural_rotation_speed:int = 0

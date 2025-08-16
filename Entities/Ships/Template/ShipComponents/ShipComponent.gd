@@ -11,8 +11,8 @@ func _ready() -> void:
 	if structural_parent != null: 
 		structural_parent.component_destroyed.connect(_on_structural_parent_destroyed)
 
-func _on_structural_parent_destroyed():
-	health_component.set_health(0)
+func _on_structural_parent_destroyed(_component: ShipComponent):
+	self.queue_free()
 
 func _on_health_component_health_depleted():
 	component_destroyed.emit(self)
