@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdraf6f5qruc7"]
 
-[ext_resource type="PackedScene" uid="uid://be2qtjd3qptr2" path="res://Entities/Ships/Template/Chassis/Chassis.tscn" id="1_i1gyr"]
-[ext_resource type="Texture2D" uid="uid://bm4hcdx385lsx" path="res://Entities/Ships/Template/NorikerMKI.png" id="2_vockd"]
+[ext_resource type="PackedScene" uid="uid://be2qtjd3qptr2" path="res://Entities/Ships/Template/ShipComponents/StructuralComponents/Chassis/Chassis.tscn" id="1_i1gyr"]
+[ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_vockd"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_7nw06"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wmeeq"]

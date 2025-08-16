@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://be2qtjd3qptr2"]
 
-[ext_resource type="Script" uid="uid://b3pp8qjg7x3g4" path="res://Entities/Ships/Template/Chassis/Chassis.gd" id="1_leiyh"]
+[ext_resource type="Script" uid="uid://b3pp8qjg7x3g4" path="res://Entities/Ships/Template/ShipComponents/StructuralComponents/Chassis/Chassis.gd" id="1_leiyh"]
 [ext_resource type="Script" uid="uid://6beojrehdnyn" path="res://Components/HurtboxComponent.gd" id="1_vxds5"]
 [ext_resource type="Script" uid="uid://6tpqi5irmclb" path="res://Components/HealthComponent.gd" id="2_b37or"]
 
@@ -19,5 +19,3 @@ metadata/_custom_type_script = "uid://6beojrehdnyn"
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_b37or")
 metadata/_custom_type_script = "uid://6tpqi5irmclb"
-
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

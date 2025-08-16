@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bq1j8bbq5k0n1" path="res://Entities/zDevObjects/Killbox.tscn" id="4_t88pq"]
 
 [node name="Main" type="Node2D"]
-scale = Vector2(1.01469, 1.02335)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 scale = Vector2(1.01469, 1.02335)

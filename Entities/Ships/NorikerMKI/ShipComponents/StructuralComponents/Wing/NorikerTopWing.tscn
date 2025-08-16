@@ -1,20 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://cm4sdx6wc46lo"]
 
-[ext_resource type="PackedScene" uid="uid://c3odtk4iisfdq" path="res://Entities/Ships/Template/Wing/Wing.tscn" id="1_aw8fp"]
-[ext_resource type="Texture2D" uid="uid://bm4hcdx385lsx" path="res://Entities/Ships/Template/NorikerMKI.png" id="2_6ua35"]
+[ext_resource type="PackedScene" uid="uid://c3odtk4iisfdq" path="res://Entities/Ships/Template/ShipComponents/StructuralComponents/Wing/Wing.tscn" id="1_aw8fp"]
+[ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_aw8fp"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_t6nhq"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_fpfrr"]
-diffuse_texture = ExtResource("2_6ua35")
+[sub_resource type="CanvasTexture" id="CanvasTexture_6ua35"]
+diffuse_texture = ExtResource("2_aw8fp")
 normal_texture = ExtResource("3_t6nhq")
 
 [node name="Wing" instance=ExtResource("1_aw8fp")]
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(-0.5, 0)
-texture = SubResource("CanvasTexture_fpfrr")
+texture = SubResource("CanvasTexture_6ua35")
 region_enabled = true
-region_rect = Rect2(102, 13, 21, 18)
+region_rect = Rect2(102, 12, 21, 18)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxComponent" index="0"]
 polygon = PackedVector2Array(10, -9, 8, -9, -11, 1, -11, 3, -6, 9, -4, 9, 10, 2)
