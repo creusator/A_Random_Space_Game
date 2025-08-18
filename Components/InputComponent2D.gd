@@ -5,14 +5,13 @@ var target: Vector2
 var thrust_vector: Vector2
 var rotation_direction : float
 var precision_mode: bool = false
+var _toggle_state: bool = false
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("enable_precision_mode_hold"):
-		precision_mode = true
-	else :
-		precision_mode = false
+	var hold_active: bool = Input.is_action_pressed("enable_precision_mode_hold")
 	if Input.is_action_just_pressed("enable_precision_mode_toggle"):
-		precision_mode = !precision_mode
+		_toggle_state = !_toggle_state
+	precision_mode = _toggle_state or hold_active
 
 func get_thrust_vector() -> Vector2 :
 	thrust_vector = Input.get_vector("thrust_left", "thrust_right", "thrust_up", "thrust_down")
