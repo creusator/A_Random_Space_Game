@@ -9,6 +9,8 @@ var precision_mode: bool = false
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("enable_precision_mode_hold"):
 		precision_mode = true
+	else :
+		precision_mode = false
 	if Input.is_action_just_pressed("enable_precision_mode_toggle"):
 		precision_mode = !precision_mode
 

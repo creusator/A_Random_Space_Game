@@ -114,7 +114,7 @@ func aim_to_target(ship_position: Vector2, target_position: Vector2, delta: floa
 	angular_velocity_rad += angular_acceleration * delta
 	angular_velocity_rad = clamp(angular_velocity_rad, -max_rotation_speed, max_rotation_speed)
 	 
-	if abs(angle_to_target) < 0.1 and abs(angular_velocity_rad) < 0.1:
+	if abs(angle_to_target) < 0.05 and abs(angular_velocity_rad) < 0.1:
 		angular_velocity_rad = 0.0
 	rotation += angular_velocity_rad * delta
 	return rotation
