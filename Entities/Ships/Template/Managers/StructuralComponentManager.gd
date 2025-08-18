@@ -5,10 +5,11 @@ signal chassis_destroyed
 signal thruster_destroyed
 signal wing_destroyed
 
-var max_structural_move_speed:int = 0
-var max_structural_rotation_speed:int = 0
+var max_local_speed:int = 0
+var max_travel_speed:int = 0
+var max_rotation_speed:int = 0
 var moment_of_inertia_factor:int = 0
-var total_ship_mass:int = 0
+var total_structure_mass:int = 0
 var total_chassis_mass:int = 0
 var total_thruster_mass:int = 0
 var total_wing_mass:int = 0
@@ -21,14 +22,15 @@ func _ready() -> void:
 	initialize_chassis_data()
 	initialize_thruster_data()
 	initialize_wing_data()
-	total_ship_mass = total_chassis_mass + total_thruster_mass + total_wing_mass
+	total_structure_mass = total_chassis_mass + total_thruster_mass + total_wing_mass
 
 func initialize_chassis_data() -> void:
 	for chassis:ShipComponent in self.get_children():
 		if chassis is Chassis:
 			total_chassis_mass += chassis.mass
-			max_structural_move_speed = chassis.max_move_speed
-			max_structural_rotation_speed = chassis.max_rotation_speed
+			max_local_speed = chassis.max_local_speed
+			max_travel_speed = chassis.max_travel_speed
+			max_rotation_speed = chassis.max_rotation_speed
 			moment_of_inertia_factor = chassis.moment_of_inertia_factor
 			total_power_consumption += chassis.power_consumption
 			chassis.component_destroyed.connect(_on_chassis_destroyed)

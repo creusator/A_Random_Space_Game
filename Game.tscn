@@ -16,7 +16,7 @@ color = Color(0.099986, 0.099986, 0.099986, 1)
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_sb48q")
 target = NodePath("../NorikerMKI")
-camera_smooth_speed = 15.0
+camera_smooth_speed = 7.0
 zoom_speed = 4.0
 max_zoom = 5.0
 min_zoom = 1.0

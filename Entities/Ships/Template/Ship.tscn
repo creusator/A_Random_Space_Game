@@ -11,7 +11,6 @@ script = ExtResource("1_u2o80")
 
 [node name="StructuralComponentManager" type="Node2D" parent="."]
 script = ExtResource("2_b31lw")
-metadata/_custom_type_script = "uid://dm36kx3fhfyjb"
 
 [node name="InputComponent2D" type="Node" parent="."]
 script = ExtResource("3_b31lw")

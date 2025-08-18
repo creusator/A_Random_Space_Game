@@ -1,5 +1,6 @@
-extends Camera2D
 class_name Camera
+extends Camera2D
+
 
 enum MODES { TARGET, TARGET_MOUSE_BLENDED }
 

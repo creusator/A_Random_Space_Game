@@ -147,7 +147,6 @@ layer = 100
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="InFrontOfCamera"]
-motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1920, 1080)
 
 [node name="Stars" type="GPUParticles2D" parent="InFrontOfCamera/ParallaxLayer"]
