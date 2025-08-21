@@ -144,7 +144,6 @@ process_material = SubResource("ParticleProcessMaterial_h6p4p")
 
 [node name="InFrontOfCamera" type="ParallaxBackground" parent="."]
 layer = 100
-scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="InFrontOfCamera"]
 motion_mirroring = Vector2(1920, 1080)

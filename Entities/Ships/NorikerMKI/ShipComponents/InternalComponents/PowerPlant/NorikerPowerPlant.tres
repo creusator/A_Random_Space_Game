@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerPlantData" load_steps=2 format=3 uid="uid://c5do5c1b11gyl"]
+
+[ext_resource type="Script" uid="uid://kwqx7yk7qivn" path="res://Scripts/Ressources/PowerPlantData.gd" id="1_akvib"]
+
+[resource]
+script = ExtResource("1_akvib")
+mass = 20
+power_generation = 15000
+fuel_consumption = 4
+metadata/_custom_type_script = "uid://kwqx7yk7qivn"

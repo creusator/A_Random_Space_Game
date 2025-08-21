@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0lyfduv8cm45"]
+[gd_scene load_steps=13 format=3 uid="uid://d0lyfduv8cm45"]
 
 [ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Template/Ship.tscn" id="1_skko5"]
 [ext_resource type="PackedScene" uid="uid://dqe26jwb8wnwk" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Thrusters/NorikerMainThruster.tscn" id="2_f7jef"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cm4sdx6wc46lo" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Wing/NorikerTopWing.tscn" id="8_nnnrk"]
 [ext_resource type="PackedScene" uid="uid://chrj6v37ll5cp" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Wing/NorikerBottomWing.tscn" id="8_xuh8a"]
 [ext_resource type="Resource" uid="uid://dan58vt7af1m" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Wing/NorikerWing.tres" id="10_wm0ag"]
+[ext_resource type="PackedScene" uid="uid://bmxge2naa4k2u" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/PowerPlant/NorikerPowerPlant.tscn" id="11_wr48f"]
+[ext_resource type="Resource" uid="uid://c5do5c1b11gyl" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/PowerPlant/NorikerPowerPlant.tres" id="12_xmtj0"]
 
 [node name="NorikerMKI" instance=ExtResource("1_skko5")]
 
@@ -61,3 +63,11 @@ structural_parent = NodePath("../Chassis")
 position = Vector2(-22.5, 52)
 data = ExtResource("6_d1ph0")
 structural_parent = NodePath("../Chassis")
+
+[node name="InternalComponentManager" parent="." index="1"]
+z_index = 2
+
+[node name="PowerPlant" parent="InternalComponentManager" index="0" node_paths=PackedStringArray("structural_parent") instance=ExtResource("11_wr48f")]
+position = Vector2(22.5, 17)
+data = ExtResource("12_xmtj0")
+structural_parent = NodePath("../../StructuralComponentManager/Chassis")

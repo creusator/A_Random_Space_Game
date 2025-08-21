@@ -12,31 +12,32 @@ var power_consumption:int
 var moment_of_inertia_factor:float
 
 @onready var structural_components: StructuralComponentManager = $StructuralComponentManager
+@onready var internal_components: InternalComponentManager = $InternalComponentManager
 @onready var motion_component_2d: MotionComponent2D = $MotionComponent2D
 
 func _ready() -> void:
 	initialize_ship_data()
 	structural_components.chassis_destroyed.connect(_on_chassis_destroyed)
-	structural_components.thruster_destroyed.connect(_on_thruster_destroyed)
-	structural_components.wing_destroyed.connect(_on_wing_destroyed)
+	structural_components.thrusters_destroyed.connect(_on_thrusters_destroyed)
+	structural_components.wings_destroyed.connect(_on_wings_destroyed)
 
 func initialize_ship_data():
-	mass = structural_components.total_structure_mass
+	mass = structural_components.total_structure_mass + internal_components.total_internal_mass
 	main_thrust_power = structural_components.total_main_thrust
 	side_thrust_power = structural_components.total_side_thrust
 	max_local_speed = structural_components.max_local_speed
 	max_travel_speed = structural_components.max_travel_speed
 	max_rotation_speed = structural_components.max_rotation_speed
-	fuel_consumption = structural_components.total_fuel_consumption
-	power_consumption = structural_components.total_power_consumption
-	moment_of_inertia_factor = 0.5
+	fuel_consumption = structural_components.total_fuel_consumption + internal_components.total_fuel_consumption
+	power_consumption = structural_components.total_power_consumption + internal_components.total_power_consumption
+	moment_of_inertia_factor = structural_components.moment_of_inertia_factor
 	motion_component_2d.initialize()
 
 func _on_chassis_destroyed():
 	self.queue_free()
 
-func _on_thruster_destroyed():
+func _on_thrusters_destroyed():
 	initialize_ship_data()
 
-func _on_wing_destroyed():
+func _on_wings_destroyed():
 	initialize_ship_data()

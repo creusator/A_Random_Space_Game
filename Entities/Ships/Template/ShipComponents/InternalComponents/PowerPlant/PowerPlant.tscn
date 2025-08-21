@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://3golfnw2uqgf"]
+
+[ext_resource type="Script" uid="uid://j2h4b7wmle1q" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/PowerPlant/PowerPlant.gd" id="1_eim3h"]
+[ext_resource type="Script" uid="uid://6tpqi5irmclb" path="res://Components/HealthComponent.gd" id="2_g0oyu"]
+[ext_resource type="Script" uid="uid://6beojrehdnyn" path="res://Components/HurtboxComponent.gd" id="3_57ig4"]
+
+[node name="PowerPlant" type="Node2D"]
+script = ExtResource("1_eim3h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_g0oyu")
+max_health = 1
+metadata/_custom_type_script = "uid://6tpqi5irmclb"
+
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_57ig4")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://6beojrehdnyn"

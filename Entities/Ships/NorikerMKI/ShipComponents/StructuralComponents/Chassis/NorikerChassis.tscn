@@ -11,6 +11,7 @@ normal_texture = ExtResource("3_7nw06")
 [node name="Chassis" instance=ExtResource("1_i1gyr")]
 
 [node name="Sprite2D" parent="." index="0"]
+z_index = 1
 texture = SubResource("CanvasTexture_wmeeq")
 region_enabled = true
 region_rect = Rect2(2, 3, 92, 106)

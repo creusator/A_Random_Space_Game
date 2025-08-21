@@ -14,6 +14,7 @@ size = Vector2(8, 8)
 [node name="Thruster" instance=ExtResource("1_8r4h0")]
 
 [node name="Sprite2D" parent="." index="0"]
+z_index = 1
 texture = SubResource("CanvasTexture_8r4h0")
 region_enabled = true
 region_rect = Rect2(100, 3, 7, 8)

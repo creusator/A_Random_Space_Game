@@ -11,10 +11,11 @@ normal_texture = ExtResource("3_t6nhq")
 [node name="Wing" instance=ExtResource("1_aw8fp")]
 
 [node name="Sprite2D" parent="." index="0"]
+z_index = 1
 position = Vector2(-0.5, 0)
 texture = SubResource("CanvasTexture_6ua35")
 region_enabled = true
-region_rect = Rect2(102, 12, 21, 18)
+region_rect = Rect2(95, 12, 21, 18)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxComponent" index="0"]
 polygon = PackedVector2Array(10, -9, 8, -9, -11, 1, -11, 3, -6, 9, -4, 9, 10, 2)

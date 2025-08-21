@@ -14,11 +14,12 @@ func _process(_delta: float) -> void:
 	precision_mode = _toggle_state or hold_active
 
 func get_thrust_vector() -> Vector2 :
-	thrust_vector = Input.get_vector("thrust_left", "thrust_right", "thrust_up", "thrust_down")
 	if precision_mode == true :
+		thrust_vector = Input.get_vector("thrust_left(alt)", "thrust_right(alt)", "thrust_up", "thrust_down")
 		return thrust_vector
 	else :
-		return Vector2(0.0, thrust_vector.y)
+		thrust_vector = Input.get_vector("thrust_left", "thrust_right", "thrust_up", "thrust_down")
+		return thrust_vector
 
 func get_rotation_dir() -> float :
 	rotation_direction = Input.get_axis("rotate_left", "rotate_right")

@@ -14,13 +14,14 @@ color = Color(0.389287, 0.389287, 0.389287, 1)
 [node name="NorikerMKI" parent="." instance=ExtResource("1_u44n3")]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+process_callback = 0
 script = ExtResource("4_sb48q")
 target = NodePath("../NorikerMKI")
-camera_smooth_speed = 7.0
+camera_smooth_speed = 5.0
 zoom_speed = 4.0
 max_zoom = 5.0
 min_zoom = 1.0
-mouse_influence_radius = 180.0
+mouse_influence_radius = 500.0
 
 [node name="BehindCamera" parent="Camera2D" instance=ExtResource("1_sb48q")]
 

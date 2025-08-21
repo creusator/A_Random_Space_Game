@@ -2,13 +2,13 @@ class_name StructuralComponentManager
 extends Node2D
 
 signal chassis_destroyed
-signal thruster_destroyed
-signal wing_destroyed
+signal thrusters_destroyed
+signal wings_destroyed
 
 var max_local_speed:int = 0
 var max_travel_speed:int = 0
 var max_rotation_speed:int = 0
-var moment_of_inertia_factor:int = 0
+var moment_of_inertia_factor:float = 0.0
 var total_structure_mass:int = 0
 var total_chassis_mass:int = 0
 var total_thruster_mass:int = 0
@@ -62,8 +62,8 @@ func _on_thruster_destroyed(thruster:Thruster):
 	total_side_thrust -= thruster.side_thrust_power
 	total_fuel_consumption -= thruster.fuel_consumption
 	total_power_consumption -= thruster.power_consumption
-	thruster_destroyed.emit()
+	thrusters_destroyed.emit()
 
 func _on_wing_destroyed(wing:Wing):
 	total_wing_mass -= wing.mass
-	wing_destroyed.emit()
+	wings_destroyed.emit()

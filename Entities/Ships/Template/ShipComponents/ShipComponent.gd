@@ -8,7 +8,7 @@ signal component_destroyed(component:ShipComponent)
 
 func _ready() -> void:
 	health_component.health_depleted.connect(_on_health_component_health_depleted)
-	if structural_parent != null: 
+	if structural_parent != null:
 		structural_parent.component_destroyed.connect(_on_structural_parent_destroyed)
 
 func _on_structural_parent_destroyed(_component: ShipComponent):

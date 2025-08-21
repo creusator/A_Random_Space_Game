@@ -14,9 +14,10 @@ size = Vector2(24, 50)
 [node name="Thruster" instance=ExtResource("1_pqhsj")]
 
 [node name="Sprite2D" parent="." index="0"]
+z_index = 1
 texture = SubResource("CanvasTexture_e1nax")
 region_enabled = true
-region_rect = Rect2(99, 59, 27, 50)
+region_rect = Rect2(96, 59, 27, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
 shape = SubResource("RectangleShape2D_f2stx")

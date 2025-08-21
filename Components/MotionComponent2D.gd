@@ -27,12 +27,7 @@ func initialize() -> void:
 	moment_of_inertia_factor = controlled.moment_of_inertia_factor
 
 func _physics_process(delta: float) -> void:
-	var thrust_vector = Vector2.ZERO
-	if controller.precision_mode == true :
-		thrust_vector = controller.get_thrust_vector()
-	else :
-		thrust_vector = controller.get_thrust_vector().rotated(rotation)
-	
+	var thrust_vector = controller.get_thrust_vector().rotated(rotation)
 	controlled.velocity = player_movement(controlled.velocity, thrust_vector, delta)
 	if controller.precision_mode == true:
 		controlled.rotation = aim_to_target(controlled.position, get_global_mouse_position(), delta)

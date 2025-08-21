@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cist6ucxjbbp1"]
+[gd_scene load_steps=6 format=3 uid="uid://cist6ucxjbbp1"]
 
 [ext_resource type="Script" uid="uid://dinklrc2bhs7c" path="res://Entities/Ships/Template/Ship.gd" id="1_u2o80"]
 [ext_resource type="Script" uid="uid://d3u1eyp52dc3p" path="res://Components/MotionComponent2D.gd" id="2_4rdii"]
 [ext_resource type="Script" uid="uid://dm36kx3fhfyjb" path="res://Entities/Ships/Template/Managers/StructuralComponentManager.gd" id="2_b31lw"]
 [ext_resource type="Script" uid="uid://qj4bt3np6nrt" path="res://Components/InputComponent2D.gd" id="3_b31lw"]
+[ext_resource type="Script" uid="uid://bwh4572esbrqv" path="res://Entities/Ships/Template/Managers/InternalComponentManager.gd" id="3_m7yxy"]
 
 [node name="Ship" type="CharacterBody2D"]
 motion_mode = 1
@@ -11,6 +12,10 @@ script = ExtResource("1_u2o80")
 
 [node name="StructuralComponentManager" type="Node2D" parent="."]
 script = ExtResource("2_b31lw")
+
+[node name="InternalComponentManager" type="Node2D" parent="."]
+script = ExtResource("3_m7yxy")
+metadata/_custom_type_script = "uid://bwh4572esbrqv"
 
 [node name="InputComponent2D" type="Node" parent="."]
 script = ExtResource("3_b31lw")
