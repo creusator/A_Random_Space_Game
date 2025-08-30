@@ -68,6 +68,6 @@ structural_parent = NodePath("../Chassis")
 z_index = 2
 
 [node name="PowerPlant" parent="InternalComponentManager" index="0" node_paths=PackedStringArray("structural_parent") instance=ExtResource("11_wr48f")]
-position = Vector2(22.5, 17)
+position = Vector2(19.5, 10)
 data = ExtResource("12_xmtj0")
 structural_parent = NodePath("../../StructuralComponentManager/Chassis")

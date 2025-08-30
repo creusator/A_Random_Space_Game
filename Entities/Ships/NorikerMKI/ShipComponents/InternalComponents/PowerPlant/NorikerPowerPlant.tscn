@@ -9,7 +9,7 @@ diffuse_texture = ExtResource("2_lgp1j")
 normal_texture = ExtResource("3_0on4q")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at3i4"]
-size = Vector2(10, 16)
+size = Vector2(26, 32)
 
 [node name="PowerPlant" instance=ExtResource("1_at3i4")]
 
@@ -17,7 +17,7 @@ size = Vector2(10, 16)
 z_index = 1
 texture = SubResource("CanvasTexture_q3p2m")
 region_enabled = true
-region_rect = Rect2(128, 84, 5, 8)
+region_rect = Rect2(124, 17, 13, 16)
 
 [node name="HurtboxComponent" parent="." index="2"]
 collision_layer = 2
