@@ -3,4 +3,4 @@ extends Resource
 
 @export var mass:int
 @export var power_generation:int
-@export var fuel_consumption:int
+@export var fuel_consumption:float

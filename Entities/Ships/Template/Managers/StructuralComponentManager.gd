@@ -15,8 +15,8 @@ var total_thruster_mass:int = 0
 var total_wing_mass:int = 0
 var total_main_thrust:int = 0
 var total_side_thrust:int = 0
-var total_fuel_consumption:int = 0
 var total_power_consumption:int = 0
+var total_fuel_consumption:float = 0.0
 
 func _ready() -> void:
 	initialize_chassis_data()

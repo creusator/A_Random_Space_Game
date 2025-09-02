@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FuelTankData" load_steps=2 format=3 uid="uid://bgxn1lflucaqk"]
+
+[ext_resource type="Script" uid="uid://yfj3k0uqfbwp" path="res://Scripts/Ressources/FuelTankData.gd" id="1_f3ngc"]
+
+[resource]
+script = ExtResource("1_f3ngc")
+mass = 2
+capacity = 200.0
+max_capacity = 200.0
+metadata/_custom_type_script = "uid://yfj3k0uqfbwp"

@@ -5,7 +5,7 @@ extends ShipComponent
 
 var mass:int
 var power_generation:int
-var fuel_consumption:int
+var fuel_consumption:float
 
 func _ready() -> void:
 	super()

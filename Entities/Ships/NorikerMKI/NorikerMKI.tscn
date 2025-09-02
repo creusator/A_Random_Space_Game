@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0lyfduv8cm45"]
+[gd_scene load_steps=14 format=3 uid="uid://d0lyfduv8cm45"]
 
 [ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Template/Ship.tscn" id="1_skko5"]
 [ext_resource type="PackedScene" uid="uid://dqe26jwb8wnwk" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Thrusters/NorikerMainThruster.tscn" id="2_f7jef"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://chrj6v37ll5cp" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Wing/NorikerBottomWing.tscn" id="8_xuh8a"]
 [ext_resource type="Resource" uid="uid://dan58vt7af1m" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Wing/NorikerWing.tres" id="10_wm0ag"]
 [ext_resource type="PackedScene" uid="uid://bmxge2naa4k2u" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/PowerPlant/NorikerPowerPlant.tscn" id="11_wr48f"]
+[ext_resource type="PackedScene" uid="uid://7mjhy5ajhfph" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/FuelTank/FuelTank.tscn" id="12_xmtj0"]
+[ext_resource type="Resource" uid="uid://bgxn1lflucaqk" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/FuelTank/NorikerFuelTank.tres" id="13_it8ax"]
 
 [node name="NorikerMKI" instance=ExtResource("1_skko5")]
 
@@ -68,4 +70,8 @@ z_index = 2
 
 [node name="PowerPlant" parent="InternalComponentManager" index="0" node_paths=PackedStringArray("structural_parent") instance=ExtResource("11_wr48f")]
 position = Vector2(19.5, 10)
+structural_parent = NodePath("../../StructuralComponentManager/Chassis")
+
+[node name="FuelTank" parent="InternalComponentManager" index="1" node_paths=PackedStringArray("structural_parent") instance=ExtResource("12_xmtj0")]
+data = ExtResource("13_it8ax")
 structural_parent = NodePath("../../StructuralComponentManager/Chassis")

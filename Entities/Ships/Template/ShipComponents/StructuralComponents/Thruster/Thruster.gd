@@ -6,8 +6,8 @@ extends ShipComponent
 var mass:int
 var main_thrust_power:int
 var side_thrust_power:int
-var fuel_consumption:int
 var power_consumption:int
+var fuel_consumption:float
 
 func _ready() -> void:
 	super()

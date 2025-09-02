@@ -6,5 +6,5 @@
 script = ExtResource("1_akvib")
 mass = 20
 power_generation = 15000
-fuel_consumption = 4
+fuel_consumption = 0.3
 metadata/_custom_type_script = "uid://kwqx7yk7qivn"

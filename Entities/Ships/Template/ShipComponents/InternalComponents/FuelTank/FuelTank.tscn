@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://7mjhy5ajhfph"]
+
+[ext_resource type="Script" uid="uid://cafpoxfitrbh7" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/FuelTank/FuelTank.gd" id="1_krcsl"]
+[ext_resource type="Script" uid="uid://6tpqi5irmclb" path="res://Components/HealthComponent.gd" id="2_os4n0"]
+
+[node name="FuelTank" type="Node2D"]
+script = ExtResource("1_krcsl")
+metadata/_custom_type_script = "uid://0jbtjooqqv0m"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_os4n0")
+max_health = 1
+immortal = true
+metadata/_custom_type_script = "uid://6tpqi5irmclb"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
