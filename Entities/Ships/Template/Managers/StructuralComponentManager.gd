@@ -53,11 +53,13 @@ func initialize_wing_data() -> void:
 
 func _on_chassis_destroyed(chassis:Chassis) -> void:
 	total_chassis_mass -= chassis.mass
+	total_structure_mass -= chassis.mass
 	total_power_consumption -= chassis.power_consumption
 	chassis_destroyed.emit()
 
 func _on_thruster_destroyed(thruster:Thruster):
 	total_thruster_mass -= thruster.mass
+	total_structure_mass -= thruster.mass
 	total_main_thrust -= thruster.main_thrust_power
 	total_side_thrust -= thruster.side_thrust_power
 	total_fuel_consumption -= thruster.fuel_consumption
@@ -66,4 +68,5 @@ func _on_thruster_destroyed(thruster:Thruster):
 
 func _on_wing_destroyed(wing:Wing):
 	total_wing_mass -= wing.mass
+	total_structure_mass -= wing.mass
 	wings_destroyed.emit()

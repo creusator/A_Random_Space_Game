@@ -31,5 +31,10 @@ energy = 1.4
 height = 0.4
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_t88pq")]
-position = Vector2(-400, -670)
+position = Vector2(-468, -492)
 scale = Vector2(4, 4)
+
+[node name="HitboxComponent2" parent="." instance=ExtResource("4_t88pq")]
+position = Vector2(511, -493)
+scale = Vector2(4, 4)
+collision_layer = 2

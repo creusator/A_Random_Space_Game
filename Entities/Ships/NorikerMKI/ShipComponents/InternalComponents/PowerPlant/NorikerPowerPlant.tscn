@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmxge2naa4k2u"]
+[gd_scene load_steps=7 format=3 uid="uid://bmxge2naa4k2u"]
 
 [ext_resource type="PackedScene" uid="uid://3golfnw2uqgf" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/PowerPlant/PowerPlant.tscn" id="1_at3i4"]
+[ext_resource type="Resource" uid="uid://c5do5c1b11gyl" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/PowerPlant/NorikerPowerPlant.tres" id="2_0on4q"]
 [ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_lgp1j"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_0on4q"]
 
@@ -12,6 +13,7 @@ normal_texture = ExtResource("3_0on4q")
 size = Vector2(26, 32)
 
 [node name="PowerPlant" instance=ExtResource("1_at3i4")]
+data = ExtResource("2_0on4q")
 
 [node name="Sprite2D" parent="." index="0"]
 z_index = 1
