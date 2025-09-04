@@ -23,6 +23,7 @@ func _ready() -> void:
 	structural_components.thrusters_destroyed.connect(_on_thrusters_destroyed)
 	structural_components.wings_destroyed.connect(_on_wings_destroyed)
 	internal_components.power_plant_destroyed.connect(_on_power_plant_destroyed)
+	internal_components.sensor_destroyed.connect(_on_sensor_destroyed)
 
 func _process(_delta: float) -> void:
 	update_ship_data()
@@ -56,4 +57,7 @@ func _on_wings_destroyed():
 	pass
 
 func _on_power_plant_destroyed():
+	pass
+
+func _on_sensor_destroyed() -> void:
 	pass

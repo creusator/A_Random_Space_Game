@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SensorsData" load_steps=2 format=3 uid="uid://cdvk517ese0jy"]
+
+[ext_resource type="Script" uid="uid://sagic803lcdn" path="res://Scripts/Ressources/SensorsData.gd" id="1_gorhu"]
+
+[resource]
+script = ExtResource("1_gorhu")
+mass = 1
+power_consumption = 1
+range = 15000
+spinning = true
+spin_speed = 1.3
+metadata/_custom_type_script = "uid://sagic803lcdn"
