@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://u547xhf5malp"]
+
+[ext_resource type="PackedScene" uid="uid://dxcodgbg4mf3m" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/LifeSupport/LifeSupport.tscn" id="1_nnrqd"]
+[ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_d0bvs"]
+[ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_l2vbq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_23spk"]
+diffuse_texture = ExtResource("2_d0bvs")
+normal_texture = ExtResource("3_l2vbq")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1aldc"]
+size = Vector2(12, 12)
+
+[node name="LifeSupport" instance=ExtResource("1_nnrqd")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("CanvasTexture_23spk")
+region_enabled = true
+region_rect = Rect2(125, 51, 12, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+z_index = -1
+shape = SubResource("RectangleShape2D_1aldc")

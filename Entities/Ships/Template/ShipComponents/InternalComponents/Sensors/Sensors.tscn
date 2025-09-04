@@ -14,5 +14,7 @@ script = ExtResource("1_r73a2")
 metadata/_custom_type_script = "uid://6tpqi5irmclb"
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("2_62iqm")
 metadata/_custom_type_script = "uid://6beojrehdnyn"

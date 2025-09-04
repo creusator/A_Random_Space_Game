@@ -6,7 +6,7 @@
 script = ExtResource("1_gorhu")
 mass = 1
 power_consumption = 1
-range = 15000
+sensors_range = 15000
 spinning = true
 spin_speed = 1.3
 metadata/_custom_type_script = "uid://sagic803lcdn"

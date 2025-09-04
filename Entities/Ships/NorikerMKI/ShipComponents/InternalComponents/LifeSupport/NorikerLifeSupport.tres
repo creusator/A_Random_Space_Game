@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LifeSupportData" load_steps=2 format=3 uid="uid://d3003osjfw3qo"]
+
+[ext_resource type="Script" uid="uid://dtxdwraktfa1v" path="res://Scripts/Ressources/LifeSupportData.gd" id="1_v5l8y"]
+
+[resource]
+script = ExtResource("1_v5l8y")
+mass = 1
+power_consumption = 1
+time_to_death = 60.0
+metadata/_custom_type_script = "uid://dtxdwraktfa1v"

@@ -24,7 +24,8 @@ func _ready() -> void:
 	structural_components.wings_destroyed.connect(_on_wings_destroyed)
 	internal_components.power_plant_destroyed.connect(_on_power_plant_destroyed)
 	internal_components.sensor_destroyed.connect(_on_sensor_destroyed)
-
+	internal_components.life_support_destroyed.connect(_on_life_support_destroyed)
+	
 func _process(_delta: float) -> void:
 	update_ship_data()
 
@@ -47,17 +48,20 @@ func update_ship_data() -> void:
 	moment_of_inertia_factor = structural_components.moment_of_inertia_factor
 	motion_component_2d.initialize()
 
-func _on_chassis_destroyed():
+func _on_chassis_destroyed() -> void:
 	self.queue_free()
 
-func _on_thrusters_destroyed():
+func _on_thrusters_destroyed() -> void:
 	pass
 
-func _on_wings_destroyed():
+func _on_wings_destroyed() -> void:
 	pass
 
-func _on_power_plant_destroyed():
+func _on_power_plant_destroyed() -> void:
 	pass
 
 func _on_sensor_destroyed() -> void:
+	pass
+
+func _on_life_support_destroyed() -> void:
 	pass

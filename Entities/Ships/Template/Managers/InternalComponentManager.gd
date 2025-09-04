@@ -3,6 +3,7 @@ extends Node2D
 
 signal power_plant_destroyed
 signal sensor_destroyed
+signal life_support_destroyed
 
 var total_internal_mass:int = 0
 var total_sensors_range:int = 0
@@ -13,6 +14,8 @@ var total_fuel_capacity:float = 0.0
 
 func _ready() -> void:
 	initialize_power_plants()
+	initialize_sensors()
+	initalize_life_supports()
 	initialize_fuel_tanks()
 
 func _process(_delta: float) -> void:
@@ -49,6 +52,13 @@ func initialize_sensors() -> void:
 			total_power_consumption += sensor.power_consumption
 			sensor.component_destroyed.connect(_on_sensor_destroyed)
 
+func initalize_life_supports() -> void:
+	for life_support in self.get_children():
+		if life_support is LifeSupport:
+			total_internal_mass += life_support.mass
+			total_power_consumption += life_support.power_consumption
+			life_support.component_destroyed.connect(_on_life_support_destroyed)
+
 func initialize_fuel_tanks() -> void:
 	for fuel_tank:ShipComponent in self.get_children():
 		if fuel_tank is FuelTank:
@@ -65,3 +75,8 @@ func _on_sensor_destroyed(sensor:Sensors) -> void:
 	total_internal_mass -= sensor.mass
 	total_power_consumption -= sensor.power_consumption
 	sensor_destroyed.emit()
+
+func _on_life_support_destroyed(life_support:LifeSupport) -> void:
+	total_internal_mass -= life_support.mass
+	total_power_consumption -= life_support.power_consumption
+	life_support_destroyed.emit()

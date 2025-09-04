@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxcodgbg4mf3m"]
+
+[ext_resource type="Script" uid="uid://6tpqi5irmclb" path="res://Components/HealthComponent.gd" id="1_fir8j"]
+[ext_resource type="Script" uid="uid://chl1gx3yipc8n" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/LifeSupport/LifeSupport.gd" id="1_rt2yf"]
+[ext_resource type="Script" uid="uid://6beojrehdnyn" path="res://Components/HurtboxComponent.gd" id="2_rt2yf"]
+
+[node name="LifeSupport" type="Node2D"]
+script = ExtResource("1_rt2yf")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("1_fir8j")
+max_health = 1
+metadata/_custom_type_script = "uid://6tpqi5irmclb"
+
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_rt2yf")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://6beojrehdnyn"
