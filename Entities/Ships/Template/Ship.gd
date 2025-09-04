@@ -25,6 +25,7 @@ func _ready() -> void:
 	internal_components.power_plant_destroyed.connect(_on_power_plant_destroyed)
 	internal_components.sensor_destroyed.connect(_on_sensor_destroyed)
 	internal_components.life_support_destroyed.connect(_on_life_support_destroyed)
+	internal_components.shield_generator_destroyed.connect(_on_shield_generator_destroyed)
 	
 func _process(_delta: float) -> void:
 	update_ship_data()
@@ -64,4 +65,7 @@ func _on_sensor_destroyed() -> void:
 	pass
 
 func _on_life_support_destroyed() -> void:
+	pass
+
+func _on_shield_generator_destroyed() -> void:
 	pass

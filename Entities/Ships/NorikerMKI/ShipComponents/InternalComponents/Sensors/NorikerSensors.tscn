@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsagyvhf8i8ie"]
+[gd_scene load_steps=7 format=3 uid="uid://bsagyvhf8i8ie"]
 
 [ext_resource type="PackedScene" uid="uid://d2ppvomy5n6vd" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/Sensors/Sensors.tscn" id="1_7jq76"]
 [ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_gs82d"]
+[ext_resource type="Resource" uid="uid://cdvk517ese0jy" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/Sensors/NorikerSensors.tres" id="2_qn8p4"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_qn8p4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_be2wh"]
@@ -12,6 +13,7 @@ normal_texture = ExtResource("3_qn8p4")
 radius = 4.0
 
 [node name="Sensors" instance=ExtResource("1_7jq76")]
+data = ExtResource("2_qn8p4")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = SubResource("CanvasTexture_be2wh")
@@ -22,8 +24,6 @@ region_rect = Rect2(127, 65, 8, 8)
 max_health = 1
 
 [node name="HurtboxComponent" parent="." index="2" node_paths=PackedStringArray("health_component")]
-collision_layer = 2
-collision_mask = 2
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]

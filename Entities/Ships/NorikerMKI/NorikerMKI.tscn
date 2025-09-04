@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0lyfduv8cm45"]
+[gd_scene load_steps=17 format=3 uid="uid://d0lyfduv8cm45"]
 
 [ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Template/Ship.tscn" id="1_skko5"]
 [ext_resource type="PackedScene" uid="uid://dqe26jwb8wnwk" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Thrusters/NorikerMainThruster.tscn" id="2_f7jef"]
@@ -14,9 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://7mjhy5ajhfph" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/FuelTank/FuelTank.tscn" id="12_xmtj0"]
 [ext_resource type="Resource" uid="uid://bgxn1lflucaqk" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/FuelTank/NorikerFuelTank.tres" id="13_it8ax"]
 [ext_resource type="PackedScene" uid="uid://bsagyvhf8i8ie" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/Sensors/NorikerSensors.tscn" id="14_fkmu8"]
-[ext_resource type="Resource" uid="uid://cdvk517ese0jy" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/Sensors/NorikerSensors.tres" id="15_067xc"]
 [ext_resource type="PackedScene" uid="uid://u547xhf5malp" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/LifeSupport/NorikerLifeSupport.tscn" id="16_wvp4i"]
-[ext_resource type="Resource" uid="uid://d3003osjfw3qo" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/LifeSupport/NorikerLifeSupport.tres" id="17_p3v4y"]
+[ext_resource type="PackedScene" uid="uid://c1i87bsv1efdt" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/ShieldGenerator/NorikerShieldGenerator.tscn" id="18_gy7je"]
 
 [node name="NorikerMKI" instance=ExtResource("1_skko5")]
 
@@ -82,10 +81,12 @@ structural_parent = NodePath("../../StructuralComponentManager/Chassis")
 
 [node name="Sensors" parent="InternalComponentManager" index="2" node_paths=PackedStringArray("structural_parent") instance=ExtResource("14_fkmu8")]
 position = Vector2(0, 29)
-data = ExtResource("15_067xc")
 structural_parent = NodePath("../../StructuralComponentManager/Chassis")
 
 [node name="LifeSupport" parent="InternalComponentManager" index="3" node_paths=PackedStringArray("structural_parent") instance=ExtResource("16_wvp4i")]
 position = Vector2(0, 13.5)
-data = ExtResource("17_p3v4y")
+structural_parent = NodePath("../../StructuralComponentManager/Chassis")
+
+[node name="ShieldGenerator" parent="InternalComponentManager" index="4" node_paths=PackedStringArray("structural_parent") instance=ExtResource("18_gy7je")]
+position = Vector2(0, -3)
 structural_parent = NodePath("../../StructuralComponentManager/Chassis")

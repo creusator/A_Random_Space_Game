@@ -4,6 +4,7 @@ extends Node2D
 signal power_plant_destroyed
 signal sensor_destroyed
 signal life_support_destroyed
+signal shield_generator_destroyed
 
 var total_internal_mass:int = 0
 var total_sensors_range:int = 0
@@ -16,6 +17,7 @@ func _ready() -> void:
 	initialize_power_plants()
 	initialize_sensors()
 	initalize_life_supports()
+	initalize_shield_generators()
 	initialize_fuel_tanks()
 
 func _process(_delta: float) -> void:
@@ -59,6 +61,13 @@ func initalize_life_supports() -> void:
 			total_power_consumption += life_support.power_consumption
 			life_support.component_destroyed.connect(_on_life_support_destroyed)
 
+func initalize_shield_generators() -> void:
+	for shield_generator in self.get_children():
+		if shield_generator is ShieldGenerator:
+			total_internal_mass += shield_generator.mass
+			total_power_consumption += shield_generator.power_consumption
+			shield_generator.component_destroyed.connect(_on_shield_generator_destroyed)
+
 func initialize_fuel_tanks() -> void:
 	for fuel_tank:ShipComponent in self.get_children():
 		if fuel_tank is FuelTank:
@@ -80,3 +89,8 @@ func _on_life_support_destroyed(life_support:LifeSupport) -> void:
 	total_internal_mass -= life_support.mass
 	total_power_consumption -= life_support.power_consumption
 	life_support_destroyed.emit()
+
+func _on_shield_generator_destroyed(shield_generator:ShieldGenerator) -> void:
+	total_internal_mass -= shield_generator.mass
+	total_power_consumption -= shield_generator.power_consumption
+	shield_generator_destroyed.emit()

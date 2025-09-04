@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://u547xhf5malp"]
+[gd_scene load_steps=7 format=3 uid="uid://u547xhf5malp"]
 
 [ext_resource type="PackedScene" uid="uid://dxcodgbg4mf3m" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/LifeSupport/LifeSupport.tscn" id="1_nnrqd"]
 [ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_d0bvs"]
+[ext_resource type="Resource" uid="uid://d3003osjfw3qo" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/LifeSupport/NorikerLifeSupport.tres" id="2_l2vbq"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_l2vbq"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_23spk"]
@@ -12,6 +13,7 @@ normal_texture = ExtResource("3_l2vbq")
 size = Vector2(12, 12)
 
 [node name="LifeSupport" instance=ExtResource("1_nnrqd")]
+data = ExtResource("2_l2vbq")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = SubResource("CanvasTexture_23spk")

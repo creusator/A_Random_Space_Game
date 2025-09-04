@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1i87bsv1efdt"]
+
+[ext_resource type="PackedScene" uid="uid://d16jkxh7ddyw5" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/ShieldGenerator/ShieldGenerator.tscn" id="1_22ulm"]
+[ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_ehf5d"]
+[ext_resource type="Resource" uid="uid://xrvbwna7we4p" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/ShieldGenerator/NorikerShieldGenerator.tres" id="2_my5o2"]
+[ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_my5o2"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_akpdy"]
+diffuse_texture = ExtResource("2_ehf5d")
+normal_texture = ExtResource("3_my5o2")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ehf5d"]
+radius = 6.0
+
+[node name="ShieldGenerator" instance=ExtResource("1_22ulm")]
+data = ExtResource("2_my5o2")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("CanvasTexture_akpdy")
+region_enabled = true
+region_rect = Rect2(125, 74, 12, 12)
+
+[node name="HealthComponent" parent="." index="1"]
+max_health = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+z_index = -1
+shape = SubResource("CircleShape2D_ehf5d")

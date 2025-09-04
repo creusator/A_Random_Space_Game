@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ShieldGeneratorData" load_steps=2 format=3 uid="uid://xrvbwna7we4p"]
+
+[ext_resource type="Script" uid="uid://br5qb6kfet18u" path="res://Scripts/Ressources/ShieldGeneratorData.gd" id="1_cbmd5"]
+
+[resource]
+script = ExtResource("1_cbmd5")
+mass = 1
+power_consumption = 1
+time_to_reload = 30.0
+metadata/_custom_type_script = "uid://br5qb6kfet18u"
