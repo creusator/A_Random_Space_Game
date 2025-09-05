@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdraf6f5qruc7"]
+[gd_scene load_steps=6 format=3 uid="uid://cdraf6f5qruc7"]
 
 [ext_resource type="PackedScene" uid="uid://be2qtjd3qptr2" path="res://Entities/Ships/Template/ShipComponents/StructuralComponents/Chassis/Chassis.tscn" id="1_i1gyr"]
+[ext_resource type="Resource" uid="uid://b607brya7d460" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Chassis/NorikerChassis.tres" id="2_i3veu"]
 [ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_vockd"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_7nw06"]
 
@@ -9,12 +10,16 @@ diffuse_texture = ExtResource("2_vockd")
 normal_texture = ExtResource("3_7nw06")
 
 [node name="Chassis" instance=ExtResource("1_i1gyr")]
+data = ExtResource("2_i3veu")
 
 [node name="Sprite2D" parent="." index="0"]
 z_index = 1
 texture = SubResource("CanvasTexture_wmeeq")
 region_enabled = true
 region_rect = Rect2(2, 3, 92, 106)
+
+[node name="CollisionPolygon2D" parent="HurtboxComponent" index="0"]
+polygon = PackedVector2Array(-16, -53, -44, -21, -44, -8, -46, -5, -31, -5, -28, -2, -28, 37, -26, 37, -25, 38, -25, 48, -20, 53, 20, 53, 25, 48, 25, 38, 26, 37, 28, 37, 28, -2, 31, -5, 46, -5, 44, -8, 44, -21, 16, -53)
 
 [node name="HealthComponent" parent="." index="2"]
 max_health = 1

@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0lyfduv8cm45"]
+[gd_scene load_steps=16 format=3 uid="uid://d0lyfduv8cm45"]
 
 [ext_resource type="PackedScene" uid="uid://cist6ucxjbbp1" path="res://Entities/Ships/Template/Ship.tscn" id="1_skko5"]
 [ext_resource type="PackedScene" uid="uid://dqe26jwb8wnwk" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Thrusters/NorikerMainThruster.tscn" id="2_f7jef"]
 [ext_resource type="PackedScene" uid="uid://cdraf6f5qruc7" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Chassis/NorikerChassis.tscn" id="2_xgley"]
 [ext_resource type="Resource" uid="uid://cpc088nietmnh" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Thrusters/NorikerMainThruster.tres" id="3_8d0gf"]
-[ext_resource type="Resource" uid="uid://b607brya7d460" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Chassis/NorikerChassis.tres" id="3_xuh8a"]
 [ext_resource type="Resource" uid="uid://vew3kpk20flj" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Thrusters/NorikerSmallThruster.tres" id="6_d1ph0"]
 [ext_resource type="PackedScene" uid="uid://c1l6q4chwcsvu" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Thrusters/NorikerSmallThruster.tscn" id="6_j7ebk"]
 [ext_resource type="PackedScene" uid="uid://cm4sdx6wc46lo" path="res://Entities/Ships/NorikerMKI/ShipComponents/StructuralComponents/Wing/NorikerTopWing.tscn" id="8_nnnrk"]
@@ -22,60 +21,72 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="Chassis" parent="StructuralComponentManager" index="0" instance=ExtResource("2_xgley")]
-data = ExtResource("3_xuh8a")
 
-[node name="LeftTopWing" parent="StructuralComponentManager" index="1" instance=ExtResource("8_nnnrk")]
+[node name="LeftTopWing" parent="StructuralComponentManager" index="1" node_paths=PackedStringArray("structural_parent") instance=ExtResource("8_nnnrk")]
 position = Vector2(-54, -11)
 data = ExtResource("10_wm0ag")
+structural_parent = NodePath("../Chassis")
 
-[node name="LeftBottomWing" parent="StructuralComponentManager" index="2" instance=ExtResource("8_xuh8a")]
+[node name="LeftBottomWing" parent="StructuralComponentManager" index="2" node_paths=PackedStringArray("structural_parent") instance=ExtResource("8_xuh8a")]
 position = Vector2(-61, 19)
 data = ExtResource("10_wm0ag")
+structural_parent = NodePath("../LeftMainThruster")
 
-[node name="RightBottomWing" parent="StructuralComponentManager" index="3" instance=ExtResource("8_xuh8a")]
+[node name="RightBottomWing" parent="StructuralComponentManager" index="3" node_paths=PackedStringArray("structural_parent") instance=ExtResource("8_xuh8a")]
 position = Vector2(61, 17)
 rotation = -3.14159
 scale = Vector2(1, -1)
 data = ExtResource("10_wm0ag")
+structural_parent = NodePath("../RightMainThruster")
 
-[node name="RightTopWing" parent="StructuralComponentManager" index="4" instance=ExtResource("8_nnnrk")]
+[node name="RightTopWing" parent="StructuralComponentManager" index="4" node_paths=PackedStringArray("structural_parent") instance=ExtResource("8_nnnrk")]
 position = Vector2(54, -11)
 rotation = -3.14159
 scale = Vector2(1, -1)
 data = ExtResource("10_wm0ag")
+structural_parent = NodePath("../Chassis")
 
-[node name="LeftMainThruster" parent="StructuralComponentManager" index="5" instance=ExtResource("2_f7jef")]
+[node name="LeftMainThruster" parent="StructuralComponentManager" index="5" node_paths=PackedStringArray("structural_parent") instance=ExtResource("2_f7jef")]
 position = Vector2(-39.5, 20)
 data = ExtResource("3_8d0gf")
+structural_parent = NodePath("../Chassis")
 
-[node name="RightMainThruster" parent="StructuralComponentManager" index="6" instance=ExtResource("2_f7jef")]
+[node name="RightMainThruster" parent="StructuralComponentManager" index="6" node_paths=PackedStringArray("structural_parent") instance=ExtResource("2_f7jef")]
 position = Vector2(39.5, 20)
 data = ExtResource("3_8d0gf")
+structural_parent = NodePath("../Chassis")
 
-[node name="RightSmallThruster" parent="StructuralComponentManager" index="7" instance=ExtResource("6_j7ebk")]
+[node name="RightSmallThruster" parent="StructuralComponentManager" index="7" node_paths=PackedStringArray("structural_parent") instance=ExtResource("6_j7ebk")]
 position = Vector2(22.5, 52)
 rotation = -3.14159
 scale = Vector2(1, -1)
 data = ExtResource("6_d1ph0")
+structural_parent = NodePath("../Chassis")
 
-[node name="LeftSmallThruster" parent="StructuralComponentManager" index="8" instance=ExtResource("6_j7ebk")]
+[node name="LeftSmallThruster" parent="StructuralComponentManager" index="8" node_paths=PackedStringArray("structural_parent") instance=ExtResource("6_j7ebk")]
 position = Vector2(-22.5, 52)
 data = ExtResource("6_d1ph0")
+structural_parent = NodePath("../Chassis")
 
 [node name="InternalComponentManager" parent="." index="1"]
 z_index = 2
 
-[node name="PowerPlant" parent="InternalComponentManager" index="0" instance=ExtResource("11_wr48f")]
+[node name="PowerPlant" parent="InternalComponentManager" index="0" node_paths=PackedStringArray("structural_parent") instance=ExtResource("11_wr48f")]
 position = Vector2(-19.5, 10)
+structural_parent = NodePath("../../StructuralComponentManager/Chassis")
 
-[node name="FuelTank" parent="InternalComponentManager" index="1" instance=ExtResource("12_xmtj0")]
+[node name="FuelTank" parent="InternalComponentManager" index="1" node_paths=PackedStringArray("structural_parent") instance=ExtResource("12_xmtj0")]
 data = ExtResource("13_it8ax")
+structural_parent = NodePath("../../StructuralComponentManager/Chassis")
 
-[node name="Sensors" parent="InternalComponentManager" index="2" instance=ExtResource("14_fkmu8")]
+[node name="Sensors" parent="InternalComponentManager" index="2" node_paths=PackedStringArray("structural_parent") instance=ExtResource("14_fkmu8")]
 position = Vector2(0, 29)
+structural_parent = NodePath("../../StructuralComponentManager/Chassis")
 
-[node name="LifeSupport" parent="InternalComponentManager" index="3" instance=ExtResource("16_wvp4i")]
+[node name="LifeSupport" parent="InternalComponentManager" index="3" node_paths=PackedStringArray("structural_parent") instance=ExtResource("16_wvp4i")]
 position = Vector2(0, 13.5)
+structural_parent = NodePath("../../StructuralComponentManager/Chassis")
 
-[node name="ShieldGenerator" parent="InternalComponentManager" index="4" instance=ExtResource("18_gy7je")]
+[node name="ShieldGenerator" parent="InternalComponentManager" index="4" node_paths=PackedStringArray("structural_parent") instance=ExtResource("18_gy7je")]
 position = Vector2(0, -3)
+structural_parent = NodePath("../../StructuralComponentManager/Chassis")
