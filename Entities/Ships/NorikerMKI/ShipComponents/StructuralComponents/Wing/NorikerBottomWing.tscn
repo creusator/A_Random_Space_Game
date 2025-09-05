@@ -17,6 +17,9 @@ texture = SubResource("CanvasTexture_tvb5i")
 region_enabled = true
 region_rect = Rect2(96, 31, 20, 27)
 
+[node name="HurtboxComponent" parent="." index="1"]
+collision_layer = 0
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxComponent" index="0"]
 polygon = PackedVector2Array(10, -14, 9, -14, -10, 5, -10, 7, -4, 13, -3, 13, 10, 0)
 

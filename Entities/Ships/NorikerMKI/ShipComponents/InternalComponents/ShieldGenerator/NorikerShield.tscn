@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://3aiq55ysvf5u"]
+
+[ext_resource type="PackedScene" uid="uid://bj2q4e14pdn4d" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/ShieldGenerator/Shield.tscn" id="1_22pi5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22pi5"]
+radius = 80.0
+
+[node name="Shield" instance=ExtResource("1_22pi5")]
+
+[node name="HealthComponent" parent="." index="0"]
+max_health = 1
+
+[node name="HurtboxComponent" parent="." index="1"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+z_index = -1
+shape = SubResource("CircleShape2D_22pi5")

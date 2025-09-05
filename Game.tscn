@@ -38,3 +38,8 @@ scale = Vector2(4, 4)
 position = Vector2(511, -493)
 scale = Vector2(4, 4)
 collision_layer = 2
+
+[node name="HitboxComponent3" parent="." instance=ExtResource("4_t88pq")]
+position = Vector2(1, 459)
+scale = Vector2(4, 4)
+collision_layer = 4

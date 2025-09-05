@@ -19,6 +19,9 @@ texture = SubResource("CanvasTexture_e1nax")
 region_enabled = true
 region_rect = Rect2(96, 59, 27, 50)
 
+[node name="HurtboxComponent" parent="." index="1"]
+collision_layer = 0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
 shape = SubResource("RectangleShape2D_f2stx")
 

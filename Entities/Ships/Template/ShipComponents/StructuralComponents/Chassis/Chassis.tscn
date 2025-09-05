@@ -9,12 +9,12 @@ script = ExtResource("1_leiyh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="Chassis" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("1_vxds5")
 health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://6beojrehdnyn"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Chassis"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxComponent"]
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_b37or")

@@ -6,5 +6,6 @@
 script = ExtResource("1_cbmd5")
 mass = 1
 power_consumption = 1
-time_to_reload = 30.0
+shield_health = 1
+time_to_reload = 10.0
 metadata/_custom_type_script = "uid://br5qb6kfet18u"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj2q4e14pdn4d"]
+
+[ext_resource type="Script" uid="uid://dtpuwnvircs0e" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/ShieldGenerator/Shield.gd" id="1_qrm2e"]
+[ext_resource type="Script" uid="uid://6tpqi5irmclb" path="res://Components/HealthComponent.gd" id="2_if8qq"]
+[ext_resource type="Script" uid="uid://6beojrehdnyn" path="res://Components/HurtboxComponent.gd" id="3_sh4vm"]
+
+[node name="Shield" type="Node2D"]
+script = ExtResource("1_qrm2e")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_if8qq")
+metadata/_custom_type_script = "uid://6tpqi5irmclb"
+
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_sh4vm")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://6beojrehdnyn"
