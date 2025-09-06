@@ -20,3 +20,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if spinning:
 		rotation += spin_speed * delta
+
+func on_powered() -> void:
+	spinning = true
+	sensors_range = data.sensors_range
+
+func on_unpowered() -> void:
+	spinning = false
+	sensors_range = 0
