@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HyperdriveData" load_steps=2 format=3 uid="uid://bx7qoq31p3ulf"]
+
+[ext_resource type="Script" uid="uid://hs4ygqlv23yj" path="res://Scripts/Ressources/HyperdriveData.gd" id="1_p3jqf"]
+
+[resource]
+script = ExtResource("1_p3jqf")
+mass = 1
+power_consumption = 1
+metadata/_custom_type_script = "uid://hs4ygqlv23yj"

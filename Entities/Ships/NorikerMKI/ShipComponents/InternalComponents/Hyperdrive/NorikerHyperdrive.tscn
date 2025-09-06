@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8eus07mp5yd5"]
+
+[ext_resource type="PackedScene" uid="uid://cp5qruitd45u2" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/Hyperdrive/Hyperdrive.tscn" id="1_mtc11"]
+[ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_xkrrk"]
+[ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_xpcap"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ve2ur"]
+diffuse_texture = ExtResource("2_xkrrk")
+normal_texture = ExtResource("3_xpcap")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uxd5"]
+size = Vector2(13, 16)
+
+[node name="Hyperdrive" instance=ExtResource("1_mtc11")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("CanvasTexture_ve2ur")
+region_enabled = true
+region_rect = Rect2(124, 34, 13, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+z_index = -1
+shape = SubResource("RectangleShape2D_6uxd5")

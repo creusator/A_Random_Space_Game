@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp5qruitd45u2"]
+
+[ext_resource type="Script" uid="uid://csoyfdj2niatc" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/Hyperdrive/Hyperdrive.gd" id="1_b0peb"]
+[ext_resource type="Script" uid="uid://6tpqi5irmclb" path="res://Components/HealthComponent.gd" id="4_y2chg"]
+[ext_resource type="Script" uid="uid://6beojrehdnyn" path="res://Components/HurtboxComponent.gd" id="5_rplwj"]
+
+[node name="Hyperdrive" type="Node2D"]
+script = ExtResource("1_b0peb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_y2chg")
+max_health = 1
+metadata/_custom_type_script = "uid://6tpqi5irmclb"
+
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_rplwj")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://6beojrehdnyn"
