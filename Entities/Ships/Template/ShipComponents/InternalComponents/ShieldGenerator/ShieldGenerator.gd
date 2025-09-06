@@ -25,4 +25,4 @@ func on_powered() -> void:
 func on_unpowered() -> void:
 	if shield:
 		shield.set_active(false)
-		shield.vfx.material.set_shader_parameter("color", Vector4(1.0,0.0,0.0,1.0))
+		shield.vfx.material.set_shader_parameter("color", Vector4(0.0,0.0,0.0,0.0))

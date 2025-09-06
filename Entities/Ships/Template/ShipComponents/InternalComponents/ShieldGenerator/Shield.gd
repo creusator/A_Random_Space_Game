@@ -30,6 +30,6 @@ func _on_health_component_health_depleted():
 	if not is_active:
 		return
 	shield_collision.set_deferred("disabled", true)
-	vfx.material.set_shader_parameter("color", Vector4(1.0,0.0,0.0,0.0))
+	vfx.material.set_shader_parameter("color", Vector4(0.0,0.0,0.0,0.0))
 	shield_depleted.emit()
 	start_shield_recharge()
