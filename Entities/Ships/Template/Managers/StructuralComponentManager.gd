@@ -35,6 +35,14 @@ func initialize_chassis_data() -> void:
 			total_power_consumption += chassis.power_consumption
 			chassis.component_destroyed.connect(_on_chassis_destroyed)
 
+func update_thrust_values() -> void:
+	total_main_thrust = 0
+	total_side_thrust = 0
+	for thruster in get_children():
+		if thruster is Thruster:
+			total_main_thrust += thruster.get_current_main_thrust()
+			total_side_thrust += thruster.get_current_side_thrust()
+
 func initialize_thruster_data() -> void:
 	for thruster:ShipComponent in self.get_children():
 		if thruster is Thruster:

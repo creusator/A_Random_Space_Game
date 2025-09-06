@@ -28,15 +28,14 @@ func update_internal_data() -> void:
 	total_power_generation = 0
 	total_fuel_consumption = 0
 	total_fuel_capacity = 0
-	for power_plant:ShipComponent in self.get_children():
-		if power_plant is PowerPlant:
-			total_internal_mass += power_plant.mass
-			total_power_generation += power_plant.power_generation
-			total_fuel_consumption += power_plant.fuel_consumption
-	for fuel_tank:ShipComponent in self.get_children():
-		if fuel_tank is FuelTank:
-			total_internal_mass += fuel_tank.mass
-			total_fuel_capacity += fuel_tank.capacity
+	for component:ShipComponent in self.get_children():
+		if component is PowerPlant:
+			total_internal_mass += component.mass
+			total_power_generation += component.power_generation
+			total_fuel_consumption += component.fuel_consumption
+		elif component is FuelTank:
+			total_internal_mass += component.mass
+			total_fuel_capacity += component.capacity
 
 func initialize_power_plants() -> void:
 	for power_plant:ShipComponent in self.get_children():

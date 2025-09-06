@@ -17,3 +17,11 @@ func _ready() -> void:
 	shield_health = data.shield_health
 	time_to_reload = data.time_to_reload
 	shield.initialize()
+
+func on_powered() -> void:
+	if shield:
+		shield.set_active(true)
+
+func on_unpowered() -> void:
+	if shield:
+		shield.set_active(false)

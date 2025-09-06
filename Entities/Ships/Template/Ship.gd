@@ -13,6 +13,8 @@ var fuel_consumption:float
 var fuel_current_capacity:float
 var moment_of_inertia_factor:float
 
+var is_powered:bool = false
+
 @onready var structural_components: StructuralComponentManager = $StructuralComponentManager
 @onready var internal_components: InternalComponentManager = $InternalComponentManager
 @onready var motion_component_2d: MotionComponent2D = $MotionComponent2D
@@ -31,13 +33,10 @@ func _process(_delta: float) -> void:
 	update_ship_data()
 
 func update_ship_data() -> void:
-	if power_generation - power_consumption <= 0 or fuel_current_capacity <= 0.0:
-		main_thrust_power = 0
-		side_thrust_power = 0
-	else :
-		main_thrust_power = structural_components.total_main_thrust
-		side_thrust_power = structural_components.total_side_thrust
-
+	var previous_powered = is_powered
+	is_powered = (power_generation >= power_consumption) and (fuel_current_capacity > 0.0)
+	if previous_powered != is_powered:
+		notify_power_state_changed()
 	mass = structural_components.total_structure_mass + internal_components.total_internal_mass
 	max_local_speed = structural_components.max_local_speed
 	max_travel_speed = structural_components.max_travel_speed
@@ -47,7 +46,22 @@ func update_ship_data() -> void:
 	power_consumption = structural_components.total_power_consumption + internal_components.total_power_consumption
 	power_generation = internal_components.total_power_generation
 	moment_of_inertia_factor = structural_components.moment_of_inertia_factor
+	structural_components.update_thrust_values()
+	main_thrust_power = structural_components.total_main_thrust
+	side_thrust_power = structural_components.total_side_thrust
 	motion_component_2d.initialize()
+
+func notify_power_state_changed() -> void:
+	for component in structural_components.get_children():
+		if component.has_method("on_ship_power_changed"):
+			component.on_ship_power_changed(is_powered)
+
+	for component in internal_components.get_children():
+		if component.has_method("on_ship_power_changed"):
+			component.on_ship_power_changed(is_powered)
+
+func get_power_state() -> bool:
+	return is_powered
 
 func _on_chassis_destroyed() -> void:
 	self.queue_free()
