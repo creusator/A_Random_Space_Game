@@ -18,5 +18,5 @@ func _ready() -> void:
 	time_to_death = data.time_to_death
 
 func on_unpowered() -> void:
-	await get_tree().create_timer(get_parent().time_to_death).timeout
+	await get_tree().create_timer(time_to_death).timeout
 	oxygen_depleted.emit()

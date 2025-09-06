@@ -11,7 +11,6 @@ var is_active:bool = true
 
 func _ready() -> void:
 	super()
-	vfx.material.set_shader_parameter("color", Vector4(0.0,0.8,1.0,1.0))
 
 func initialize() -> void:
 	health_component.set_health(self.get_parent().shield_health)
@@ -31,10 +30,6 @@ func _on_health_component_health_depleted():
 	if not is_active:
 		return
 	shield_collision.set_deferred("disabled", true)
-	vfx.material.set_shader_parameter("color", Vector4(1.0,0.0,0.0,1.0))
+	vfx.material.set_shader_parameter("color", Vector4(1.0,0.0,0.0,0.0))
 	shield_depleted.emit()
 	start_shield_recharge()
-
-func _on_structural_parent_destroyed(_component: ShipComponent):
-	component_destroyed.emit(self)
-	self.queue_free()
