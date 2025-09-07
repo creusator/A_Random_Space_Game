@@ -28,6 +28,7 @@ func _ready() -> void:
 	internal_components.sensor_destroyed.connect(_on_sensor_destroyed)
 	internal_components.life_support_destroyed.connect(_on_life_support_destroyed)
 	internal_components.shield_generator_destroyed.connect(_on_shield_generator_destroyed)
+	internal_components.hyperdrive_destroyed.connect(_on_hyperdrive_destroyed)
 	
 func _process(_delta: float) -> void:
 	update_ship_data()
@@ -37,7 +38,7 @@ func update_ship_data() -> void:
 	is_powered = (power_generation >= power_consumption) and (fuel_current_capacity > 0.0)
 	if previous_powered != is_powered:
 		notify_power_state_changed()
-	mass = structural_components.total_structure_mass + internal_components.total_internal_mass
+	mass = structural_components.total_structural_mass + internal_components.total_internal_mass
 	max_local_speed = structural_components.max_local_speed
 	max_travel_speed = structural_components.max_travel_speed
 	max_rotation_speed = structural_components.max_rotation_speed
@@ -82,4 +83,7 @@ func _on_life_support_destroyed() -> void:
 	pass
 
 func _on_shield_generator_destroyed() -> void:
+	pass
+
+func _on_hyperdrive_destroyed() -> void:
 	pass
