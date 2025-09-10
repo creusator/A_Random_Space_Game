@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ARandomSpaceGame"
-run/main_scene="uid://bl2wfrt4wupur"
+run/main_scene="uid://tj5g2m158dey"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=200
 
