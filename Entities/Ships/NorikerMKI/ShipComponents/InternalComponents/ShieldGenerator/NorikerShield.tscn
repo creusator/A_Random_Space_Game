@@ -6,16 +6,26 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s45xk"]
 shader = ExtResource("2_s45xk")
+shader_parameter/shape_type = 0
 shader_parameter/shape_size = Vector2(100, 100)
+shader_parameter/radius = 50.0
 shader_parameter/color = Vector4(0, 0.5, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/smooth_factor = 4.0
+shader_parameter/inner_shrink = 0.65
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_22pi5"]
 radius = 80.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ocreq"]
 shader = ExtResource("2_s45xk")
+shader_parameter/shape_type = 0
 shader_parameter/shape_size = Vector2(100, 100)
-shader_parameter/color = Vector4(0, 0.8, 1, 1)
+shader_parameter/radius = 50.0
+shader_parameter/color = Vector4(0, 0.8, 1, 0.73)
+shader_parameter/line_thickness = 0.1
+shader_parameter/smooth_factor = 4.0
+shader_parameter/inner_shrink = 1.0
 
 [sub_resource type="Gradient" id="Gradient_ocreq"]
 offsets = PackedFloat32Array(1)
@@ -41,7 +51,7 @@ shape = SubResource("CircleShape2D_22pi5")
 
 [node name="VFX" type="Sprite2D" parent="." index="2" node_paths=PackedStringArray("collision_shape")]
 material = SubResource("ShaderMaterial_ocreq")
-scale = Vector2(3.23918, 2.00026)
+scale = Vector2(2.07745, 2.00026)
 texture = SubResource("GradientTexture2D_e3lsf")
 region_rect = Rect2(119, 14, 20, 51)
 script = ExtResource("3_ocreq")
