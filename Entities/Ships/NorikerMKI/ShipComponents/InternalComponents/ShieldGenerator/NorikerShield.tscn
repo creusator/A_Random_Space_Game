@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://3aiq55ysvf5u"]
+[gd_scene load_steps=9 format=3 uid="uid://3aiq55ysvf5u"]
 
 [ext_resource type="PackedScene" uid="uid://bj2q4e14pdn4d" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/ShieldGenerator/Shield.tscn" id="1_22pi5"]
 [ext_resource type="Shader" uid="uid://dvb7xk0wt2gof" path="res://Scripts/Shaders/EnergyShield.gdshader" id="2_s45xk"]
+[ext_resource type="Script" uid="uid://dv5xrdcb5mfpi" path="res://Scripts/VFX/EnergyShieldVFX/AutoCollisionSize.gd" id="3_ocreq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s45xk"]
 shader = ExtResource("2_s45xk")
@@ -16,11 +17,14 @@ shader = ExtResource("2_s45xk")
 shader_parameter/shape_size = Vector2(100, 100)
 shader_parameter/color = Vector4(0, 0.8, 1, 1)
 
-[sub_resource type="Gradient" id="Gradient_s45xk"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_ocreq"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocreq"]
-gradient = SubResource("Gradient_s45xk")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e3lsf"]
+gradient = SubResource("Gradient_ocreq")
+width = 1
+height = 1
 
 [node name="Shield" instance=ExtResource("1_22pi5")]
 material = SubResource("ShaderMaterial_s45xk")
@@ -32,12 +36,13 @@ max_health = 1
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
-z_index = -1
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0"]
 shape = SubResource("CircleShape2D_22pi5")
 
-[node name="VFX" type="Sprite2D" parent="." index="2"]
+[node name="VFX" type="Sprite2D" parent="." index="2" node_paths=PackedStringArray("collision_shape")]
 material = SubResource("ShaderMaterial_ocreq")
-scale = Vector2(3.45313, 3.45312)
-texture = SubResource("GradientTexture2D_ocreq")
+scale = Vector2(3.23918, 2.00026)
+texture = SubResource("GradientTexture2D_e3lsf")
 region_rect = Rect2(119, 14, 20, 51)
+script = ExtResource("3_ocreq")
+collision_shape = NodePath("../HurtboxComponent/CollisionShape2D")

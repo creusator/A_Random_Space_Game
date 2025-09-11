@@ -15,3 +15,6 @@ metadata/_custom_type_script = "uid://6tpqi5irmclb"
 script = ExtResource("3_sh4vm")
 health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://6beojrehdnyn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+z_index = 1
