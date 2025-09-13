@@ -24,13 +24,13 @@ func _update_sprite_and_shader() -> void:
 		shape_type = 0
 		radius_px = shape.radius
 	elif shape is CapsuleShape2D:
-		new_size = Vector2(shape.radius * 2.1, shape.height)
+		new_size = Vector2(shape.radius * 2.0, shape.height)
 		shape_type = 1
 		radius_px = shape.radius / 2
 	else:
 		return
 	
-	scale = new_size / texture_size
+	scale = (new_size / texture_size) * 1.1
 	
 	mat.set_shader_parameter("shape_size", new_size)
 	mat.set_shader_parameter("shape_type", shape_type)

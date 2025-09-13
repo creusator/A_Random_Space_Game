@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl2wfrt4wupur"]
+[gd_scene load_steps=6 format=3 uid="uid://bl2wfrt4wupur"]
 
 [ext_resource type="PackedScene" uid="uid://do78wutwh6no7" path="res://Backgrounds/Space/BackgroundSpace.tscn" id="1_sb48q"]
 [ext_resource type="PackedScene" uid="uid://d0lyfduv8cm45" path="res://Entities/Ships/NorikerMKI/NorikerMKI.tscn" id="1_u44n3"]
 [ext_resource type="Script" uid="uid://dq3r12sc157up" path="res://UI/Camera/Camera.gd" id="4_sb48q"]
 [ext_resource type="PackedScene" uid="uid://bq1j8bbq5k0n1" path="res://Entities/zDevObjects/Killbox.tscn" id="4_t88pq"]
+[ext_resource type="PackedScene" uid="uid://bs4dsk2ecagfa" path="res://UI/Menus/PauseMenu/PauseMenu.tscn" id="5_t88pq"]
 
 [node name="Main" type="Node2D"]
 
@@ -21,9 +22,8 @@ camera_smooth_speed = 5.0
 zoom_speed = 4.0
 max_zoom = 5.0
 min_zoom = 1.0
-mouse_influence_radius = 500.0
 
-[node name="BehindCamera" parent="Camera2D" instance=ExtResource("1_sb48q")]
+[node name="SpaceBackground" parent="Camera2D" instance=ExtResource("1_sb48q")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.949658, 1, 0.943837, 1)
@@ -43,3 +43,8 @@ collision_layer = 2
 position = Vector2(1, 459)
 scale = Vector2(4, 4)
 collision_layer = 4
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("5_t88pq")]

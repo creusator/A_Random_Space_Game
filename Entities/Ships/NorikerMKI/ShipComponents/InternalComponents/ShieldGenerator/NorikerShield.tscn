@@ -13,9 +13,10 @@ shader_parameter/color = Vector4(0, 0.5, 1, 1)
 shader_parameter/line_thickness = 3.0
 shader_parameter/smooth_factor = 4.0
 shader_parameter/inner_shrink = 0.65
+shader_parameter/corner_radius_factor = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_22pi5"]
-radius = 80.0
+radius = 85.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ocreq"]
 shader = ExtResource("2_s45xk")
@@ -24,8 +25,9 @@ shader_parameter/shape_size = Vector2(100, 100)
 shader_parameter/radius = 50.0
 shader_parameter/color = Vector4(0, 0.8, 1, 0.73)
 shader_parameter/line_thickness = 0.1
-shader_parameter/smooth_factor = 4.0
+shader_parameter/smooth_factor = 1.0
 shader_parameter/inner_shrink = 1.0
+shader_parameter/corner_radius_factor = 100.0
 
 [sub_resource type="Gradient" id="Gradient_ocreq"]
 offsets = PackedFloat32Array(1)
