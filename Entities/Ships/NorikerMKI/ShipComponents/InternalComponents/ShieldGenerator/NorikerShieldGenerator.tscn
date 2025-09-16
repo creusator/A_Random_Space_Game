@@ -10,7 +10,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w8w0b"]
 shader = ExtResource("4_q1vvu")
 shader_parameter/highlighted_color1 = Color(0, 0.09803922, 0.1882353, 1)
-shader_parameter/new_highlighted_color1 = Color(0, 0.6220668, 0.9180841, 1)
+shader_parameter/new_highlighted_color1 = Color(0, 1.9711775, 2.844042, 1)
 shader_parameter/highlighted_color2 = Color(0, 0, 0, 1)
 shader_parameter/new_highlighted_color2 = Color(0, 0, 0, 1)
 shader_parameter/intensity = 0.2999999932944
@@ -33,7 +33,6 @@ z_index = 1
 structural_parent = NodePath("..")
 
 [node name="Sprite2D" parent="." index="1"]
-z_index = 50
 material = SubResource("ShaderMaterial_w8w0b")
 texture = SubResource("CanvasTexture_akpdy")
 region_enabled = true

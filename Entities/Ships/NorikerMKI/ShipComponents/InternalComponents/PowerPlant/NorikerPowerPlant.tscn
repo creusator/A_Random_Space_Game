@@ -1,9 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmxge2naa4k2u"]
+[gd_scene load_steps=9 format=3 uid="uid://bmxge2naa4k2u"]
 
 [ext_resource type="PackedScene" uid="uid://3golfnw2uqgf" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/PowerPlant/PowerPlant.tscn" id="1_at3i4"]
 [ext_resource type="Resource" uid="uid://c5do5c1b11gyl" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/PowerPlant/NorikerPowerPlant.tres" id="2_0on4q"]
 [ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_lgp1j"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_0on4q"]
+[ext_resource type="Shader" uid="uid://btgr1oa7i2hbh" path="res://Scripts/Shaders/ShipComponents/Panel.gdshader" id="3_q3p2m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4unyi"]
+shader = ExtResource("3_q3p2m")
+shader_parameter/highlighted_color1 = Color(0.28235295, 0.5411765, 0.101960786, 1)
+shader_parameter/new_highlighted_color1 = Color(0, 1.5790963, 0, 1)
+shader_parameter/highlighted_color2 = Color(0.5254902, 0.050980393, 0.09411765, 1)
+shader_parameter/new_highlighted_color2 = Color(0.9815763, 0, 0, 1)
+shader_parameter/highlighted_color3 = Color(0, 0, 0, 1)
+shader_parameter/new_highlighted_color3 = Color(0, 0, 0, 1)
+shader_parameter/intensity = 0.1499999966472
+shader_parameter/change_per_second = 0.75
+shader_parameter/is_active = false
+shader_parameter/pulse_mode = false
+shader_parameter/random_mode = true
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_q3p2m"]
 diffuse_texture = ExtResource("2_lgp1j")
@@ -17,13 +32,10 @@ data = ExtResource("2_0on4q")
 
 [node name="Sprite2D" parent="." index="0"]
 z_index = 1
+material = SubResource("ShaderMaterial_4unyi")
 texture = SubResource("CanvasTexture_q3p2m")
 region_enabled = true
 region_rect = Rect2(124, 17, 13, 16)
-
-[node name="HurtboxComponent" parent="." index="2"]
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
 scale = Vector2(0.5, 0.5)

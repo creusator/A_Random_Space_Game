@@ -7,6 +7,17 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ve2ur"]
 shader = ExtResource("2_xpcap")
+shader_parameter/highlighted_color1 = Color(0.28235295, 0.5411765, 0.101960786, 1)
+shader_parameter/new_highlighted_color1 = Color(0, 2.219907, 0, 1)
+shader_parameter/highlighted_color2 = Color(0.5254902, 0.050980393, 0.09411765, 1)
+shader_parameter/new_highlighted_color2 = Color(0.9116014, 0, 0, 1)
+shader_parameter/highlighted_color3 = Color(0, 0, 0, 1)
+shader_parameter/new_highlighted_color3 = Color(0, 0, 0, 1)
+shader_parameter/intensity = 0.1499999966472
+shader_parameter/change_per_second = 0.75
+shader_parameter/is_active = false
+shader_parameter/pulse_mode = false
+shader_parameter/random_mode = true
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ve2ur"]
 diffuse_texture = ExtResource("2_xkrrk")
