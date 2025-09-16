@@ -2,7 +2,7 @@ class_name ShieldGenerator
 extends ShipComponent
 
 @export var data:ShieldGeneratorData
-
+@onready var sprite:Sprite2D = get_node("Sprite2D")
 @onready var shield:Shield = $Shield
 
 var mass:int
@@ -21,8 +21,10 @@ func _ready() -> void:
 func on_powered() -> void:
 	if shield:
 		shield.set_active(true)
+		sprite.material.set_shader_parameter("is_active", true)
 
 func on_unpowered() -> void:
 	if shield:
 		shield.set_active(false)
 		shield.vfx.material.set_shader_parameter("color", Vector4(0.0,0.0,0.0,0.0))
+		sprite.material.set_shader_parameter("is_active", false)
