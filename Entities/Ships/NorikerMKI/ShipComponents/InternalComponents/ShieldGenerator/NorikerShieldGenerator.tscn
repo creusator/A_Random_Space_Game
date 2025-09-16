@@ -1,10 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1i87bsv1efdt"]
+[gd_scene load_steps=10 format=3 uid="uid://c1i87bsv1efdt"]
 
 [ext_resource type="PackedScene" uid="uid://d16jkxh7ddyw5" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/ShieldGenerator/ShieldGenerator.tscn" id="1_22ulm"]
 [ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_ehf5d"]
 [ext_resource type="Resource" uid="uid://xrvbwna7we4p" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/ShieldGenerator/NorikerShieldGenerator.tres" id="2_my5o2"]
 [ext_resource type="PackedScene" uid="uid://3aiq55ysvf5u" path="res://Entities/Ships/NorikerMKI/ShipComponents/InternalComponents/ShieldGenerator/NorikerShield.tscn" id="3_akpdy"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_my5o2"]
+[ext_resource type="Shader" uid="uid://btgr1oa7i2hbh" path="res://Scripts/Shaders/ShipComponents/Panel.gdshader" id="4_q1vvu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8w0b"]
+shader = ExtResource("4_q1vvu")
+shader_parameter/highlighted_color1 = Color(0, 0.09803922, 0.1882353, 1)
+shader_parameter/new_highlighted_color1 = Color(0, 0.6220668, 0.9180841, 1)
+shader_parameter/highlighted_color2 = Color(0, 0, 0, 1)
+shader_parameter/new_highlighted_color2 = Color(0, 0, 0, 1)
+shader_parameter/intensity = 0.2999999932944
+shader_parameter/pulse_mode = true
+shader_parameter/random_mode = false
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_akpdy"]
 diffuse_texture = ExtResource("2_ehf5d")
@@ -21,6 +32,8 @@ z_index = 1
 structural_parent = NodePath("..")
 
 [node name="Sprite2D" parent="." index="1"]
+z_index = 50
+material = SubResource("ShaderMaterial_w8w0b")
 texture = SubResource("CanvasTexture_akpdy")
 region_enabled = true
 region_rect = Rect2(125, 74, 12, 12)

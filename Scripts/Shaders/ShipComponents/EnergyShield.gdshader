@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform int shape_type = 0; // 0 = circle, 1 = capsule
 uniform vec2 shape_size = vec2(100.0, 100.0);
 uniform float radius = 50.0;
-uniform vec4 color = vec4(0.0, 0.8, 1.0, 0.7);
+uniform vec4 color : source_color = vec4(1.0);
 
 uniform float line_thickness = 0.1;
 uniform float smooth_factor = 4.0;

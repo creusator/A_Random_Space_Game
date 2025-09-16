@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://3aiq55ysvf5u"]
 
 [ext_resource type="PackedScene" uid="uid://bj2q4e14pdn4d" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/ShieldGenerator/Shield.tscn" id="1_22pi5"]
-[ext_resource type="Shader" uid="uid://dvb7xk0wt2gof" path="res://Scripts/Shaders/EnergyShield.gdshader" id="2_s45xk"]
+[ext_resource type="Shader" uid="uid://dvb7xk0wt2gof" path="res://Scripts/Shaders/ShipComponents/EnergyShield.gdshader" id="2_s45xk"]
 [ext_resource type="Script" uid="uid://dv5xrdcb5mfpi" path="res://Scripts/VFX/EnergyShieldVFX/AutoCollisionSize.gd" id="3_ocreq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s45xk"]
@@ -9,7 +9,7 @@ shader = ExtResource("2_s45xk")
 shader_parameter/shape_type = 0
 shader_parameter/shape_size = Vector2(100, 100)
 shader_parameter/radius = 50.0
-shader_parameter/color = Vector4(0, 0.5, 1, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 3.0
 shader_parameter/smooth_factor = 4.0
 shader_parameter/inner_shrink = 0.65
@@ -23,7 +23,7 @@ shader = ExtResource("2_s45xk")
 shader_parameter/shape_type = 0
 shader_parameter/shape_size = Vector2(100, 100)
 shader_parameter/radius = 50.0
-shader_parameter/color = Vector4(0, 0.8, 1, 0.73)
+shader_parameter/color = Color(0, 0.8, 1, 1)
 shader_parameter/line_thickness = 0.1
 shader_parameter/smooth_factor = 1.0
 shader_parameter/inner_shrink = 1.0

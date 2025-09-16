@@ -1,8 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8eus07mp5yd5"]
+[gd_scene load_steps=8 format=3 uid="uid://b8eus07mp5yd5"]
 
 [ext_resource type="PackedScene" uid="uid://cp5qruitd45u2" path="res://Entities/Ships/Template/ShipComponents/InternalComponents/Hyperdrive/Hyperdrive.tscn" id="1_mtc11"]
 [ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_xkrrk"]
+[ext_resource type="Shader" uid="uid://btgr1oa7i2hbh" path="res://Scripts/Shaders/ShipComponents/Panel.gdshader" id="2_xpcap"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_xpcap"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ve2ur"]
+shader = ExtResource("2_xpcap")
+shader_parameter/highlighted_color1 = Color(0.28235295, 0.5411765, 0.101960786, 1)
+shader_parameter/new_highlighted_color1 = Color(0, 0.75158876, 0, 1)
+shader_parameter/highlighted_color2 = Color(0.5254902, 0.050980393, 0.09411765, 1)
+shader_parameter/new_highlighted_color2 = Color(0.8215499, 0, 0, 1)
+shader_parameter/intensity = 0.0999999977648
+shader_parameter/pulse_mode = true
+shader_parameter/random_mode = false
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ve2ur"]
 diffuse_texture = ExtResource("2_xkrrk")
@@ -14,6 +25,7 @@ size = Vector2(13, 16)
 [node name="Hyperdrive" instance=ExtResource("1_mtc11")]
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_ve2ur")
 texture = SubResource("CanvasTexture_ve2ur")
 region_enabled = true
 region_rect = Rect2(124, 34, 13, 16)
