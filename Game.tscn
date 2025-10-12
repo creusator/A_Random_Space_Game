@@ -18,6 +18,7 @@ color = Color(0.389287, 0.389287, 0.389287, 1)
 process_callback = 0
 script = ExtResource("4_sb48q")
 target = NodePath("../NorikerMKI")
+mode = 0
 camera_smooth_speed = 5.0
 zoom_speed = 4.0
 max_zoom = 5.0

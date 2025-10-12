@@ -27,3 +27,7 @@ shape = SubResource("RectangleShape2D_f2stx")
 
 [node name="HealthComponent" parent="." index="2"]
 max_health = 1
+
+[node name="GPUParticles2D" parent="." index="3"]
+position = Vector2(0, 17)
+scale = Vector2(40, 30)
