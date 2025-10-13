@@ -16,6 +16,7 @@ var inertial_dampener_efficiency: float = 1.0
 var rotation_dampeners_efficiency: float = 1.0
 var moment_of_inertia_factor: float
 var angular_velocity_rad : float
+var current_acceleration: Vector2 = Vector2.ZERO 
 
 func initialize() -> void:
 	mass = controlled.mass
@@ -27,15 +28,37 @@ func initialize() -> void:
 	moment_of_inertia_factor = controlled.moment_of_inertia_factor
 
 func _physics_process(delta: float) -> void:
-	var thrust_vector = controller.get_thrust_vector().rotated(rotation)
-	controlled.velocity = player_movement(controlled.velocity, thrust_vector, delta)
+	var thrust_vector = controller.get_thrust_vector()
+	if controller.precision_mode:
+		controlled.velocity = player_movement(controlled.velocity, thrust_vector.rotated(rotation), delta)
+	else:
+		controlled.velocity = player_movement_throttle(controlled.velocity, thrust_vector, rotation, delta)
 	if controller.precision_mode == true:
 		controlled.rotation = aim_to_target(controlled.position, get_global_mouse_position(), delta)
 	else :
 		controlled.rotation = player_rotation(controller.get_rotation_dir(), delta)
 	controlled.move_and_slide()
 
-func player_movement(velocity: Vector2, thrust_vector: Vector2,delta: float) -> Vector2:
+func player_movement_throttle(velocity: Vector2, thrust_input: Vector2, ship_rotation: float, delta: float) -> Vector2:
+	var target_velocity = Vector2(thrust_input.x * max_local_speed, thrust_input.y * max_local_speed).rotated(ship_rotation)
+	var velocity_error = target_velocity - velocity
+	var thrust_force = Vector2.ZERO
+	
+	if velocity_error.length() > 0.1:
+		thrust_force = velocity_error.normalized() * main_thrust_power
+	
+	var force_total = thrust_force * PIXEL_PER_METER
+	var acceleration = force_total / mass
+	current_acceleration = acceleration
+	var applied_velocity = velocity + acceleration * delta
+	
+	if velocity_error.length() < 3.5 and thrust_input.length() < 0.1:
+		applied_velocity = Vector2.ZERO
+	elif applied_velocity.length() > max_local_speed:
+		applied_velocity = applied_velocity.normalized() * max_local_speed
+	return applied_velocity
+
+func player_movement(velocity: Vector2, thrust_vector: Vector2, delta: float) -> Vector2:
 	var thrust_force: Vector2 = calculate_thrust(thrust_vector)
 	var dampening_force: Vector2 = Vector2.ZERO
 	
@@ -44,6 +67,7 @@ func player_movement(velocity: Vector2, thrust_vector: Vector2,delta: float) -> 
 	
 	var force_total: Vector2 = (thrust_force + dampening_force) * PIXEL_PER_METER
 	var acceleration: Vector2 = force_total / mass
+	current_acceleration = acceleration
 	var applied_velocity: Vector2 = velocity + acceleration * delta
 	
 	if thrust_vector.length() < 0.1 and applied_velocity.length() < 3.5:

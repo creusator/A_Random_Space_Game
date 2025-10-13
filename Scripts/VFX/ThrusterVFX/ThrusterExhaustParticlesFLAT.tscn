@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gig6ec6vjtto"]
+[gd_scene load_steps=11 format=3 uid="uid://gig6ec6vjtto"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1shw8"]
 blend_mode = 1
@@ -21,7 +21,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 0.7923846, 0, 1)
 gradient = SubResource("Gradient_f4nsv")
 
 [sub_resource type="Curve" id="Curve_1shw8"]
-_data = [Vector2(0, 0.30337083), 0.0, 0.0, 0, 0, Vector2(0.42857146, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.24719107), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.50467914), 0.0, 0.0, 0, 0, Vector2(0.7731959, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.49789327), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_f4nsv"]
@@ -43,9 +43,20 @@ linear_accel_max = 4.9999976
 scale_min = 0.099999994
 scale_max = 0.5
 scale_curve = SubResource("CurveTexture_f4nsv")
+scale_over_velocity_min = 800.0
+scale_over_velocity_max = 1000.0
 color_initial_ramp = SubResource("GradientTexture1D_nc3ed")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = -2.2351742e-08
+
+[sub_resource type="Gradient" id="Gradient_4ywmi"]
+offsets = PackedFloat32Array(0, 0.6569579)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mmvv4"]
+gradient = SubResource("Gradient_4ywmi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_1shw8")
@@ -55,5 +66,9 @@ texture = SubResource("GradientTexture2D_f4nsv")
 lifetime = 0.3
 randomness = 1.0
 local_coords = true
-trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_wm5ug")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 0.5)
+color = Color(1, 0.78431374, 0, 1)
+texture = SubResource("GradientTexture2D_mmvv4")

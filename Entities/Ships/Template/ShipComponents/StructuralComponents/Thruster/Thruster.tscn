@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://qvup2bngmsmd"]
+[gd_scene load_steps=4 format=3 uid="uid://qvup2bngmsmd"]
 
 [ext_resource type="Script" uid="uid://b7pe1pl1uxtog" path="res://Entities/Ships/Template/ShipComponents/StructuralComponents/Thruster/Thruster.gd" id="1_jr0pn"]
 [ext_resource type="Script" uid="uid://6beojrehdnyn" path="res://Components/HurtboxComponent.gd" id="2_gvne8"]
 [ext_resource type="Script" uid="uid://6tpqi5irmclb" path="res://Components/HealthComponent.gd" id="3_w181w"]
-[ext_resource type="PackedScene" uid="uid://gig6ec6vjtto" path="res://Scripts/VFX/ThrusterVFX/ThrusterExhaustParticles.tscn" id="4_f4nsv"]
 
 [node name="Thruster" type="Node2D"]
 script = ExtResource("1_jr0pn")
@@ -18,5 +17,3 @@ metadata/_custom_type_script = "uid://6beojrehdnyn"
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_w181w")
 metadata/_custom_type_script = "uid://6tpqi5irmclb"
-
-[node name="GPUParticles2D" parent="." instance=ExtResource("4_f4nsv")]

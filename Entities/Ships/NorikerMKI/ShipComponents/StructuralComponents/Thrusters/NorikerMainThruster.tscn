@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqe26jwb8wnwk"]
+[gd_scene load_steps=7 format=3 uid="uid://dqe26jwb8wnwk"]
 
 [ext_resource type="PackedScene" uid="uid://qvup2bngmsmd" path="res://Entities/Ships/Template/ShipComponents/StructuralComponents/Thruster/Thruster.tscn" id="1_pqhsj"]
 [ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_f2stx"]
 [ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_j8rb8"]
+[ext_resource type="PackedScene" uid="uid://v8gntwe7qucu" path="res://Scripts/VFX/ThrusterVFX/ThrusterExhaustParticlesPOINTY.tscn" id="4_frq6n"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e1nax"]
 diffuse_texture = ExtResource("2_f2stx")
@@ -28,6 +29,6 @@ shape = SubResource("RectangleShape2D_f2stx")
 [node name="HealthComponent" parent="." index="2"]
 max_health = 1
 
-[node name="GPUParticles2D" parent="." index="3"]
-position = Vector2(0, 17)
-scale = Vector2(40, 30)
+[node name="GPUParticles2D" parent="." index="3" instance=ExtResource("4_frq6n")]
+position = Vector2(0, 18)
+scale = Vector2(55, 10)
