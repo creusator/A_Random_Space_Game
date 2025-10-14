@@ -6,6 +6,7 @@ extends ShipComponent
 @onready var input_component_2d: InputComponent2D = $"../../InputComponent2D"
 
 @export var data:ThrusterData
+var random = RandomNumberGenerator.new()
 var vfx_light:PointLight2D
 var initial_vfx_scale:Vector2
 var initial_vfx_light_energy:float
@@ -17,6 +18,9 @@ var fuel_consumption:float
 var current_main_thrust:int = 0
 var current_side_thrust:int = 0
 var vfx_scale_factor:float = 0.0
+var vfx_random_light_level:float = 0.0
+var thruster_orientation:Vector2
+var raw_thrust_vector:Vector2
 
 func _ready() -> void:
 	super()
@@ -25,6 +29,8 @@ func _ready() -> void:
 		initial_vfx_light_energy = 0.5
 		vfx_light = vfx.get_child(0)
 		vfx_scale_factor = data.vfx_scale_factor
+	thruster_orientation = Vector2.UP.rotated(rotation).normalized()
+	print(thruster_orientation)
 	mass = data.mass
 	main_thrust_power = data.main_thrust_power
 	side_thrust_power = data.side_thrust_power
@@ -37,6 +43,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if vfx is GPUParticles2D and vfx_light is PointLight2D:
 		update_vfx()
+		await get_tree().create_timer(random.randf_range(1.0,20.0)).timeout
+		vfx_random_light_level = random.randf_range(0.0, 0.4)
 
 func on_powered() -> void:
 	current_main_thrust = main_thrust_power
@@ -48,13 +56,15 @@ func on_unpowered() -> void:
 
 func update_vfx() -> void:
 	if is_operational() :
+		raw_thrust_vector = input_component_2d.get_raw_thrust_vector()
 		vfx.scale.y = initial_vfx_scale.y * abs(input_component_2d.throttle) * vfx_scale_factor
-		vfx_light.energy = initial_vfx_light_energy * abs(input_component_2d.throttle) * 2
+		vfx_light.energy = initial_vfx_light_energy * abs(input_component_2d.throttle) * 2 
 		if vfx.scale < initial_vfx_scale:
 			vfx.scale = initial_vfx_scale
 		if vfx_light.energy < initial_vfx_light_energy :
 			vfx_light.energy = initial_vfx_light_energy
-		
+		else :
+			vfx_light.energy += vfx_random_light_level
 	else :
 		vfx.scale = Vector2.ZERO
 

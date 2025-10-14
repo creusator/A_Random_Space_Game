@@ -36,6 +36,10 @@ func get_thrust_vector() -> Vector2:
 		thrust_vector = Vector2(lateral, -effective_throttle)
 		return thrust_vector
 
+func get_raw_thrust_vector() -> Vector2:
+	thrust_vector = Input.get_vector("thrust_left(alt)", "thrust_right(alt)", "thrust_up", "thrust_down")
+	return thrust_vector
+
 func get_rotation_dir() -> float:
 	rotation_direction = Input.get_axis("rotate_left", "rotate_right")
 	if precision_mode:

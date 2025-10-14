@@ -60,13 +60,12 @@ structural_parent = NodePath("../Chassis")
 
 [node name="RightSmallThruster" parent="StructuralComponentManager" index="7" node_paths=PackedStringArray("structural_parent") instance=ExtResource("6_j7ebk")]
 position = Vector2(22.5, 52)
-rotation = -3.14159
-scale = Vector2(1, -1)
+scale = Vector2(-1, 1)
 data = ExtResource("6_d1ph0")
 structural_parent = NodePath("../Chassis")
 
 [node name="LeftSmallThruster" parent="StructuralComponentManager" index="8" node_paths=PackedStringArray("structural_parent") instance=ExtResource("6_j7ebk")]
-position = Vector2(-22.5, 52)
+position = Vector2(-21, 53)
 data = ExtResource("6_d1ph0")
 structural_parent = NodePath("../Chassis")
 
