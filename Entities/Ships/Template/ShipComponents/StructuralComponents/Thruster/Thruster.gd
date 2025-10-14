@@ -16,6 +16,7 @@ var power_consumption:int
 var fuel_consumption:float
 var current_main_thrust:int = 0
 var current_side_thrust:int = 0
+var vfx_scale_factor:float = 0.0
 
 func _ready() -> void:
 	super()
@@ -23,6 +24,7 @@ func _ready() -> void:
 		initial_vfx_scale = vfx.scale
 		initial_vfx_light_energy = 0.5
 		vfx_light = vfx.get_child(0)
+		vfx_scale_factor = data.vfx_scale_factor
 	mass = data.mass
 	main_thrust_power = data.main_thrust_power
 	side_thrust_power = data.side_thrust_power
@@ -30,6 +32,7 @@ func _ready() -> void:
 	power_consumption = data.power_consumption
 	current_main_thrust = main_thrust_power
 	current_side_thrust = side_thrust_power
+	
 
 func _process(_delta: float) -> void:
 	if vfx is GPUParticles2D and vfx_light is PointLight2D:
@@ -45,7 +48,7 @@ func on_unpowered() -> void:
 
 func update_vfx() -> void:
 	if is_operational() :
-		vfx.scale.y = initial_vfx_scale.y * abs(input_component_2d.throttle) * 2
+		vfx.scale.y = initial_vfx_scale.y * abs(input_component_2d.throttle) * vfx_scale_factor
 		vfx_light.energy = initial_vfx_light_energy * abs(input_component_2d.throttle) * 2
 		if vfx.scale < initial_vfx_scale:
 			vfx.scale = initial_vfx_scale

@@ -9,4 +9,5 @@ main_thrust_power = 800
 side_thrust_power = 25
 power_consumption = 1
 fuel_consumption = 0.25
+vfx_scale_factor = 4.0
 metadata/_custom_type_script = "uid://b476co8q6r41c"

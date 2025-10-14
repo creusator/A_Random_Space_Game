@@ -7,3 +7,4 @@ class_name ThrusterData
 @export var side_thrust_power:int
 @export var power_consumption:int
 @export var fuel_consumption:float
+@export var vfx_scale_factor:float

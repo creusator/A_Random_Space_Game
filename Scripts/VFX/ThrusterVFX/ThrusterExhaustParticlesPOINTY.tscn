@@ -21,7 +21,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 0.7923846, 0, 1)
 gradient = SubResource("Gradient_f4nsv")
 
 [sub_resource type="Curve" id="Curve_1shw8"]
-_data = [Vector2(0, 0.49789327), 0.0, 0.0, 0, 0, Vector2(0.5017182, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.09620786), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(0.5, 0.9), 0.0, 0.0, 0, 0, Vector2(1, 0.09620786), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_f4nsv"]
@@ -61,7 +61,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="GPUParticles2D" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_1shw8")
 scale = Vector2(10, 10)
-amount = 200
+amount = 300
 texture = SubResource("GradientTexture2D_f4nsv")
 lifetime = 0.3
 randomness = 1.0

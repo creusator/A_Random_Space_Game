@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_keqq3")
 mass = 22
-max_local_speed = 60
+max_local_speed = 180
 max_travel_speed = 180
 max_rotation_speed = 160
 moment_of_inertia_factor = 0.5
