@@ -16,7 +16,7 @@ var inertial_dampener_efficiency: float = 1.0
 var rotation_dampeners_efficiency: float = 1.0
 var moment_of_inertia_factor: float
 var angular_velocity_rad : float
-var current_acceleration: Vector2 = Vector2.ZERO 
+var current_applied_velocity: Vector2 = Vector2.ZERO
 
 func initialize() -> void:
 	mass = controlled.mass
@@ -49,13 +49,13 @@ func player_movement_throttle(velocity: Vector2, thrust_input: Vector2, ship_rot
 	
 	var force_total = thrust_force * PIXEL_PER_METER
 	var acceleration = force_total / mass
-	current_acceleration = acceleration
 	var applied_velocity = velocity + acceleration * delta
 	
 	if velocity_error.length() < 3.5 and thrust_input.length() < 0.1:
 		applied_velocity = Vector2.ZERO
 	elif applied_velocity.length() > max_local_speed:
 		applied_velocity = applied_velocity.normalized() * max_local_speed
+	current_applied_velocity = applied_velocity.normalized()
 	return applied_velocity
 
 func player_movement(velocity: Vector2, thrust_vector: Vector2, delta: float) -> Vector2:
@@ -67,13 +67,13 @@ func player_movement(velocity: Vector2, thrust_vector: Vector2, delta: float) ->
 	
 	var force_total: Vector2 = (thrust_force + dampening_force) * PIXEL_PER_METER
 	var acceleration: Vector2 = force_total / mass
-	current_acceleration = acceleration
 	var applied_velocity: Vector2 = velocity + acceleration * delta
 	
 	if thrust_vector.length() < 0.1 and applied_velocity.length() < 3.5:
 		applied_velocity = Vector2.ZERO
 	elif applied_velocity.length() > max_local_speed:
 		applied_velocity = applied_velocity.normalized() * max_local_speed
+	current_applied_velocity = applied_velocity.normalized()
 	return applied_velocity
 
 func calculate_thrust(thrust_vector: Vector2) -> Vector2:
