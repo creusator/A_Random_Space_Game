@@ -69,9 +69,17 @@ func _process(delta: float) -> void:
 	if vfx:
 		update_vfx(delta)
 
+func on_powered() -> void:
+	current_main_thrust = main_thrust_power
+	current_side_thrust = side_thrust_power
+
+func on_unpowered() -> void:
+	current_main_thrust = 0
+	current_side_thrust = 0
+
 func update_vfx(delta: float) -> void:
 	if not is_operational():
-		vfx.scale = initial_vfx_scale
+		vfx.scale = Vector2.ZERO
 		if vfx_light:
 			vfx_light.energy = 0.0
 		return
