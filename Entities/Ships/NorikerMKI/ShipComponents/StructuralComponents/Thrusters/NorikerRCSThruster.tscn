@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://v4f3pw7bhcp7"]
+
+[ext_resource type="PackedScene" uid="uid://qvup2bngmsmd" path="res://Entities/Ships/Template/ShipComponents/StructuralComponents/Thruster/Thruster.tscn" id="1_gtr3h"]
+[ext_resource type="Texture2D" uid="uid://cuuog7fys2nm3" path="res://Assets/Ships/NorikerMKI/NorikerMKI.png" id="2_7k75x"]
+[ext_resource type="Texture2D" uid="uid://cs3m52oeslmw3" path="res://Assets/Ships/NorikerMKI/NorikerMKI-NORMAL.png" id="3_rkcfw"]
+[ext_resource type="PackedScene" uid="uid://gig6ec6vjtto" path="res://Scripts/VFX/ThrusterVFX/ThrusterExhaustParticlesFLAT.tscn" id="4_7k75x"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1g5ex"]
+diffuse_texture = ExtResource("2_7k75x")
+normal_texture = ExtResource("3_rkcfw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtr3h"]
+size = Vector2(3, 5)
+
+[node name="Thruster" instance=ExtResource("1_gtr3h")]
+
+[node name="Sprite2D" parent="." index="0"]
+z_index = 1
+texture = SubResource("CanvasTexture_1g5ex")
+region_enabled = true
+region_rect = Rect2(106, 3, 3, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("RectangleShape2D_gtr3h")
+
+[node name="HealthComponent" parent="." index="2"]
+max_health = 1
+
+[node name="GPUParticles2D" parent="." index="3" instance=ExtResource("4_7k75x")]
+scale = Vector2(5.5, 3)

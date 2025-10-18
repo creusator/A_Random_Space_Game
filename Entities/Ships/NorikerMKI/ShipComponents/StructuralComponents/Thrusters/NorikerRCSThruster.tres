@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ThrusterData" load_steps=2 format=3 uid="uid://cp2kabds0ocyw"]
+
+[ext_resource type="Script" uid="uid://b476co8q6r41c" path="res://Scripts/Ressources/ThrusterData.gd" id="1_886yh"]
+
+[resource]
+script = ExtResource("1_886yh")
+mass = 1
+side_thrust_power = 13
+power_consumption = 1
+fuel_consumption = 0.1
+vfx_scale_factor = 2.0
+metadata/_custom_type_script = "uid://b476co8q6r41c"

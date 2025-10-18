@@ -6,7 +6,7 @@
 script = ExtResource("1_3w4jk")
 mass = 10
 main_thrust_power = 800
-side_thrust_power = 25
+side_thrust_power = 1
 power_consumption = 1
 fuel_consumption = 0.25
 vfx_scale_factor = 4.0

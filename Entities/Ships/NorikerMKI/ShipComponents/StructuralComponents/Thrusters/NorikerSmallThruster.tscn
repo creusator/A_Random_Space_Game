@@ -10,7 +10,7 @@ diffuse_texture = ExtResource("2_vrc7v")
 normal_texture = ExtResource("3_61fhf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrc7v"]
-size = Vector2(8, 8)
+size = Vector2(7, 8)
 
 [node name="Thruster" instance=ExtResource("1_8r4h0")]
 
@@ -18,7 +18,7 @@ size = Vector2(8, 8)
 z_index = 1
 texture = SubResource("CanvasTexture_8r4h0")
 region_enabled = true
-region_rect = Rect2(100, 3, 7, 8)
+region_rect = Rect2(97, 1, 7, 8)
 
 [node name="HurtboxComponent" parent="." index="1"]
 collision_layer = 0

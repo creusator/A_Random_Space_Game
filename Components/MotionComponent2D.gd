@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		controlled.velocity = player_movement(controlled.velocity, thrust_vector.rotated(rotation), delta)
 	else:
 		controlled.velocity = player_movement_throttle(controlled.velocity, thrust_vector, rotation, delta)
-	if controller.precision_mode == true:
+	if controller.aim_to_target == true:
 		controlled.rotation = aim_to_target(controlled.position, get_global_mouse_position(), delta)
 	else :
 		controlled.rotation = player_rotation(controller.get_rotation_dir(), delta)
