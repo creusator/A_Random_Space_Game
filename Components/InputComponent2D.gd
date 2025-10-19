@@ -7,9 +7,9 @@ var rotation_direction: float
 var throttle: float = 0.0
 var throttle_speed: float = 0.5
 var throttle_deadzone: float = 0.1
-var precision_mode: bool = false
+var precision_mode: bool = true
 var aim_to_target:bool = false
-var _toggle_state: bool = false
+var _toggle_state: bool = true
 
 func _process(delta: float) -> void:
 	aim_to_target = Input.is_action_pressed("aim_to_target_hold")
@@ -32,7 +32,7 @@ func get_thrust_vector() -> Vector2:
 	else:
 		var lateral_thrust_vector = Input.get_axis("thrust_left", "thrust_right")
 		var effective_throttle = throttle
-		if abs(throttle) < throttle_deadzone:
+		if abs(throttle) <= throttle_deadzone:
 			effective_throttle = 0.0
 		thrust_vector = Vector2(lateral_thrust_vector, -effective_throttle)
 		return thrust_vector

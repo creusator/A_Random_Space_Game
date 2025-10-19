@@ -88,6 +88,8 @@ func update_vfx(delta: float) -> void:
 	var thrust_force_direction_world = thruster_orientation.rotated(ship_rotation).normalized()
 	var thrust_input_local = input_component_2d.get_thrust_vector()
 	var thrust_input_world = thrust_input_local.rotated(ship_rotation)
+	
+	#Poussée linéaire
 	var intensity_input := 0.0
 	
 	if thrust_input_world.length() > 0.01:
@@ -114,19 +116,40 @@ func update_vfx(delta: float) -> void:
 		if dot_brake > 0.1:
 			intensity_brake = clamp(dot_brake * motion_component_2d.inertial_dampener_efficiency, 0.0, 1.0)
 	
-	var intensity = max(intensity_brake, intensity_input)
+	var intensity_translation = max(intensity_brake, intensity_input)
 	
+	#Rotation
+	var intensity_rotation := 0.0
+	
+	if side_thrust_power > 0:
+		var rotation_input = input_component_2d.get_rotation_dir()
+		var angular_velocity = motion_component_2d.angular_velocity_rad
+		var thruster_pos_local = position
+		var thruster_arm = thruster_pos_local.length()
+		
+		if thruster_arm > 0.1:
+			var thrust_dir_local = thruster_orientation
+			var torque_contribution = thruster_pos_local.cross(thrust_dir_local)
+			
+			if abs(rotation_input) > 0.01:
+				if sign(torque_contribution) == sign(rotation_input):
+					intensity_rotation = abs(rotation_input)
+			elif abs(angular_velocity) > 0.01 and motion_component_2d.rotation_dampeners_efficiency > 0.0:
+				if sign(torque_contribution) == -sign(angular_velocity):
+					var max_angular = motion_component_2d.max_rotation_speed
+					var angular_ratio = clamp(abs(angular_velocity) / max_angular, 0.0, 1.0)
+					intensity_rotation = angular_ratio * motion_component_2d.rotation_dampeners_efficiency
+	#Affichage
+	var intensity = max(intensity_translation, intensity_rotation)
+	var lerp_factor = clamp(vfx_transition_speed * delta, 0.0, 1.0)
 	if intensity > 0.001:
 		target_vfx_scale = initial_vfx_scale.y * (1.0 + intensity * vfx_scale_factor)
 		target_vfx_energy = initial_vfx_light_energy * intensity
 	else:
 		target_vfx_scale = initial_vfx_scale.y
 		target_vfx_energy = initial_vfx_light_energy
-	
-	var lerp_factor = clamp(vfx_transition_speed * delta, 0.0, 1.0)
 	vfx.scale.y = lerp(vfx.scale.y, target_vfx_scale, lerp_factor)
 	vfx.scale.x = initial_vfx_scale.x
-	
 	if vfx_light:
 		var flicker = randf_range(0.0, vfx_random_light_level * 0.2)
 		vfx_light.energy = lerp(vfx_light.energy, target_vfx_energy, lerp_factor)
