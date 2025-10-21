@@ -24,15 +24,22 @@ grow_vertical = 2
 
 [node name="PrecisionMode" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Precision mode : true"
 
-[node name="Throttle" type="ProgressBar" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 600)
+[node name="ForwardThrottle" type="ProgressBar" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 300)
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 6
-min_value = -100.0
+size_flags_vertical = 10
 fill_mode = 3
-show_percentage = false
+script = ExtResource("2_qsowj")
+
+[node name="BackwardThrottle" type="ProgressBar" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 300)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+fill_mode = 2
 script = ExtResource("2_qsowj")
