@@ -6,7 +6,7 @@ var thrust_vector: Vector2
 var rotation_direction: float
 var throttle: float = 0.0
 var throttle_speed: float = 0.5
-var throttle_deadzone: float = 0.1
+var throttle_deadzone: float = 0.05
 var precision_mode: bool = true
 var aim_to_target:bool = false
 var _toggle_state: bool = true
@@ -50,3 +50,6 @@ func get_rotation_dir() -> float:
 
 func reset_throttle():
 	throttle = 0.0
+
+func get_throttle_state() -> float:
+	return throttle

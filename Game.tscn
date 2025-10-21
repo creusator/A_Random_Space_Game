@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl2wfrt4wupur"]
+[gd_scene load_steps=7 format=3 uid="uid://bl2wfrt4wupur"]
 
 [ext_resource type="PackedScene" uid="uid://do78wutwh6no7" path="res://Backgrounds/Space/BackgroundSpace.tscn" id="1_sb48q"]
 [ext_resource type="PackedScene" uid="uid://d0lyfduv8cm45" path="res://Entities/Ships/NorikerMKI/NorikerMKI.tscn" id="1_u44n3"]
 [ext_resource type="Script" uid="uid://dq3r12sc157up" path="res://UI/Camera/Camera.gd" id="4_sb48q"]
 [ext_resource type="PackedScene" uid="uid://bq1j8bbq5k0n1" path="res://Entities/zDevObjects/Killbox.tscn" id="4_t88pq"]
 [ext_resource type="PackedScene" uid="uid://bs4dsk2ecagfa" path="res://UI/Menus/PauseMenu/PauseMenu.tscn" id="5_t88pq"]
+[ext_resource type="PackedScene" uid="uid://ddxmqkgb5ttm8" path="res://UI/HUD/hud_ship.tscn" id="6_r0x5m"]
 
 [node name="Main" type="Node2D"]
 
@@ -46,5 +47,8 @@ collision_layer = 4
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 50
+
+[node name="HUD_Ship" parent="UI" node_paths=PackedStringArray("ship") instance=ExtResource("6_r0x5m")]
+ship = NodePath("../../NorikerMKI")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("5_t88pq")]

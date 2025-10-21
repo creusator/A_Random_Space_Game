@@ -44,14 +44,14 @@ func player_movement_throttle(velocity: Vector2, thrust_input: Vector2, ship_rot
 	var velocity_error = target_velocity - velocity
 	var thrust_force = Vector2.ZERO
 	
-	if velocity_error.length() > 0.1:
+	if velocity_error.length() > 0.05:
 		thrust_force = velocity_error.normalized() * main_thrust_power
 	
 	var force_total = thrust_force * PIXEL_PER_METER
 	var acceleration = force_total / mass
 	var applied_velocity = velocity + acceleration * delta
 	
-	if velocity_error.length() < 3.5 and thrust_input.length() < 0.1:
+	if velocity_error.length() < 3.5 and thrust_input.length() < 0.05:
 		applied_velocity = Vector2.ZERO
 	elif applied_velocity.length() > max_local_speed:
 		applied_velocity = applied_velocity.normalized() * max_local_speed
@@ -62,14 +62,14 @@ func player_movement(velocity: Vector2, thrust_vector: Vector2, delta: float) ->
 	var thrust_force: Vector2 = calculate_thrust(thrust_vector)
 	var dampening_force: Vector2 = Vector2.ZERO
 	
-	if thrust_vector.length() < 0.1 and inertial_dampener_efficiency >= 0.0:
+	if thrust_vector.length() < 0.05 and inertial_dampener_efficiency >= 0.0:
 		dampening_force = calculate_dampening(velocity)
 	
 	var force_total: Vector2 = (thrust_force + dampening_force) * PIXEL_PER_METER
 	var acceleration: Vector2 = force_total / mass
 	var applied_velocity: Vector2 = velocity + acceleration * delta
 	
-	if thrust_vector.length() < 0.1 and applied_velocity.length() < 3.5:
+	if thrust_vector.length() < 0.05 and applied_velocity.length() < 3.5:
 		applied_velocity = Vector2.ZERO
 	elif applied_velocity.length() > max_local_speed:
 		applied_velocity = applied_velocity.normalized() * max_local_speed
@@ -82,7 +82,7 @@ func calculate_thrust(thrust_vector: Vector2) -> Vector2:
 	return Vector2.ZERO
 
 func calculate_dampening(velocity: Vector2) -> Vector2:
-	if inertial_dampener_efficiency <= 0.0 or velocity.length() < 0.1:
+	if inertial_dampener_efficiency <= 0.0 or velocity.length() < 0.05:
 		return Vector2.ZERO
 	var dampening_force = -velocity.normalized() * main_thrust_power * inertial_dampener_efficiency
 	return dampening_force
@@ -124,7 +124,7 @@ func aim_to_target(ship_position: Vector2, target_position: Vector2, delta: floa
 	var torque = 0.0
 	if abs(angle_to_target) <= stopping_distance:
 		torque = -sign(angular_velocity_rad) * side_thrust_power
-	elif sign(angular_velocity_rad) != target_direction and abs(angular_velocity_rad) > 0.1:
+	elif sign(angular_velocity_rad) != target_direction and abs(angular_velocity_rad) > 0.05:
 		torque = -sign(angular_velocity_rad) * side_thrust_power
 	else:
 		torque = target_direction * side_thrust_power
@@ -133,7 +133,7 @@ func aim_to_target(ship_position: Vector2, target_position: Vector2, delta: floa
 	angular_velocity_rad += angular_acceleration * delta
 	angular_velocity_rad = clamp(angular_velocity_rad, -max_rotation_speed, max_rotation_speed)
 	 
-	if abs(angle_to_target) < 0.05 and abs(angular_velocity_rad) < 0.1:
+	if abs(angle_to_target) < 0.05 and abs(angular_velocity_rad) < 0.05:
 		angular_velocity_rad = 0.0
 	rotation += angular_velocity_rad * delta
 	return rotation

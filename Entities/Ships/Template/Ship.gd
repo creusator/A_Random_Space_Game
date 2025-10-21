@@ -18,6 +18,7 @@ var is_powered:bool = false
 @onready var structural_components: StructuralComponentManager = $StructuralComponentManager
 @onready var internal_components: InternalComponentManager = $InternalComponentManager
 @onready var motion_component_2d: MotionComponent2D = $MotionComponent2D
+@onready var input_component_2d: InputComponent2D = $InputComponent2D
 
 func _ready() -> void:
 	update_ship_data()
@@ -63,6 +64,12 @@ func notify_power_state_changed() -> void:
 
 func get_power_state() -> bool:
 	return is_powered
+
+func get_throttle_state() -> float:
+	return input_component_2d.get_throttle_state()
+
+func get_precision_state() -> bool:
+	return input_component_2d.precision_mode
 
 func _on_chassis_destroyed() -> void:
 	self.queue_free()

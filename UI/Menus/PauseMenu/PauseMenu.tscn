@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cnb1ucxlpd5s1" path="res://UI/Menus/PauseMenu/PauseMenu.gd" id="1_etnfi"]
 [ext_resource type="Shader" uid="uid://wsv2d532da3n" path="res://Scripts/Shaders/Menu/MenuBlur.gdshader" id="1_nov15"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_etnfi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1dqgo"]
 shader = ExtResource("1_nov15")
 shader_parameter/blur = 0.0
 
@@ -58,7 +58,7 @@ grow_vertical = 2
 script = ExtResource("1_etnfi")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_etnfi")
+material = SubResource("ShaderMaterial_1dqgo")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
