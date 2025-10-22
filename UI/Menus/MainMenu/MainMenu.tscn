@@ -1,25 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://tj5g2m158dey"]
+[gd_scene load_steps=5 format=3 uid="uid://tj5g2m158dey"]
 
 [ext_resource type="Script" uid="uid://1wae0onivlyx" path="res://UI/Menus/MainMenu/MainMenu.gd" id="1_c6aju"]
+[ext_resource type="Shader" uid="uid://wsv2d532da3n" path="res://Scripts/Shaders/Menu/MenuBlur.gdshader" id="2_iloxp"]
 [ext_resource type="PackedScene" uid="uid://do78wutwh6no7" path="res://Backgrounds/Space/BackgroundSpace.tscn" id="2_rlwnk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlwnk"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-draw_center = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygqeo"]
+shader = ExtResource("2_iloxp")
+shader_parameter/blur = 1.50000007125
 
-[node name="Panel" type="Panel"]
+[node name="MainMenu" type="Control"]
 process_mode = 3
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rlwnk")
 script = ExtResource("1_c6aju")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_ygqeo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3882353, 0.3882353, 0.3882353, 1)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("2_rlwnk")]
 
 [node name="Title" type="Label" parent="."]
+z_index = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -34,6 +47,7 @@ text = "ARandomSpaceGame"
 horizontal_alignment = 1
 
 [node name="Feedback" type="Label" parent="."]
+z_index = 2
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -46,6 +60,7 @@ theme_override_font_sizes/font_size = 20
 text = "You are welcome to do any feedback, reach me on discord or publish a new issue on the repo."
 
 [node name="MainMenuButtons" type="VBoxContainer" parent="."]
+z_index = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
@@ -55,23 +70,29 @@ anchor_bottom = 0.8
 theme_override_constants/separation = 50
 
 [node name="PlayButton" type="Button" parent="MainMenuButtons"]
+z_index = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Play"
 
-[node name="Button" type="Button" parent="MainMenuButtons"]
+[node name="SettingsButton" type="Button" parent="MainMenuButtons"]
+z_index = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="MainMenuButtons"]
+z_index = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Quit"
 
 [node name="Version" type="Label" parent="MainMenuButtons"]
+z_index = 2
 layout_mode = 2
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 30
 text = "[PLACEHOLDER]"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="MainMenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]

@@ -41,9 +41,13 @@ func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _on_settings_button_pressed() -> void:
-	pass
+	get_tree().paused = false
+	GlobalVariables.previous_scene = get_tree().current_scene.scene_file_path
+	get_tree().change_scene_to_file("res://UI/Menus/SettingsMenu/SettingsMenu.tscn")
 
 func _on_main_menu_button_pressed() -> void:
+	get_tree().paused = false
+	GlobalVariables.previous_scene = get_tree().current_scene.scene_file_path
 	get_tree().change_scene_to_file("res://UI/Menus/MainMenu/MainMenu.tscn")
 
 func _on_quit_button_pressed() -> void:

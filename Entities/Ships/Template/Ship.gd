@@ -71,6 +71,12 @@ func get_throttle_state() -> float:
 func get_precision_state() -> bool:
 	return input_component_2d.precision_mode
 
+var smoothed_speed := 0.0
+func get_velocity_value() -> int:
+	var real_speed = velocity.length() / 10.0
+	smoothed_speed = lerp(smoothed_speed, real_speed, 0.1)
+	return int(round(smoothed_speed))
+
 func _on_chassis_destroyed() -> void:
 	self.queue_free()
 

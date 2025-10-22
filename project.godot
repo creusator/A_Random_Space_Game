@@ -23,7 +23,6 @@ GlobalVariables="*res://Scripts/GlobalVariables.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="viewport"
 
 [editor]
 
@@ -116,5 +115,4 @@ reset_throttle={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-anti_aliasing/quality/msaa_2d=3
-anti_aliasing/quality/use_taa=true
+anti_aliasing/quality/screen_space_aa=2

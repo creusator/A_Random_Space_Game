@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddxmqkgb5ttm8"]
+[gd_scene load_steps=2 format=3 uid="uid://ddxmqkgb5ttm8"]
 
 [ext_resource type="Script" uid="uid://c3kkgr8wgfw2w" path="res://UI/HUD/hud_ship.gd" id="1_6bjsg"]
-[ext_resource type="Script" uid="uid://ba3dwio5dpory" path="res://UI/HUD/ThrottleUI.gd" id="2_qsowj"]
 
 [node name="HUD_Ship" type="Control"]
 layout_mode = 3
@@ -34,7 +33,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 10
 fill_mode = 3
-script = ExtResource("2_qsowj")
 
 [node name="BackwardThrottle" type="ProgressBar" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 300)
@@ -42,4 +40,9 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 2
 fill_mode = 2
-script = ExtResource("2_qsowj")
+
+[node name="Velocity" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000 m/s"
+horizontal_alignment = 2

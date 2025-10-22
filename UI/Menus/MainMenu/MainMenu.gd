@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 @onready var play_button:Button = $MainMenuButtons/PlayButton
 @onready var quit_button:Button = $MainMenuButtons/QuitButton
@@ -10,7 +10,12 @@ func _ready() -> void:
 	version_label.text = GlobalVariables.version
 
 func _on_play_button_pressed() -> void:
+	GlobalVariables.previous_scene = get_tree().current_scene.scene_file_path
 	get_tree().change_scene_to_file("res://Game.tscn")
+
+func _on_settings_button_pressed() -> void:
+	GlobalVariables.previous_scene = get_tree().current_scene.scene_file_path
+	get_tree().change_scene_to_file("res://UI/Menus/SettingsMenu/SettingsMenu.tscn")
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

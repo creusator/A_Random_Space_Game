@@ -1,11 +1,7 @@
 class_name Camera
 extends Camera2D
 
-
-enum MODES { TARGET, TARGET_MOUSE_BLENDED }
-
 @export var target: Node
-@export var mode: MODES = MODES.TARGET_MOUSE_BLENDED
 @export var camera_smooth_speed: float
 @export var zoom_speed: float = 5.0
 @export var max_zoom: float = 2.0
@@ -32,13 +28,13 @@ func CameraMove(delta: float) -> void:
 	if not target:
 		return
 		
-	match mode:
-		MODES.TARGET:
+	match GlobalVariables.camera_mode:
+		0:
 			target_position = target.global_position
 			if target_position != Vector2.INF:
 				global_position = target_position
 				
-		MODES.TARGET_MOUSE_BLENDED:
+		1:
 			var target_pos = target.global_position
 			var mouse_pos = get_global_mouse_position()
 			var mouse_dist = (mouse_pos - target_pos).length()

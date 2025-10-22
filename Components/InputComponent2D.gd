@@ -6,7 +6,7 @@ var thrust_vector: Vector2
 var rotation_direction: float
 var throttle: float = 0.0
 var throttle_speed: float = 0.5
-var throttle_deadzone: float = 0.05
+var throttle_deadzone: float = 0.02
 var precision_mode: bool = true
 var aim_to_target:bool = false
 var _toggle_state: bool = true

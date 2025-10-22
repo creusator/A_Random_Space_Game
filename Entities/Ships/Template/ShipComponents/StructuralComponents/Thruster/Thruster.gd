@@ -103,7 +103,7 @@ func update_vfx(delta: float) -> void:
 	var speed = ship_velocity.length()
 	var braking_intent := false
 	
-	if thrust_input_world.length() < 0.05 and speed > 1.0:
+	if thrust_input_world.length() < 0.01 and speed > 1.0:
 		braking_intent = true
 	elif thrust_input_world.length() > 0.1:
 		var dot_velocity = ship_velocity.normalized().dot(thrust_input_world.normalized())

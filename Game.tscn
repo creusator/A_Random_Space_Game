@@ -11,7 +11,7 @@
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 scale = Vector2(1.01469, 1.02335)
-color = Color(0.21230468, 0.21230492, 0.21230477, 1)
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
 [node name="NorikerMKI" parent="." instance=ExtResource("1_u44n3")]
 

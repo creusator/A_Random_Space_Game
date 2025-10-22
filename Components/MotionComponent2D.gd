@@ -44,14 +44,14 @@ func player_movement_throttle(velocity: Vector2, thrust_input: Vector2, ship_rot
 	var velocity_error = target_velocity - velocity
 	var thrust_force = Vector2.ZERO
 	
-	if velocity_error.length() > 0.05:
+	if velocity_error.length() > 0.01:
 		thrust_force = velocity_error.normalized() * main_thrust_power
 	
 	var force_total = thrust_force * PIXEL_PER_METER
 	var acceleration = force_total / mass
 	var applied_velocity = velocity + acceleration * delta
 	
-	if velocity_error.length() < 3.5 and thrust_input.length() < 0.05:
+	if velocity_error.length() < 3.5 and thrust_input.length() < 0.01:
 		applied_velocity = Vector2.ZERO
 	elif applied_velocity.length() > max_local_speed:
 		applied_velocity = applied_velocity.normalized() * max_local_speed
