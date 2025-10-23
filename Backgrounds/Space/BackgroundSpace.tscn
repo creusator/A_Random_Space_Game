@@ -1,4 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://do78wutwh6no7"]
+[gd_scene load_steps=22 format=3 uid="uid://do78wutwh6no7"]
+
+[ext_resource type="Script" uid="uid://bkaxdym1d5cg8" path="res://Backgrounds/Space/BackgroundSpace.gd" id="1_7gtgh"]
 
 [sub_resource type="Gradient" id="Gradient_3td3w"]
 offsets = PackedFloat32Array(0, 0.0446097, 0.847584, 1)
@@ -103,15 +105,20 @@ scale_curve = SubResource("CurveTexture_h6p4p")
 color_ramp = SubResource("GradientTexture1D_2lqwn")
 
 [node name="SpaceBackground" type="ParallaxBackground"]
+follow_viewport_scale = 3.655
 scroll_ignore_camera_zoom = true
+script = ExtResource("1_7gtgh")
 
 [node name="Skybox" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BackgroundStars" type="GPUParticles2D" parent="Skybox"]
-amount = 125
+amount = 150
 lifetime = 60.0
 preprocess = 240.0
 visibility_rect = Rect2(0, 0, 1920, 1080)
@@ -123,7 +130,7 @@ motion_scale = Vector2(0.05, 0.05)
 motion_mirroring = Vector2(1920, 1080)
 
 [node name="Stars" type="GPUParticles2D" parent="FurthestLayer"]
-amount = 75
+amount = 85
 lifetime = 60.0
 preprocess = 240.0
 visibility_rect = Rect2(0, 0, 1920, 1080)
@@ -135,7 +142,7 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1920, 1080)
 
 [node name="Stars" type="GPUParticles2D" parent="ClosestLayer"]
-amount = 50
+amount = 60
 lifetime = 60.0
 preprocess = 240.0
 visibility_rect = Rect2(0, 0, 1920, 1080)

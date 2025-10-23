@@ -30,69 +30,72 @@ grow_vertical = 2
 color = Color(0.3882353, 0.3882353, 0.3882353, 1)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("2_rlwnk")]
+front_layer_enabled = false
 
-[node name="Title" type="Label" parent="."]
-z_index = 2
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.05
-anchor_right = 0.9
-anchor_bottom = 0.2
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="MarginContainer"]
+z_index = 2
+layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 135
 text = "ARandomSpaceGame"
 horizontal_alignment = 1
 
-[node name="Feedback" type="Label" parent="."]
+[node name="Feedback" type="Label" parent="MarginContainer"]
 z_index = 2
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 726.0
-grow_vertical = 0
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 0.8392157, 0.2, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 20
 text = "You are welcome to do any feedback, reach me on discord or publish a new issue on the repo."
 
-[node name="MainMenuButtons" type="VBoxContainer" parent="."]
+[node name="MainMenuButtons" type="VBoxContainer" parent="MarginContainer"]
 z_index = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.4
-anchor_top = 0.3
-anchor_right = 0.6
-anchor_bottom = 0.8
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 50
 
-[node name="PlayButton" type="Button" parent="MainMenuButtons"]
+[node name="PlayButton" type="Button" parent="MarginContainer/MainMenuButtons"]
 z_index = 2
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 60
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="MainMenuButtons"]
+[node name="SettingsButton" type="Button" parent="MarginContainer/MainMenuButtons"]
 z_index = 2
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 60
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="MainMenuButtons"]
+[node name="QuitButton" type="Button" parent="MarginContainer/MainMenuButtons"]
 z_index = 2
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 60
 text = "Quit"
 
-[node name="Version" type="Label" parent="MainMenuButtons"]
+[node name="Version" type="Label" parent="MarginContainer/MainMenuButtons"]
 z_index = 2
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.43529412, 0.23529412, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 30
 text = "[PLACEHOLDER]"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="MainMenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]

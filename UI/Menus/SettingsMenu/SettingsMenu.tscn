@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_edm70"]
 shader = ExtResource("1_uftqt")
-shader_parameter/blur = 1.5000000712500001
+shader_parameter/blur = 1.50000007125
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_aff3m")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("1_edm70")]
+front_layer_enabled = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 1
@@ -43,34 +44,52 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 30
 
 [node name="Settings" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.8392157, 0, 1)
+theme_override_colors/font_color = Color(1, 0.8392157, 0.2, 1)
 theme_override_font_sizes/font_size = 40
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Graphics" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Video" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 3
 
-[node name="GraphicsLabel" type="Label" parent="MarginContainer/VBoxContainer/Graphics"]
+[node name="VideoLable" type="Label" parent="MarginContainer/VBoxContainer/Video"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.43529412, 0.23529412, 1)
 theme_override_font_sizes/font_size = 30
-text = "Graphics"
+text = "Video"
 
-[node name="ResolutionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Graphics"]
+[node name="WindowModeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Video"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 3
 
-[node name="ResolutionLabel" type="Label" parent="MarginContainer/VBoxContainer/Graphics/ResolutionContainer"]
+[node name="WindowModeLabel" type="Label" parent="MarginContainer/VBoxContainer/Video/WindowModeContainer"]
+layout_mode = 2
+text = "Mode : "
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/Video/WindowModeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Windowed"
+popup/item_0/id = 1
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 0
+
+[node name="ResolutionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Video"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResolutionLabel" type="Label" parent="MarginContainer/VBoxContainer/Video/ResolutionContainer"]
 layout_mode = 2
 text = "Resolution : "
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/Graphics/ResolutionContainer"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/Video/ResolutionContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 1
@@ -82,15 +101,15 @@ popup/item_1/id = 0
 popup/item_2/text = "2560 x 1440"
 popup/item_2/id = 2
 
-[node name="AAContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Graphics"]
+[node name="AAContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Video"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 3
 
-[node name="VsyncLabel" type="Label" parent="MarginContainer/VBoxContainer/Graphics/AAContainer"]
+[node name="VsyncLabel" type="Label" parent="MarginContainer/VBoxContainer/Video/AAContainer"]
 layout_mode = 2
 text = "Antialiasing : "
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/Graphics/AAContainer"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/Video/AAContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 2
@@ -102,27 +121,27 @@ popup/item_1/id = 1
 popup/item_2/text = "SMAA"
 popup/item_2/id = 2
 
-[node name="VsyncContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Graphics"]
+[node name="VsyncContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Video"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 3
 
-[node name="VsyncLabel" type="Label" parent="MarginContainer/VBoxContainer/Graphics/VsyncContainer"]
+[node name="VsyncLabel" type="Label" parent="MarginContainer/VBoxContainer/Video/VsyncContainer"]
 layout_mode = 2
 text = "Vsync : "
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/Graphics/VsyncContainer"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/Video/VsyncContainer"]
 layout_mode = 2
 button_pressed = true
 
-[node name="FpsCapContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Graphics"]
+[node name="FpsCapContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Video"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 3
 
-[node name="FpsCapLabel" type="Label" parent="MarginContainer/VBoxContainer/Graphics/FpsCapContainer"]
+[node name="FpsCapLabel" type="Label" parent="MarginContainer/VBoxContainer/Video/FpsCapContainer"]
 layout_mode = 2
 text = "FPS limit : "
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Graphics/FpsCapContainer"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Video/FpsCapContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -131,7 +150,7 @@ max_value = 400.0
 value = 200.0
 scrollable = false
 
-[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/Graphics/FpsCapContainer"]
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/Video/FpsCapContainer"]
 layout_mode = 2
 min_value = 30.0
 max_value = 400.0
@@ -141,15 +160,18 @@ suffix = "fps"
 
 [node name="Camera" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 4
 
 [node name="CameraLabel" type="Label" parent="MarginContainer/VBoxContainer/Camera"]
 layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(1, 0.43529412, 0.23529412, 1)
 theme_override_font_sizes/font_size = 30
 text = "Camera"
 
 [node name="CameraMode" type="OptionButton" parent="MarginContainer/VBoxContainer/Camera"]
 layout_mode = 2
+size_flags_vertical = 2
 selected = 1
 item_count = 2
 popup/item_0/text = "Focus"
@@ -159,15 +181,18 @@ popup/item_1/id = 1
 
 [node name="Controls" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 3
 
 [node name="ControlsLabel" type="Label" parent="MarginContainer/VBoxContainer/Controls"]
 layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(1, 0.43529412, 0.23529412, 1)
 theme_override_font_sizes/font_size = 30
 text = "Controls"
 
 [node name="ThrottleDeadzoneContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Controls"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="ThrottleDeadzoneLabel" type="Label" parent="MarginContainer/VBoxContainer/Controls/ThrottleDeadzoneContainer"]
 layout_mode = 2
@@ -190,11 +215,13 @@ alignment = 2
 
 [node name="ControlsTipsLabel" type="Label" parent="MarginContainer/VBoxContainer/Controls"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Current keybinds (currently not configurable) :
 - Z to throttle forward / S to throttle backward
 - Q to rotate left / D to rotate right
 - A to strafe left / E to strafe right
 - P toggle precision mode (cruise control)
+- X set throttle to zero
 - Right click toggle aim to cursor"
 
 [node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -216,11 +243,12 @@ theme_override_font_sizes/font_size = 30
 text = "Apply
 "
 
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/Graphics/ResolutionContainer/OptionButton" to="." method="_on_resolution_selected"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/Graphics/AAContainer/OptionButton" to="." method="_on_antialiasing_selected"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Graphics/VsyncContainer/CheckBox" to="." method="_on_vsync_toggled"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/Graphics/FpsCapContainer/HSlider" to="." method="_on_fps_cap_slide_changed"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/Graphics/FpsCapContainer/SpinBox" to="." method="_on_fsp_cap_box_changed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Video/WindowModeContainer/OptionButton" to="." method="_on_window_mode_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Video/ResolutionContainer/OptionButton" to="." method="_on_resolution_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Video/AAContainer/OptionButton" to="." method="_on_antialiasing_selected"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Video/VsyncContainer/CheckBox" to="." method="_on_vsync_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Video/FpsCapContainer/HSlider" to="." method="_on_fps_cap_slide_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Video/FpsCapContainer/SpinBox" to="." method="_on_fsp_cap_box_changed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/Camera/CameraMode" to="." method="_on_camera_mode_selected"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Controls/ThrottleDeadzoneContainer/HSlider" to="." method="_on_throttle_slider_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Controls/ThrottleDeadzoneContainer/SpinBox" to="." method="_on_throttle_boxs_changed"]

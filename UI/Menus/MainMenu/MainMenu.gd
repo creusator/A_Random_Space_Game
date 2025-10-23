@@ -1,8 +1,10 @@
 extends Control
 
-@onready var play_button:Button = $MainMenuButtons/PlayButton
-@onready var quit_button:Button = $MainMenuButtons/QuitButton
-@onready var version_label:Label = $MainMenuButtons/Version
+@onready var play_button: Button = $MarginContainer/MainMenuButtons/PlayButton
+@onready var settings_button: Button = $MarginContainer/MainMenuButtons/SettingsButton
+@onready var quit_button: Button = $MarginContainer/MainMenuButtons/QuitButton
+@onready var version_label: Label = $MarginContainer/MainMenuButtons/Version
+
 
 func _ready() -> void:
 	play_button.pressed.connect(_on_play_button_pressed)
