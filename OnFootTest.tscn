@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2fs12sd37rjv"]
 
 [ext_resource type="PackedScene" uid="uid://dgm6lx2u4lxpy" path="res://Backgrounds/TestingEnvironement/BackgroundTesting.tscn" id="1_7rl7j"]
-[ext_resource type="PackedScene" uid="uid://b3gmb5k3rernn" path="res://Entities/Persons/Player/character_body_2d.tscn" id="2_1e0um"]
+[ext_resource type="PackedScene" uid="uid://b3gmb5k3rernn" path="res://Entities/OnFootEntities/Player/Player.tscn" id="2_1e0um"]
 [ext_resource type="Script" uid="uid://dq3r12sc157up" path="res://UI/Camera/Camera.gd" id="3_borlt"]
 
 [node name="Node2D" type="Node2D"]

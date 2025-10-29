@@ -1,22 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3gmb5k3rernn"]
+[gd_scene load_steps=6 format=3 uid="uid://b3gmb5k3rernn"]
 
 [ext_resource type="Texture2D" uid="uid://cihenxutmvlot" path="res://Assets/Human/WIP-Human.png" id="1_2xc6r"]
-[ext_resource type="Script" uid="uid://qijnpq13dxpv" path="res://Entities/Persons/Player/Player.gd" id="1_j7lsc"]
+[ext_resource type="Script" uid="uid://qijnpq13dxpv" path="res://Entities/OnFootEntities/Player/Player.gd" id="1_j7lsc"]
 [ext_resource type="Script" uid="uid://cqu61yysgcrfp" path="res://Components/Player/PlayerMotionComponent2D.gd" id="2_87vck"]
 [ext_resource type="Script" uid="uid://qoira32srma4" path="res://Components/Player/PlayerInputComponent2D.gd" id="3_j7lsc"]
+[ext_resource type="Script" uid="uid://cyo0jui1qln2j" path="res://Scripts/StateMachines/Player/PlayerStateMachine.gd" id="5_7p1is"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_j7lsc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 0
 texture = ExtResource("1_2xc6r")
 
-[node name="PlayerMotionComponent2D" type="Node2D" parent="." node_paths=PackedStringArray("controller", "controlled")]
+[node name="PlayerMotionComponent2D" type="Node2D" parent="." node_paths=PackedStringArray("controlled")]
 script = ExtResource("2_87vck")
-controller = NodePath("../PlayerInputComponent2D")
 controlled = NodePath("..")
 metadata/_custom_type_script = "uid://cqu61yysgcrfp"
 
 [node name="PlayerInputComponent2D" type="Node" parent="."]
 script = ExtResource("3_j7lsc")
 metadata/_custom_type_script = "uid://qoira32srma4"
+
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource("5_7p1is")
+metadata/_custom_type_script = "uid://cyo0jui1qln2j"

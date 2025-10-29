@@ -6,7 +6,7 @@ func enter() -> void:
 
 func physics_update(delta: float) -> void:
 	if is_powered():
-		state_machine.transition_to("PrecisionFlightState")
+		state_machine.transition_to("ShipIdleState")
 		return
 	
 	var motion = get_motion()

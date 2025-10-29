@@ -13,6 +13,7 @@ var fuel_consumption: float
 var fuel_current_capacity: float
 var moment_of_inertia_factor: float
 var is_powered: bool = false
+var is_piloted: bool = true
 
 @onready var structural_components: StructuralComponentManager = $StructuralComponentManager
 @onready var internal_components: InternalComponentManager = $InternalComponentManager

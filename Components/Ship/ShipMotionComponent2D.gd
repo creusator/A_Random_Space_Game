@@ -1,7 +1,7 @@
 class_name ShipMotionComponent2D
 extends MotionComponent2D
 
-@export var controlled: CharacterBody2D
+@export var controlled:Ship
 
 const PIXEL_PER_METER = GlobalVariables.PIXEL_PER_METER
 
@@ -26,43 +26,49 @@ func initialize() -> void:
 	max_rotation_speed = int(deg_to_rad(controlled.max_rotation_speed))
 	moment_of_inertia_factor = controlled.moment_of_inertia_factor
 
-func player_movement_throttle(velocity: Vector2, thrust_input: Vector2, ship_rotation: float, delta: float) -> Vector2:
-	var target_velocity = Vector2(thrust_input.x * max_local_speed, thrust_input.y * max_local_speed).rotated(ship_rotation)
-	var velocity_error = target_velocity - velocity
-	var thrust_force = Vector2.ZERO
+func ship_movement_throttle(velocity: Vector2, thrust_input: Vector2, current_rotation: float, delta: float) -> Vector2:
+	var thrust_direction = Vector2(thrust_input.x, thrust_input.y).rotated(current_rotation)
+	var thrust_magnitude = thrust_input.length()
 	
-	if velocity_error.length() > 0.01:
-		thrust_force = velocity_error.normalized() * main_thrust_power
+	var thrust_force = Vector2.ZERO
+	if thrust_magnitude > 0.01:
+		thrust_force = thrust_direction.normalized() * main_thrust_power * thrust_magnitude
 	
 	var force_total = thrust_force * PIXEL_PER_METER
 	var acceleration = force_total / mass
 	var applied_velocity = velocity + acceleration * delta
 	
-	if velocity_error.length() < 3.5 and thrust_input.length() < 0.01:
-		applied_velocity = Vector2.ZERO
-	elif applied_velocity.length() > max_local_speed:
+	if applied_velocity.length() > max_local_speed:
 		applied_velocity = applied_velocity.normalized() * max_local_speed
 	
-	current_applied_velocity = applied_velocity.normalized()
+	current_applied_velocity = applied_velocity.normalized() if applied_velocity.length() > 0.01 else Vector2.ZERO
 	return applied_velocity
 
-func player_movement(velocity: Vector2, thrust_vector: Vector2, delta: float) -> Vector2:
+func ship_movement_precision(velocity: Vector2, thrust_vector: Vector2, delta: float) -> Vector2:
 	var thrust_force: Vector2 = calculate_thrust(thrust_vector)
-	var dampening_force: Vector2 = Vector2.ZERO
-	
-	if thrust_vector.length() < 0.05 and inertial_dampener_efficiency >= 0.0:
-		dampening_force = calculate_dampening(velocity)
-	
-	var force_total: Vector2 = (thrust_force + dampening_force) * PIXEL_PER_METER
+	var force_total: Vector2 = thrust_force * PIXEL_PER_METER
 	var acceleration: Vector2 = force_total / mass
 	var applied_velocity: Vector2 = velocity + acceleration * delta
 	
-	if thrust_vector.length() < 0.05 and applied_velocity.length() < 3.5:
-		applied_velocity = Vector2.ZERO
-	elif applied_velocity.length() > max_local_speed:
+	if applied_velocity.length() > max_local_speed:
 		applied_velocity = applied_velocity.normalized() * max_local_speed
 	
-	current_applied_velocity = applied_velocity.normalized()
+	current_applied_velocity = applied_velocity.normalized() if applied_velocity.length() > 0.01 else Vector2.ZERO
+	return applied_velocity
+
+func ship_movement_damp(velocity: Vector2, delta: float) -> Vector2:
+	if velocity.length() < 3.5:
+		return Vector2.ZERO
+	
+	var dampening_force = -velocity.normalized() * main_thrust_power * inertial_dampener_efficiency
+	var force_total = dampening_force * PIXEL_PER_METER
+	var acceleration = force_total / mass
+	var applied_velocity = velocity + acceleration * delta
+	
+	if velocity.dot(applied_velocity) < 0:
+		applied_velocity = Vector2.ZERO
+	
+	current_applied_velocity = applied_velocity.normalized() if applied_velocity.length() > 0.01 else Vector2.ZERO
 	return applied_velocity
 
 func calculate_thrust(thrust_vector: Vector2) -> Vector2:
@@ -70,26 +76,30 @@ func calculate_thrust(thrust_vector: Vector2) -> Vector2:
 		return thrust_vector.normalized() * main_thrust_power * thrust_vector.length()
 	return Vector2.ZERO
 
-func calculate_dampening(velocity: Vector2) -> Vector2:
-	if inertial_dampener_efficiency <= 0.0 or velocity.length() < 0.05:
-		return Vector2.ZERO
-	var dampening_force = -velocity.normalized() * main_thrust_power * inertial_dampener_efficiency
-	return dampening_force
-
-func player_rotation(rotation_direction: float, delta: float) -> float:
+func ship_rotation(rotation_direction: float, delta: float) -> float:
 	var current_rotation = controlled.rotation
 	var moment_of_inertia = calculate_moment()
 	var torque = calculate_torque(rotation_direction)
-
-	if abs(rotation_direction) < 0.01 and rotation_dampeners_efficiency > 0.0:
-		var damping_torque = -angular_velocity_rad * (side_thrust_power * rotation_dampeners_efficiency)
-		torque += damping_torque
 	
 	var angular_acceleration = torque / moment_of_inertia
 	angular_velocity_rad += angular_acceleration * delta
 	angular_velocity_rad = clamp(angular_velocity_rad, -max_rotation_speed, max_rotation_speed)
 	
-	if abs(rotation_direction) < 0.01 and abs(angular_velocity_rad) < 0.008:
+	var new_rotation = current_rotation + angular_velocity_rad * delta
+	return new_rotation
+
+func ship_rotation_damp(delta: float) -> float:
+	if abs(angular_velocity_rad) < 0.008:
+		angular_velocity_rad = 0.0
+		return controlled.rotation
+	
+	var current_rotation = controlled.rotation
+	var moment_of_inertia = calculate_moment()
+	var damping_torque = -sign(angular_velocity_rad) * side_thrust_power * rotation_dampeners_efficiency
+	
+	var angular_acceleration = damping_torque / moment_of_inertia
+	angular_velocity_rad += angular_acceleration * delta
+	if abs(angular_velocity_rad) < 0.008:
 		angular_velocity_rad = 0.0
 	
 	var new_rotation = current_rotation + angular_velocity_rad * delta

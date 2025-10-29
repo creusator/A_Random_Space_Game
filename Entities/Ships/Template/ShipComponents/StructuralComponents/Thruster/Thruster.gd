@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 		random_light_timer = random.randf_range(0.5, 3.0)
 		vfx_random_light_level = random.randf_range(0.0, 0.4)
 	
-	if vfx and ship:
+	if vfx and ship and ship.is_piloted:
 		update_vfx(delta)
 
 func on_powered() -> void:

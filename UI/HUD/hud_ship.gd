@@ -16,6 +16,10 @@ func _process(_delta: float) -> void:
 		precision_mode.text = ("Ship destroyed, restart from pause menu")
 		velocity_label.text = ("0 m/s")
 		return
+	if ship.is_piloted == false:
+		hide()
+	else:
+		show()
 	ship_throttle_value = ship.get_throttle_state()
 	if ship_throttle_value >= 0.0:
 		forward_throttle.set_value_no_signal(ship_throttle_value*100)

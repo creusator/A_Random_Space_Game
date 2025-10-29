@@ -5,11 +5,11 @@
 [ext_resource type="Script" uid="uid://dm36kx3fhfyjb" path="res://Entities/Ships/Template/Managers/StructuralComponentManager.gd" id="2_b31lw"]
 [ext_resource type="Script" uid="uid://qj4bt3np6nrt" path="res://Components/Ship/ShipInputComponent2D.gd" id="3_b31lw"]
 [ext_resource type="Script" uid="uid://bwh4572esbrqv" path="res://Entities/Ships/Template/Managers/InternalComponentManager.gd" id="3_m7yxy"]
-[ext_resource type="Script" uid="uid://dqy23tv878fh6" path="res://Scripts/StateMachines/Ship/States/PrecisionFlightState.gd" id="5_eddnc"]
-[ext_resource type="Script" uid="uid://bsnvwn8cx252c" path="res://Scripts/StateMachines/Ship/States/ThrottleFlightState.gd" id="6_ec12r"]
 [ext_resource type="Script" uid="uid://cr3n2gq063w8y" path="res://Scripts/StateMachines/Ship/ShipStateMachine.gd" id="6_l7he0"]
 [ext_resource type="Script" uid="uid://dnquy3rtqicuy" path="res://Scripts/StateMachines/Ship/States/UnpoweredState.gd" id="7_l7he0"]
+[ext_resource type="Script" uid="uid://dqy23tv878fh6" path="res://Scripts/StateMachines/Ship/States/ShipMovingState.gd" id="9_eddnc"]
 [ext_resource type="Script" uid="uid://bkg866gq7onp1" path="res://Scripts/StateMachines/Ship/States/DestroyedState.gd" id="10_ec12r"]
+[ext_resource type="Script" uid="uid://c3omvhssgk73l" path="res://Scripts/StateMachines/Ship/States/ShipIdleState.gd" id="10_l7he0"]
 
 [node name="Ship" type="CharacterBody2D"]
 motion_mode = 1
@@ -36,14 +36,6 @@ script = ExtResource("6_l7he0")
 initial_state = NodePath("UnpoweredState")
 metadata/_custom_type_script = "uid://cr3n2gq063w8y"
 
-[node name="PrecisionFlightState" type="Node" parent="ShipStateMachine"]
-script = ExtResource("5_eddnc")
-metadata/_custom_type_script = "uid://dqy23tv878fh6"
-
-[node name="ThrottleFlightState" type="Node" parent="ShipStateMachine"]
-script = ExtResource("6_ec12r")
-metadata/_custom_type_script = "uid://bsnvwn8cx252c"
-
 [node name="UnpoweredState" type="Node" parent="ShipStateMachine"]
 script = ExtResource("7_l7he0")
 metadata/_custom_type_script = "uid://dnquy3rtqicuy"
@@ -51,3 +43,11 @@ metadata/_custom_type_script = "uid://dnquy3rtqicuy"
 [node name="DestroyedState" type="Node" parent="ShipStateMachine"]
 script = ExtResource("10_ec12r")
 metadata/_custom_type_script = "uid://bkg866gq7onp1"
+
+[node name="ShipMovingState" type="Node" parent="ShipStateMachine"]
+script = ExtResource("9_eddnc")
+metadata/_custom_type_script = "uid://dqy23tv878fh6"
+
+[node name="ShipIdleState" type="Node" parent="ShipStateMachine"]
+script = ExtResource("10_l7he0")
+metadata/_custom_type_script = "uid://c3omvhssgk73l"
