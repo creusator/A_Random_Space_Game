@@ -6,7 +6,7 @@ signal component_destroyed(component:ShipComponent)
 @export var structural_parent:ShipComponent
 @onready var health_component:HealthComponent = get_node("HealthComponent")
 
-var is_ship_powered:bool = true
+var is_ship_powered:bool
 
 func _ready() -> void:
 	health_component.health_depleted.connect(_on_health_component_health_depleted)

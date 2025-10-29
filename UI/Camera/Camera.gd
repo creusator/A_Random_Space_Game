@@ -27,14 +27,14 @@ func _physics_process(delta: float) -> void:
 func CameraMove(delta: float) -> void:
 	if not target:
 		return
-		
+	
 	match GlobalVariables.camera_mode:
-		0:
+		0:  #Mode target
 			target_position = target.global_position
 			if target_position != Vector2.INF:
 				global_position = target_position
 				
-		1:
+		1:  #Mode target mouse blended
 			var target_pos = target.global_position
 			var mouse_pos = get_global_mouse_position()
 			var mouse_dist = (mouse_pos - target_pos).length()
@@ -48,7 +48,7 @@ func CameraZoom(delta: float) -> void:
 		zoom_target *= 1.1
 	if Input.is_action_just_pressed("zoom_out"):
 		zoom_target *= 0.9
-		
+	
 	zoom_target.x = clamp(zoom_target.x, min_zoom, max_zoom)
 	zoom_target.y = clamp(zoom_target.y, min_zoom, max_zoom)
 	zoom = zoom.lerp(zoom_target, zoom_speed * delta)
