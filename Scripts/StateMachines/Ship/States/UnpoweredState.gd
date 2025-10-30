@@ -1,9 +1,6 @@
 class_name UnpoweredState
 extends ShipState
 
-func enter() -> void:
-	print("Ship lost power! Drifting...")
-
 func physics_update(delta: float) -> void:
 	if is_powered():
 		state_machine.transition_to("ShipIdleState")

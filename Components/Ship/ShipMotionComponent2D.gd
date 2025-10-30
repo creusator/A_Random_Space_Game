@@ -27,13 +27,17 @@ func initialize() -> void:
 	moment_of_inertia_factor = controlled.moment_of_inertia_factor
 
 func ship_movement_throttle(velocity: Vector2, thrust_input: Vector2, current_rotation: float, delta: float) -> Vector2:
-	var thrust_direction = Vector2(thrust_input.x, thrust_input.y).rotated(current_rotation)
 	var thrust_magnitude = thrust_input.length()
+	if thrust_magnitude < 0.01:
+		current_applied_velocity = velocity.normalized() if velocity.length() > 0.01 else Vector2.ZERO
+		return velocity
+	var thrust_direction = Vector2(thrust_input.x, thrust_input.y).rotated(current_rotation)
+	var target_velocity = thrust_direction.normalized() * max_local_speed * thrust_magnitude
+	var velocity_error = target_velocity - velocity
 	
 	var thrust_force = Vector2.ZERO
-	if thrust_magnitude > 0.01:
-		thrust_force = thrust_direction.normalized() * main_thrust_power * thrust_magnitude
-	
+	if velocity_error.length() > 0.01:
+		thrust_force = velocity_error.normalized() * main_thrust_power
 	var force_total = thrust_force * PIXEL_PER_METER
 	var acceleration = force_total / mass
 	var applied_velocity = velocity + acceleration * delta
@@ -95,10 +99,16 @@ func ship_rotation_damp(delta: float) -> float:
 	
 	var current_rotation = controlled.rotation
 	var moment_of_inertia = calculate_moment()
-	var damping_torque = -sign(angular_velocity_rad) * side_thrust_power * rotation_dampeners_efficiency
-	
+	var damping_direction = -1.0 if angular_velocity_rad > 0 else 1.0
+	var damping_torque = damping_direction * side_thrust_power * rotation_dampeners_efficiency
 	var angular_acceleration = damping_torque / moment_of_inertia
-	angular_velocity_rad += angular_acceleration * delta
+	var new_angular_velocity = angular_velocity_rad + angular_acceleration * delta
+	
+	if (angular_velocity_rad > 0 and new_angular_velocity < 0) or (angular_velocity_rad < 0 and new_angular_velocity > 0):
+		angular_velocity_rad = 0.0
+	else:
+		angular_velocity_rad = new_angular_velocity
+	
 	if abs(angular_velocity_rad) < 0.008:
 		angular_velocity_rad = 0.0
 	
@@ -115,7 +125,6 @@ func aim_to_target(ship_position: Vector2, target_position: Vector2, delta: floa
 	var current_rotation = controlled.rotation
 	var target_vector = target_position - ship_position
 	var angle_to_target = wrapf(atan2(target_vector.y, target_vector.x) + PI/2 - current_rotation, -PI, PI)
-	
 	var moment_of_inertia = calculate_moment()
 	var max_angular_acceleration = side_thrust_power / moment_of_inertia
 	var stopping_distance = (angular_velocity_rad * angular_velocity_rad) / (2.0 * max_angular_acceleration)

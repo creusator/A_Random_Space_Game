@@ -14,12 +14,17 @@
 scale = Vector2(1.01469, 1.02335)
 color = Color(0.08468992, 0.08468992, 0.08468992, 1)
 
+[node name="Player" parent="." instance=ExtResource("7_3mrqo")]
+z_index = 100
+position = Vector2(-46.754303, -56.016445)
+scale = Vector2(0.3, 0.3)
+
 [node name="NorikerMKI" parent="." instance=ExtResource("1_u44n3")]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 process_callback = 0
 script = ExtResource("4_sb48q")
-target = NodePath("../NorikerMKI")
+target = NodePath("../Player")
 camera_smooth_speed = 5.0
 zoom_speed = 4.0
 max_zoom = 5.0
@@ -53,8 +58,3 @@ layer = 50
 ship = NodePath("../../NorikerMKI")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("5_t88pq")]
-
-[node name="Player" parent="." instance=ExtResource("7_3mrqo")]
-z_index = 100
-position = Vector2(0, -81)
-scale = Vector2(0.3, 0.3)

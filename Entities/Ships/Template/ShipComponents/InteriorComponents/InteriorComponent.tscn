@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://kwnms3tylb14"]
+
+[ext_resource type="Script" uid="uid://dat25111uwn8d" path="res://Entities/Ships/Template/ShipComponents/InteriorComponents/InteriorComponent.gd" id="1_pxhrv"]
+
+[node name="InteriorComponent" type="Node2D"]
+script = ExtResource("1_pxhrv")
+metadata/_custom_type_script = "uid://dat25111uwn8d"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="RoomArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8

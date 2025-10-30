@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj4yb6fubxswr"]
+
+[ext_resource type="PackedScene" uid="uid://kwnms3tylb14" path="res://Entities/Ships/Template/ShipComponents/InteriorComponents/InteriorComponent.tscn" id="1_e1dt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn1ta"]
+
+[node name="InteriorChassis" instance=ExtResource("1_e1dt1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea" index="0"]
+shape = SubResource("RectangleShape2D_qn1ta")

@@ -1,13 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3gmb5k3rernn"]
+[gd_scene load_steps=9 format=3 uid="uid://b3gmb5k3rernn"]
 
 [ext_resource type="Texture2D" uid="uid://cihenxutmvlot" path="res://Assets/Human/WIP-Human.png" id="1_2xc6r"]
 [ext_resource type="Script" uid="uid://qijnpq13dxpv" path="res://Entities/OnFootEntities/Player/Player.gd" id="1_j7lsc"]
 [ext_resource type="Script" uid="uid://cqu61yysgcrfp" path="res://Components/Player/PlayerMotionComponent2D.gd" id="2_87vck"]
 [ext_resource type="Script" uid="uid://qoira32srma4" path="res://Components/Player/PlayerInputComponent2D.gd" id="3_j7lsc"]
 [ext_resource type="Script" uid="uid://cyo0jui1qln2j" path="res://Scripts/StateMachines/Player/PlayerStateMachine.gd" id="5_7p1is"]
+[ext_resource type="Script" uid="uid://cdc3p76kmlpap" path="res://Scripts/StateMachines/Player/States/PlayerIdleState.gd" id="6_ebe24"]
+[ext_resource type="Script" uid="uid://co14ct2268hg" path="res://Scripts/StateMachines/Player/States/PlayerMovingState.gd" id="7_ebe24"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ebe24"]
+radius = 8.0
+height = 24.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
+motion_mode = 1
 script = ExtResource("1_j7lsc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ebe24")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 0
@@ -22,6 +35,15 @@ metadata/_custom_type_script = "uid://cqu61yysgcrfp"
 script = ExtResource("3_j7lsc")
 metadata/_custom_type_script = "uid://qoira32srma4"
 
-[node name="PlayerStateMachine" type="Node" parent="."]
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_7p1is")
+initial_state = NodePath("PlayerIdleState")
 metadata/_custom_type_script = "uid://cyo0jui1qln2j"
+
+[node name="PlayerIdleState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("6_ebe24")
+metadata/_custom_type_script = "uid://cdc3p76kmlpap"
+
+[node name="PlayerMovingState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_ebe24")
+metadata/_custom_type_script = "uid://co14ct2268hg"

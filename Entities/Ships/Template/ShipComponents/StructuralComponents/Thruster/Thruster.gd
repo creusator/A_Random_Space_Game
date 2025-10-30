@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 		random_light_timer = random.randf_range(0.5, 3.0)
 		vfx_random_light_level = random.randf_range(0.0, 0.4)
 	
-	if vfx and ship and ship.is_piloted:
+	if vfx and ship:
 		update_vfx(delta)
 
 func on_powered() -> void:
@@ -91,8 +91,15 @@ func update_vfx(delta: float) -> void:
 	var input = ship.input_component_2d
 	
 	var thrust_force_direction_world = thruster_orientation.rotated(ship_rotation).normalized()
-	var thrust_input_local = input.get_thrust_vector()
-	var thrust_input_world = thrust_input_local.rotated(ship_rotation)
+	var thrust_input_local: Vector2
+	var thrust_input_world: Vector2
+	
+	if ship.is_piloted:
+		thrust_input_local = input.get_thrust_vector()
+		thrust_input_world = thrust_input_local.rotated(ship_rotation)
+	else :
+		thrust_input_local = Vector2.ZERO
+		thrust_input_world = Vector2.ZERO
 	
 	# Poussée linéaire
 	var intensity_input := 0.0
@@ -126,7 +133,12 @@ func update_vfx(delta: float) -> void:
 	var intensity_rotation := 0.0
 	
 	if side_thrust_power > 0:
-		var rotation_input = input.get_rotation_dir()
+		var rotation_input: float
+		if ship.is_piloted :
+			rotation_input = input.get_rotation_dir()
+		else:
+			rotation_input = 0.0
+		
 		var angular_velocity = motion.angular_velocity_rad
 		var thruster_pos_local = position
 		var thruster_arm = thruster_pos_local.length()

@@ -3,7 +3,6 @@ extends ShipComponent
 
 @export var data:FuelTankData
 
-@onready var timer:Timer = $Timer
 @onready var ship:Ship = self.get_parent().get_parent()
 
 var mass:int
@@ -14,11 +13,8 @@ func _ready() -> void:
 	super()
 	mass = data.mass
 	max_capacity = data.max_capacity
-	if data.capacity < data.max_capacity:
-		capacity = data.capacity
-	else :
-		capacity = max_capacity
-	timer.timeout.connect(_on_fuel_tick)
+	capacity = max_capacity
+	capacity = clamp(capacity, 0.0, max_capacity)
 
-func _on_fuel_tick():
-	capacity -= ship.fuel_consumption
+func _on_timer_timeout() -> void:
+	capacity = clamp(capacity - ship.fuel_consumption, 0.0, max_capacity)

@@ -13,7 +13,7 @@ var fuel_consumption: float
 var fuel_current_capacity: float
 var moment_of_inertia_factor: float
 var is_powered: bool = false
-var is_piloted: bool = true
+var is_piloted: bool = false
 
 @onready var structural_components: StructuralComponentManager = $StructuralComponentManager
 @onready var internal_components: InternalComponentManager = $InternalComponentManager
@@ -37,6 +37,8 @@ func _connect_component_signals() -> void:
 
 func _process(_delta: float) -> void:
 	update_ship_data()
+	if Input.is_physical_key_pressed(KEY_F):
+		is_piloted = !is_piloted
 
 func update_ship_data() -> void:
 	var previous_powered = is_powered
@@ -89,7 +91,7 @@ func get_current_state() -> String:
 	return state_machine.get_current_state_name()
 
 func _on_chassis_destroyed() -> void:
-	state_machine.transition_to("DestroyedState")
+	state_machine.transition_to("ShipDestroyedState")
 
 func _on_thrusters_destroyed() -> void:
 	pass
@@ -98,8 +100,7 @@ func _on_wings_destroyed() -> void:
 	pass
 
 func _on_power_plant_destroyed() -> void:
-	is_powered = false
-	state_machine.transition_to("UnpoweredState")
+	pass
 
 func _on_sensor_destroyed() -> void:
 	pass
