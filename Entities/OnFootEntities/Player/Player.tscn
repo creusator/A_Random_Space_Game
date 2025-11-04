@@ -19,10 +19,12 @@ motion_mode = 1
 script = ExtResource("1_j7lsc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ebe24")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 light_mask = 0
 texture = ExtResource("1_2xc6r")
 
@@ -47,3 +49,10 @@ metadata/_custom_type_script = "uid://cdc3p76kmlpap"
 [node name="PlayerMovingState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("7_ebe24")
 metadata/_custom_type_script = "uid://co14ct2268hg"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false

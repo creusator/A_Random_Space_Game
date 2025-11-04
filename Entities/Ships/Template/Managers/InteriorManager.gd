@@ -34,4 +34,5 @@ func _update_parent(body: Node) -> void:
 	
 	if body.get_parent() != target_parent:
 		body.reparent(target_parent)
+		body.owner = target_parent
 		print("→ Joueur déplacé vers : %s" % target_parent.name)
