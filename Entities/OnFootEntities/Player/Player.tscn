@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3gmb5k3rernn"]
+[gd_scene load_steps=8 format=3 uid="uid://b3gmb5k3rernn"]
 
 [ext_resource type="Texture2D" uid="uid://cihenxutmvlot" path="res://Assets/Human/WIP-Human.png" id="1_2xc6r"]
 [ext_resource type="Script" uid="uid://qijnpq13dxpv" path="res://Entities/OnFootEntities/Player/Player.gd" id="1_j7lsc"]
@@ -8,23 +8,20 @@
 [ext_resource type="Script" uid="uid://cdc3p76kmlpap" path="res://Scripts/StateMachines/Player/States/PlayerIdleState.gd" id="6_ebe24"]
 [ext_resource type="Script" uid="uid://co14ct2268hg" path="res://Scripts/StateMachines/Player/States/PlayerMovingState.gd" id="7_ebe24"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ebe24"]
-radius = 8.0
-height = 24.0
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_j7lsc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_ebe24")
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 light_mask = 0
 texture = ExtResource("1_2xc6r")
 
@@ -49,10 +46,3 @@ metadata/_custom_type_script = "uid://cdc3p76kmlpap"
 [node name="PlayerMovingState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("7_ebe24")
 metadata/_custom_type_script = "uid://co14ct2268hg"
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 0)
-collision_mask = 8
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
