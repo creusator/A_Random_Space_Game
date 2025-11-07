@@ -14,7 +14,7 @@ collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_j7lsc")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="InteriorRayCast" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
 collision_mask = 8
 hit_from_inside = true

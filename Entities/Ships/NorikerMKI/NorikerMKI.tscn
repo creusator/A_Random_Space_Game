@@ -113,6 +113,7 @@ position = Vector2(19.5, 10)
 data = ExtResource("17_p3v4y")
 structural_parent = NodePath("../../StructuralComponentManager/Chassis")
 
+[node name="InteriorManager" parent="." index="2"]
+z_index = 50
+
 [node name="InteriorChassis1" parent="InteriorManager" index="0" instance=ExtResource("19_faqrp")]
-position = Vector2(0, -90)
-scale = Vector2(2, 2)

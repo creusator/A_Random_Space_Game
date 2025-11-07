@@ -22,6 +22,7 @@ scale = Vector2(0.3, 0.3)
 [node name="NorikerMKI" parent="." instance=ExtResource("1_u44n3")]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+ignore_rotation = false
 process_callback = 0
 script = ExtResource("4_sb48q")
 target = NodePath("../Player")

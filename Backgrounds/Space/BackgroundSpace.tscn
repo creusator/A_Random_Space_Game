@@ -105,7 +105,6 @@ scale_curve = SubResource("CurveTexture_h6p4p")
 color_ramp = SubResource("GradientTexture1D_2lqwn")
 
 [node name="SpaceBackground" type="ParallaxBackground"]
-follow_viewport_scale = 3.655
 scroll_ignore_camera_zoom = true
 script = ExtResource("1_7gtgh")
 

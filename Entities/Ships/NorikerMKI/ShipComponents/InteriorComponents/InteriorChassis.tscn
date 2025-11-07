@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj4yb6fubxswr"]
+[gd_scene load_steps=2 format=3 uid="uid://cj4yb6fubxswr"]
 
 [ext_resource type="PackedScene" uid="uid://kwnms3tylb14" path="res://Entities/Ships/Template/ShipComponents/InteriorComponents/InteriorComponent.tscn" id="1_e1dt1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn1ta"]
-
 [node name="InteriorChassis" instance=ExtResource("1_e1dt1")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea" index="0"]
-shape = SubResource("RectangleShape2D_qn1ta")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomArea" index="0"]
+polygon = PackedVector2Array(-16, -53, -44, -21, -46, -5, -31, -5, -28, -2, -28, 37, -25, 38, -25, 48, -20, 53, 20, 53, 25, 48, 25, 38, 28, 37, 28, -2, 31, -5, 46, -5, 44, -21, 16, -53)

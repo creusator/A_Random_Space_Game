@@ -3,7 +3,11 @@ extends CharacterBody2D
 
 @onready var player_motion_component_2d: PlayerMotionComponent2D = $PlayerMotionComponent2D
 @onready var player_input_component_2d: PlayerInputComponent2D = $PlayerInputComponent2D
-@onready var raycast: RayCast2D = $RayCast2D
+@onready var interior_raycast: RayCast2D = $InteriorRayCast
+@onready var sprite: Sprite2D = $Sprite2D
+
+signal entered_ship(ship:Ship)
+signal exited_ship
 
 var sitting: bool = false
 
@@ -18,10 +22,9 @@ func _process(_delta: float) -> void:
 		sitting = !sitting
 
 func _physics_process(_delta: float) -> void:
-	global_rotation = 0.0
-	raycast.target_position = Vector2.ZERO
+	interior_raycast.target_position = Vector2.ZERO
 	
-	var collider = raycast.get_collider()
+	var collider = interior_raycast.get_collider()
 	
 	if collider != current_zone:
 		current_zone = collider
@@ -30,8 +33,10 @@ func _physics_process(_delta: float) -> void:
 		if collider:
 			target_parent = collider
 			print("Entered : ", collider.name)
+			entered_ship.emit(target_parent.get_parent().ship)
 		else:
 			target_parent = original_parent
+			exited_ship.emit()
 		
 		if get_parent() != target_parent:
 			reparent(target_parent)
