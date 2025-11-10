@@ -26,12 +26,18 @@ func _ready():
 		target.exited_ship.connect(_on_player_exited_ship)
 
 func _physics_process(delta: float) -> void:
+	var target_piloting:bool = target is Ship and target.is_piloted == true
+	var target_on_foot_inside:bool = target is Ship and target.is_piloted == false
+	var target_on_foot_outside:bool = target is Player and target.sitting == false
 	CameraZoom(delta)
-	if target is Ship and target.is_piloted:
+	if target_piloting:
 		rotation = 0.0
 		CameraMovePiloted(delta)
-	else :
+	elif target_on_foot_inside:
 		rotation = target.rotation
+		CameraMoveOnFoot(delta)
+	elif target_on_foot_outside:
+		rotation = 0.0
 		CameraMoveOnFoot(delta)
 
 func CameraMovePiloted(delta: float) -> void:

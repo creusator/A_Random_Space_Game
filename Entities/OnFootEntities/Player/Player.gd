@@ -18,7 +18,7 @@ func _ready() -> void:
 	original_parent = get_parent()
 
 func _process(_delta: float) -> void:
-	if Input.is_key_pressed(KEY_F):
+	if Input.is_action_just_pressed("onfoot_interact"):
 		sitting = !sitting
 
 func _physics_process(_delta: float) -> void:

@@ -1,6 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://do78wutwh6no7"]
-
-[ext_resource type="Script" uid="uid://bkaxdym1d5cg8" path="res://Backgrounds/Space/BackgroundSpace.gd" id="1_7gtgh"]
+[gd_scene load_steps=21 format=3 uid="uid://do78wutwh6no7"]
 
 [sub_resource type="Gradient" id="Gradient_3td3w"]
 offsets = PackedFloat32Array(0, 0.0446097, 0.847584, 1)
@@ -104,11 +102,12 @@ scale_max = 4.0
 scale_curve = SubResource("CurveTexture_h6p4p")
 color_ramp = SubResource("GradientTexture1D_2lqwn")
 
-[node name="SpaceBackground" type="ParallaxBackground"]
-scroll_ignore_camera_zoom = true
-script = ExtResource("1_7gtgh")
+[node name="Node2D" type="Node2D"]
 
-[node name="Skybox" type="ColorRect" parent="."]
+[node name="SpaceBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="Skybox" type="ColorRect" parent="SpaceBackground"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -116,7 +115,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BackgroundStars" type="GPUParticles2D" parent="Skybox"]
+[node name="BackgroundStars" type="GPUParticles2D" parent="SpaceBackground/Skybox"]
 amount = 150
 lifetime = 60.0
 preprocess = 240.0
@@ -124,11 +123,11 @@ visibility_rect = Rect2(0, 0, 1920, 1080)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_3td3w")
 
-[node name="FurthestLayer" type="ParallaxLayer" parent="."]
+[node name="FurthestLayer" type="ParallaxLayer" parent="SpaceBackground"]
 motion_scale = Vector2(0.05, 0.05)
 motion_mirroring = Vector2(1920, 1080)
 
-[node name="Stars" type="GPUParticles2D" parent="FurthestLayer"]
+[node name="Stars" type="GPUParticles2D" parent="SpaceBackground/FurthestLayer"]
 amount = 85
 lifetime = 60.0
 preprocess = 240.0
@@ -136,11 +135,11 @@ visibility_rect = Rect2(0, 0, 1920, 1080)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_cr2sd")
 
-[node name="ClosestLayer" type="ParallaxLayer" parent="."]
+[node name="ClosestLayer" type="ParallaxLayer" parent="SpaceBackground"]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1920, 1080)
 
-[node name="Stars" type="GPUParticles2D" parent="ClosestLayer"]
+[node name="Stars" type="GPUParticles2D" parent="SpaceBackground/ClosestLayer"]
 amount = 60
 lifetime = 60.0
 preprocess = 240.0
@@ -148,13 +147,13 @@ visibility_rect = Rect2(0, 0, 1920, 1080)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_h6p4p")
 
-[node name="InFrontOfCamera" type="ParallaxBackground" parent="."]
+[node name="InFrontOfCamera" type="ParallaxBackground" parent="SpaceBackground"]
 layer = 15
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="InFrontOfCamera"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="SpaceBackground/InFrontOfCamera"]
 motion_mirroring = Vector2(1920, 1080)
 
-[node name="Stars" type="GPUParticles2D" parent="InFrontOfCamera/ParallaxLayer"]
+[node name="Stars" type="GPUParticles2D" parent="SpaceBackground/InFrontOfCamera/ParallaxLayer"]
 amount = 50
 lifetime = 60.0
 preprocess = 240.0

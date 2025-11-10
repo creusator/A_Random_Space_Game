@@ -37,7 +37,7 @@ func _connect_component_signals() -> void:
 
 func _process(_delta: float) -> void:
 	update_ship_data()
-	if Input.is_physical_key_pressed(KEY_F):
+	if Input.is_action_just_pressed("onfoot_interact"):
 		is_piloted = !is_piloted
 
 func update_ship_data() -> void:
