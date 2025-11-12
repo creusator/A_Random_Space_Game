@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl2wfrt4wupur"]
+[gd_scene load_steps=8 format=3 uid="uid://bl2wfrt4wupur"]
 
 [ext_resource type="PackedScene" uid="uid://d0lyfduv8cm45" path="res://Entities/Ships/NorikerMKI/NorikerMKI.tscn" id="1_u44n3"]
+[ext_resource type="PackedScene" uid="uid://do78wutwh6no7" path="res://Backgrounds/Space/BackgroundSpace.tscn" id="4_3mrqo"]
 [ext_resource type="Script" uid="uid://dq3r12sc157up" path="res://UI/Camera/Camera.gd" id="4_sb48q"]
 [ext_resource type="PackedScene" uid="uid://bq1j8bbq5k0n1" path="res://Entities/zDevObjects/Killbox.tscn" id="4_t88pq"]
 [ext_resource type="PackedScene" uid="uid://bs4dsk2ecagfa" path="res://UI/Menus/PauseMenu/PauseMenu.tscn" id="5_t88pq"]
@@ -56,3 +57,16 @@ layer = 50
 ship = NodePath("../../NorikerMKI")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("5_t88pq")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(1920, 1080)
+
+[node name="Control" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_3mrqo")]
+anchors_preset = 8

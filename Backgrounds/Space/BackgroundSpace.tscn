@@ -1,4 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://do78wutwh6no7"]
+[gd_scene load_steps=22 format=3 uid="uid://do78wutwh6no7"]
+
+[ext_resource type="Script" uid="uid://ci6loi18upf3i" path="res://Backgrounds/Space/BackgroundDummy.gd" id="1_7gtgh"]
 
 [sub_resource type="Gradient" id="Gradient_3td3w"]
 offsets = PackedFloat32Array(0, 0.0446097, 0.847584, 1)
@@ -102,7 +104,14 @@ scale_max = 4.0
 scale_curve = SubResource("CurveTexture_h6p4p")
 color_ramp = SubResource("GradientTexture1D_2lqwn")
 
-[node name="Node2D" type="Node2D"]
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SpaceBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
@@ -160,3 +169,11 @@ preprocess = 240.0
 visibility_rect = Rect2(0, 0, 1920, 1080)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_8vwrt")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="SpaceBackground"]
+position = Vector2(960, 540)
+motion_mode = 1
+script = ExtResource("1_7gtgh")
+
+[node name="Camera2D" type="Camera2D" parent="SpaceBackground/CharacterBody2D"]
+ignore_rotation = false
