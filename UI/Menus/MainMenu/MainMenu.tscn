@@ -30,7 +30,6 @@ grow_vertical = 2
 color = Color(0.3882353, 0.3882353, 0.3882353, 1)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("2_rlwnk")]
-front_layer_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
