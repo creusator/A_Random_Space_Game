@@ -127,6 +127,7 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_3td3w")
 
 [node name="FurthestLayer" type="ParallaxLayer" parent="."]
+visible = false
 position = Vector2(-1920, -1080)
 motion_scale = Vector2(0.005, 0.005)
 motion_mirroring = Vector2(1920, 1080)
@@ -140,6 +141,7 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_cr2sd")
 
 [node name="ClosestLayer" type="ParallaxLayer" parent="."]
+visible = false
 position = Vector2(-1920, -1080)
 motion_scale = Vector2(0.05, 0.05)
 motion_mirroring = Vector2(1920, 1080)
@@ -154,7 +156,6 @@ process_material = SubResource("ParticleProcessMaterial_h6p4p")
 
 [node name="InFrontOfCamera" type="ParallaxBackground" parent="."]
 layer = 15
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="InFrontOfCamera"]
 motion_mirroring = Vector2(1920, 1080)

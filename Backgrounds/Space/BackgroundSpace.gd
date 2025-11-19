@@ -1,7 +1,5 @@
 extends ParallaxBackground
 
-@export var front_layer_enabled:bool = true
-
 @onready var skybox: ColorRect = $Skybox
 @onready var background_stars: GPUParticles2D = $Skybox/BackgroundStars
 @onready var furthest_layer: ParallaxLayer = $FurthestLayer
@@ -46,7 +44,6 @@ func _process(_delta: float) -> void:
 			closest_layer.motion_scale = Vector2.ZERO
 			front_layer.motion_scale = Vector2.ZERO
 		rotation = -camera.rotation
-		closest_layer.rotation = -camera.rotation
 
 func update_viewport_size():
 	var viewport_size:Vector2 = Vector2(1920.0, 1080.0)
@@ -55,7 +52,6 @@ func update_viewport_size():
 	background_stars.process_material.emission_shape_scale = Vector3(viewport_size.x, viewport_size.y, 0.0) * 1.1
 	front_layer.transform.origin = center
 	front_stars.process_material.emission_shape_scale = Vector3(viewport_size.x, viewport_size.y , 0.0) * 1.1
-	
 
 func store_base_particle_count(particles: GPUParticles2D, key: String) -> void:
 	if particles:
@@ -81,11 +77,9 @@ func update_parallax_layers(viewport_size: Vector2) -> void:
 	update_gpu_particles(furthest_stars, viewport_size, furthest_layer.motion_offset, density_ratio, "furthest")
 	closest_layer.motion_mirroring = viewport_size
 	update_gpu_particles(closest_stars, viewport_size, closest_layer.motion_offset, density_ratio, "closest")
-	if front_layer_enabled : 
-		front_layer.motion_mirroring = viewport_size
-		update_gpu_particles(front_stars, viewport_size, front_layer.motion_offset, density_ratio, "front")
-	else :
-		front_layer.hide()
+	front_layer.motion_mirroring = viewport_size
+	update_gpu_particles(front_stars, viewport_size, front_layer.motion_offset, density_ratio, "front")
+
 
 	
 func update_gpu_particles(particles: GPUParticles2D, size: Vector2, new_offset: Vector2, density_ratio: float, key: String) -> void:
