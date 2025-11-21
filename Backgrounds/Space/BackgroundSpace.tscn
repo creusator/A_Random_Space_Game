@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://do78wutwh6no7"]
+[gd_scene load_steps=17 format=3 uid="uid://do78wutwh6no7"]
 
 [ext_resource type="Script" uid="uid://bkaxdym1d5cg8" path="res://Backgrounds/Space/BackgroundSpace.gd" id="1_hpvof"]
 
@@ -18,12 +18,12 @@ curve = SubResource("Curve_hpvof")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3td3w"]
 lifetime_randomness = 0.3
-emission_shape_offset = Vector3(1920, 1080, 0)
-emission_shape_scale = Vector3(1920, 1080, 1)
+emission_shape_offset = Vector3(2112, 1188, 0)
+emission_shape_scale = Vector3(2112, 1188, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 gravity = Vector3(0, 0, 0)
-scale_min = 3.0
+scale_min = 2.0
 scale_max = 7.0
 scale_curve = SubResource("CurveTexture_7tgo7")
 color_ramp = SubResource("GradientTexture1D_7gtgh")
@@ -44,8 +44,8 @@ curve = SubResource("Curve_7tgo7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cr2sd"]
 lifetime_randomness = 0.3
-emission_shape_offset = Vector3(960, 540, 0)
-emission_shape_scale = Vector3(960, 540, 1)
+emission_shape_offset = Vector3(1056, 594, 0)
+emission_shape_scale = Vector3(1056, 594, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 gravity = Vector3(0, 0, 0)
@@ -70,39 +70,14 @@ curve = SubResource("Curve_2lqwn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h6p4p"]
 lifetime_randomness = 0.3
-emission_shape_offset = Vector3(960, 540, 0)
-emission_shape_scale = Vector3(960, 540, 1)
+emission_shape_offset = Vector3(1056, 594, 0)
+emission_shape_scale = Vector3(1056, 594, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 gravity = Vector3(0, 0, 0)
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_cr2sd")
 color_ramp = SubResource("GradientTexture1D_7tgo7")
-
-[sub_resource type="Gradient" id="Gradient_7tgo7"]
-offsets = PackedFloat32Array(0, 0.0446097, 0.847584, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.560784, 0.560784, 0.560784, 0.733333, 0.560784, 0.560784, 0.560784, 0.733333, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2lqwn"]
-gradient = SubResource("Gradient_7tgo7")
-
-[sub_resource type="Curve" id="Curve_cr2sd"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.755932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.48826), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_h6p4p"]
-curve = SubResource("Curve_cr2sd")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8vwrt"]
-lifetime_randomness = 0.3
-emission_shape_offset = Vector3(-960, -540, 0)
-emission_shape_scale = Vector3(960, 540, 1)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-gravity = Vector3(0, 0, 0)
-scale_max = 4.0
-scale_curve = SubResource("CurveTexture_h6p4p")
-color_ramp = SubResource("GradientTexture1D_2lqwn")
 
 [node name="SpaceBackground" type="ParallaxBackground"]
 scroll_ignore_camera_zoom = true
@@ -112,58 +87,44 @@ script = ExtResource("1_hpvof")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1920.0
-offset_top = -1080.0
+offset_left = -2112.0
+offset_top = -1188.0
+offset_right = 192.0
+offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BackgroundStars" type="GPUParticles2D" parent="Skybox"]
-amount = 280
+amount = 227
 lifetime = 60.0
 preprocess = 240.0
-visibility_rect = Rect2(0, 0, 1920, 1080)
+visibility_rect = Rect2(0, 0, 2112, 1188)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_3td3w")
 
 [node name="FurthestLayer" type="ParallaxLayer" parent="."]
-visible = false
-position = Vector2(-1920, -1080)
+position = Vector2(-2112, -1188)
 motion_scale = Vector2(0.005, 0.005)
-motion_mirroring = Vector2(1920, 1080)
+motion_mirroring = Vector2(2112, 1188)
 
 [node name="Stars" type="GPUParticles2D" parent="FurthestLayer"]
 amount = 85
 lifetime = 60.0
 preprocess = 240.0
-visibility_rect = Rect2(0, 0, 1920, 1080)
+visibility_rect = Rect2(0, 0, 2112, 1188)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_cr2sd")
 
 [node name="ClosestLayer" type="ParallaxLayer" parent="."]
-visible = false
-position = Vector2(-1920, -1080)
+position = Vector2(-2112, -1188)
 motion_scale = Vector2(0.05, 0.05)
-motion_mirroring = Vector2(1920, 1080)
+motion_mirroring = Vector2(2112, 1188)
 
 [node name="Stars" type="GPUParticles2D" parent="ClosestLayer"]
 amount = 60
 lifetime = 60.0
 preprocess = 240.0
-visibility_rect = Rect2(0, 0, 1920, 1080)
+visibility_rect = Rect2(0, 0, 2112, 1188)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_h6p4p")
-
-[node name="InFrontOfCamera" type="ParallaxBackground" parent="."]
-layer = 15
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="InFrontOfCamera"]
-motion_mirroring = Vector2(1920, 1080)
-
-[node name="Stars" type="GPUParticles2D" parent="InFrontOfCamera/ParallaxLayer"]
-amount = 70
-lifetime = 60.0
-preprocess = 240.0
-visibility_rect = Rect2(0, 0, 1920, 1080)
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_8vwrt")

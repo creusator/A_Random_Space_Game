@@ -6,8 +6,6 @@ extends ParallaxBackground
 @onready var furthest_stars: GPUParticles2D = $FurthestLayer/Stars
 @onready var closest_layer: ParallaxLayer = $ClosestLayer
 @onready var closest_stars: GPUParticles2D = $ClosestLayer/Stars
-@onready var front_layer: ParallaxLayer = $InFrontOfCamera/ParallaxLayer
-@onready var front_stars: GPUParticles2D = $InFrontOfCamera/ParallaxLayer/Stars
 
 @export var camera:Camera2D
 
@@ -23,10 +21,8 @@ func _ready() -> void:
 	store_base_particle_count(background_stars, "background")
 	store_base_particle_count(furthest_stars, "furthest")
 	store_base_particle_count(closest_stars, "closest")
-	store_base_particle_count(front_stars, "front")
 	og_furthest_layer_scale = furthest_layer.motion_scale
 	og_closest_layer_scale = closest_layer.motion_scale
-	og_front_layer_scale = front_layer.motion_scale
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
 	_on_viewport_size_changed()
 	update_viewport_size()
@@ -35,23 +31,26 @@ func _process(_delta: float) -> void:
 	var new_size = get_viewport().size * 2
 	if Vector2i(new_size) != current_viewport_size:
 		_on_viewport_size_changed()
-	if camera:
-		furthest_layer.motion_scale = og_furthest_layer_scale
-		closest_layer.motion_scale = og_closest_layer_scale
-		front_layer.motion_scale = og_front_layer_scale
-		if rotation != 0.0:
+	
+	if not camera:
+		return
+	rotation = -camera.rotation
+	if rotation != 0.0:
+		if furthest_layer.motion_scale != Vector2.ZERO:
 			furthest_layer.motion_scale = Vector2.ZERO
 			closest_layer.motion_scale = Vector2.ZERO
-			front_layer.motion_scale = Vector2.ZERO
-		rotation = -camera.rotation
+	else:
+		if furthest_layer.motion_scale == Vector2.ZERO:
+			furthest_layer.set_motion_scale(og_furthest_layer_scale)
+			closest_layer.set_motion_scale(og_closest_layer_scale)
+			furthest_layer.set_notify_transform(true)
+			closest_layer.set_notify_transform(true)
 
 func update_viewport_size():
 	var viewport_size:Vector2 = Vector2(1920.0, 1080.0)
 	var center:Vector2 = viewport_size / 2
 	transform.origin = center
 	background_stars.process_material.emission_shape_scale = Vector3(viewport_size.x, viewport_size.y, 0.0) * 1.1
-	front_layer.transform.origin = center
-	front_stars.process_material.emission_shape_scale = Vector3(viewport_size.x, viewport_size.y , 0.0) * 1.1
 
 func store_base_particle_count(particles: GPUParticles2D, key: String) -> void:
 	if particles:
@@ -77,10 +76,7 @@ func update_parallax_layers(viewport_size: Vector2) -> void:
 	update_gpu_particles(furthest_stars, viewport_size, furthest_layer.motion_offset, density_ratio, "furthest")
 	closest_layer.motion_mirroring = viewport_size
 	update_gpu_particles(closest_stars, viewport_size, closest_layer.motion_offset, density_ratio, "closest")
-	front_layer.motion_mirroring = viewport_size
-	update_gpu_particles(front_stars, viewport_size, front_layer.motion_offset, density_ratio, "front")
-
-
+	
 	
 func update_gpu_particles(particles: GPUParticles2D, size: Vector2, new_offset: Vector2, density_ratio: float, key: String) -> void:
 	if not particles or not particles.process_material:
