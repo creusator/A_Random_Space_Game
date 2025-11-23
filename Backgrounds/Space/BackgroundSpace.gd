@@ -43,8 +43,6 @@ func _process(_delta: float) -> void:
 		if furthest_layer.motion_scale == Vector2.ZERO:
 			furthest_layer.set_motion_scale(og_furthest_layer_scale)
 			closest_layer.set_motion_scale(og_closest_layer_scale)
-			furthest_layer.set_notify_transform(true)
-			closest_layer.set_notify_transform(true)
 
 func update_viewport_size():
 	var viewport_size:Vector2 = Vector2(1920.0, 1080.0)
