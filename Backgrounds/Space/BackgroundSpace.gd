@@ -27,14 +27,14 @@ func _ready() -> void:
 	_on_viewport_size_changed()
 	update_viewport_size()
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var new_size = get_viewport().size * 2
 	if Vector2i(new_size) != current_viewport_size:
 		_on_viewport_size_changed()
 	
 	if not camera:
 		return
-	rotation = -camera.rotation
+	rotation = -camera.global_rotation
 	if rotation != 0.0:
 		if furthest_layer.motion_scale != Vector2.ZERO:
 			furthest_layer.motion_scale = Vector2.ZERO
