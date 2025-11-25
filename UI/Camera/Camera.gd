@@ -12,17 +12,17 @@ extends Camera2D
 @onready var original_target = target
 @onready var current_mode: int = GlobalVariables.camera_mode
 
-var viewport: Vector2
 var target_position: Vector2 = Vector2.INF
 var zoom_target: Vector2 = Vector2.ONE
-var fallback_target: Node = null
 var mouse_offset: Vector2 = Vector2.ZERO
 var transitioning: bool = false
+var previous_mode: int = -1
+var transition_offset: Vector2 = Vector2.ZERO
 
 func _ready():
-	viewport = get_viewport_rect().size
-	fallback_target = target
 	zoom_target = zoom
+	previous_mode = current_mode
+	
 	if target is Player:
 		target.entered_ship.connect(_on_player_entered_ship)
 		target.exited_ship.connect(_on_player_exited_ship)
@@ -37,6 +37,15 @@ func _physics_process(delta: float) -> void:
 	elif target_on_foot_inside:
 		current_mode = 2
 	
+	if current_mode != previous_mode:
+		transitioning = true
+		if target_position != Vector2.INF:
+			transition_offset = global_position - target.global_position
+		else:
+			transition_offset = Vector2.ZERO
+		mouse_offset = Vector2.ZERO
+		previous_mode = current_mode
+	
 	CameraZoom(delta)
 	CameraRotate(delta)
 	CameraMove(delta)
@@ -44,26 +53,35 @@ func _physics_process(delta: float) -> void:
 func CameraMove(delta: float) -> void:
 	if not target:
 		return
+	var desired_position: Vector2 = Vector2.ZERO
 	match current_mode:
-		
-		0: #Mode target
-			if target_position != Vector2.INF:
-				target_position = target.global_position
-		1: #Mode target mouse blended
-			target_position = target.global_position
+		0: # Mode target
+			desired_position = target.global_position
+		1: # Mode target mouse blended
+			desired_position = target.global_position
 			var mouse_pos = get_global_mouse_position()
-			var mouse_dist = (mouse_pos - target_position).length()
+			var mouse_dist = (mouse_pos - desired_position).length()
 			var influence = clamp(mouse_dist / mouse_influence_radius, 0.0, 1.0)
-			var desired_mouse_offset = (mouse_pos - target_position) * influence * mouse_influence_strength
+			var desired_mouse_offset = (mouse_pos - desired_position) * influence * mouse_influence_strength
 			mouse_offset = mouse_offset.lerp(desired_mouse_offset, camera_smooth_speed * delta)
-			target_position = target_position + mouse_offset
-		2: #Mode interior
-			if target_position != Vector2.INF:
-				target_position = target.global_position
-	if transitioning: 
-		global_position.lerp(target_position, camera_smooth_speed*delta)
-	else:
+			desired_position = desired_position + mouse_offset
+		2: # Mode interior
+			desired_position = target.global_position
+	
+	if target_position == Vector2.INF:
+		target_position = desired_position
 		global_position = target_position
+		transitioning = false
+		return
+	
+	if transitioning:
+		transition_offset = transition_offset.lerp(Vector2.ZERO, camera_smooth_speed * delta)
+		if transition_offset.length() < 0.1:
+			transition_offset = Vector2.ZERO
+			transitioning = false
+		global_position = desired_position + transition_offset
+	else:
+		global_position = desired_position
 
 func CameraRotate(delta: float) -> void:
 	if not target:
@@ -84,20 +102,19 @@ func CameraRotate(delta: float) -> void:
 	var angle_diff = angle_difference(global_rotation, target_rotation)
 	var smooth_correction = angle_diff * camera_smooth_speed
 	var velocity_correction = target_angular_velocity
-	if abs(angle_diff) >= 0.0 : #0.92 is a magic number to eliminate shifting
-		global_rotation += (smooth_correction + velocity_correction)* 0.92 * delta
-		transitioning = false
+	
+	if abs(angle_diff) >= 0.001: #0.92 is a magic number to eliminate shifting
+		global_rotation += (smooth_correction + velocity_correction) * 0.92 * delta
 	else:
 		global_rotation = target_rotation
-		transitioning = true
 
 func CameraZoom(delta: float) -> void:
 	if not target:
 		return
 	
-	if current_mode == 2 :
+	if current_mode == 2:
 		zoom = zoom.lerp(Vector2(max_zoom, max_zoom), zoom_speed * delta)
-	else :
+	else:
 		if Input.is_action_just_pressed("zoom_in"):
 			zoom_target *= 1.1
 		if Input.is_action_just_pressed("zoom_out"):

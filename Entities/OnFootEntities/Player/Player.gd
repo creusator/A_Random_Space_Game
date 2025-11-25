@@ -32,12 +32,10 @@ func _physics_process(_delta: float) -> void:
 		var target_parent: Node
 		if collider:
 			target_parent = collider
-			print("Entered : ", collider.name)
 			entered_ship.emit(target_parent.get_parent().ship)
 		else:
 			target_parent = original_parent
 			exited_ship.emit()
-		
 		if get_parent() != target_parent:
 			reparent(target_parent)
 			owner = target_parent
