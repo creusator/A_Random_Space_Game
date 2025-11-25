@@ -27,7 +27,7 @@ func _ready() -> void:
 	_on_viewport_size_changed()
 	update_viewport_size()
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var new_size = get_viewport().size * 2
 	if Vector2i(new_size) != current_viewport_size:
 		_on_viewport_size_changed()
@@ -37,8 +37,8 @@ func _physics_process(_delta: float) -> void:
 	rotation = -camera.global_rotation
 	if rotation != 0.0:
 		if furthest_layer.motion_scale != Vector2.ZERO:
-			furthest_layer.motion_scale = Vector2.ZERO
-			closest_layer.motion_scale = Vector2.ZERO
+			furthest_layer.motion_scale.lerp(Vector2.ZERO, 5 * delta)
+			closest_layer.motion_scale.lerp(Vector2.ZERO, 5 * delta)
 	else:
 		if furthest_layer.motion_scale == Vector2.ZERO:
 			furthest_layer.set_motion_scale(og_furthest_layer_scale)

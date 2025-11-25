@@ -17,6 +17,7 @@ var target_position: Vector2 = Vector2.INF
 var zoom_target: Vector2 = Vector2.ONE
 var fallback_target: Node = null
 var mouse_offset: Vector2 = Vector2.ZERO
+var transitioning: bool = false
 
 func _ready():
 	viewport = get_viewport_rect().size
@@ -43,12 +44,11 @@ func _physics_process(delta: float) -> void:
 func CameraMove(delta: float) -> void:
 	if not target:
 		return
-		
 	match current_mode:
+		
 		0: #Mode target
-			target_position = target.global_position
 			if target_position != Vector2.INF:
-				global_position = target_position
+				target_position = target.global_position
 		1: #Mode target mouse blended
 			target_position = target.global_position
 			var mouse_pos = get_global_mouse_position()
@@ -56,11 +56,14 @@ func CameraMove(delta: float) -> void:
 			var influence = clamp(mouse_dist / mouse_influence_radius, 0.0, 1.0)
 			var desired_mouse_offset = (mouse_pos - target_position) * influence * mouse_influence_strength
 			mouse_offset = mouse_offset.lerp(desired_mouse_offset, camera_smooth_speed * delta)
-			global_position = target_position + mouse_offset
+			target_position = target_position + mouse_offset
 		2: #Mode interior
-			target_position = target.global_position
 			if target_position != Vector2.INF:
-				global_position = target_position
+				target_position = target.global_position
+	if transitioning: 
+		global_position.lerp(target_position, camera_smooth_speed*delta)
+	else:
+		global_position = target_position
 
 func CameraRotate(delta: float) -> void:
 	if not target:
@@ -83,8 +86,10 @@ func CameraRotate(delta: float) -> void:
 	var velocity_correction = target_angular_velocity
 	if abs(angle_diff) >= 0.0 : #0.92 is a magic number to eliminate shifting
 		global_rotation += (smooth_correction + velocity_correction)* 0.92 * delta
+		transitioning = false
 	else:
 		global_rotation = target_rotation
+		transitioning = true
 
 func CameraZoom(delta: float) -> void:
 	if not target:

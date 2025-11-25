@@ -118,7 +118,7 @@ process_material = SubResource("ParticleProcessMaterial_cr2sd")
 
 [node name="ClosestLayer" type="ParallaxLayer" parent="."]
 position = Vector2(-2112, -1188)
-motion_scale = Vector2(0.05, 0.05)
+motion_scale = Vector2(0.009, 0.009)
 motion_mirroring = Vector2(2112, 1188)
 
 [node name="Stars" type="GPUParticles2D" parent="ClosestLayer"]
