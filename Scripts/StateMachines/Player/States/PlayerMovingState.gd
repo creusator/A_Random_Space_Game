@@ -8,6 +8,8 @@ func physics_update(_delta: float) -> void:
 	
 	if player.sitting == false:
 		player.velocity = motion.move(walk_dir)
+	else:
+		player.velocity = Vector2.ZERO
 	
 	if abs(player.velocity) > Vector2.ZERO:
 		player.sprite.global_rotation = player.velocity.angle() + PI / 2
