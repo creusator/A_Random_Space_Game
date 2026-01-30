@@ -28,6 +28,9 @@ func _ready():
 		target.exited_ship.connect(_on_player_exited_ship)
 
 func _physics_process(delta: float) -> void:
+	if not target:
+		return
+	
 	var target_piloting:bool = target is Ship and target.is_piloted == true
 	var target_on_foot_inside:bool = target is Ship and target.is_piloted == false
 	var target_on_foot_outside:bool = target is Player and target.sitting == false
